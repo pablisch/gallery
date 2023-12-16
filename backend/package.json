@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "server:test": "MONGODB_TEST_DB='gallery_TEST' nodemon server.js",
+    "start": "concurrently \"npm run server\" \"cd ../frontend && npm run dev\"",
+    "start:test": "MONGODB_TEST_DB='gallery_TEST' concurrently \"npm run server:test\" \"cd ../frontend && npm run dev\""
   },
   "keywords": [],
   "author": "",

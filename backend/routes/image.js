@@ -12,8 +12,8 @@ router.post('/', auth, multer, imageCtrl.addImage);
 
 router.get('/:id', auth, imageCtrl.getSingleImage); 
 
-router.put('/:id', auth, multer, imageCtrl.modifyImage); 
-
 router.delete('/:id', auth, imageCtrl.deleteImage); 
+
+// router.put('/:id', auth, multer, imageCtrl.modifyImage); 
 
 module.exports = router; 

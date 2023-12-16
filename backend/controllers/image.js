@@ -1,5 +1,4 @@
 const Image = require('../models/image'); 
-const fs = require('fs'); 
 
 exports.getAllImages = (req, res, next) => { 
   Image.find() 
@@ -25,30 +24,6 @@ exports.getSingleImage = (req, res, next) => {
     .catch(error => res.status(404).json({ error: error }));
 }
 
-exports.modifyImage = (req, res, next) => { 
-  let image = new Image({ _id: req.params._id });
-  if (req.file) {
-    const url = req.protocol + '://' + req.get('host'); 
-    req.body.image = JSON.parse(req.body.image); 
-    image = { 
-      _id: req.params.id, 
-      src: req.body.image.src, 
-      altText: req.body.image.altText, 
-      userId: req.body.image.userId, 
-    }; 
-  } else { 
-    image = { 
-      _id: req.params.id, 
-      src: req.body.src, 
-      altText: req.body.altText, 
-      userId: req.body.userId, 
-    }; 
-  } 
-  Image.updateOne({ _id: req.params.id }, image) 
-    .then(() => res.status(201).json({ message: 'Image updated successfully!' })) 
-    .catch(error => res.status(400).json({ error: error })); 
-}
-
 exports.deleteImage = (req, res, next) => { 
   Image.findOne({ _id: req.params.id }) 
     .then(image => { 
@@ -65,3 +40,27 @@ exports.deleteImage = (req, res, next) => {
           })) 
     })
 };
+
+// exports.modifyImage = (req, res, next) => { 
+//   let image = new Image({ _id: req.params._id });
+//   if (req.file) {
+//     const url = req.protocol + '://' + req.get('host'); 
+//     req.body.image = JSON.parse(req.body.image); 
+//     image = { 
+//       _id: req.params.id, 
+//       src: req.body.image.src, 
+//       altText: req.body.image.altText, 
+//       userId: req.body.image.userId, 
+//     }; 
+//   } else { 
+//     image = { 
+//       _id: req.params.id, 
+//       src: req.body.src, 
+//       altText: req.body.altText, 
+//       userId: req.body.userId, 
+//     }; 
+//   } 
+//   Image.updateOne({ _id: req.params.id }, image) 
+//     .then(() => res.status(201).json({ message: 'Image updated successfully!' })) 
+//     .catch(error => res.status(400).json({ error: error })); 
+// }
