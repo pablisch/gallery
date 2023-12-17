@@ -1,12 +1,18 @@
-import Button from './Button';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './NavBar.css';
+import NavLink from './NavLink';
 
-const Navbar = ({navigate}) => {
-  const token = window.localStorage.getItem("token"); 
-  // const token = true;
+const Navbar = ({ userToken, setUserToken, user, setUser }) => {
+  const navigate = useNavigate();
 
   const logout = () => {
+    console.log('logging out')
     window.localStorage.removeItem('token'); 
+    window.localStorage.removeItem('user');
+    setUserToken(null);
+    setUser(null);
   };
 
   const handleLogOut = () => {
@@ -21,29 +27,34 @@ const Navbar = ({navigate}) => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">
-          <a href="/" className="navbar-logo-link">
-            <img src="images/logo.png" alt="logo" className="navbar-logo-img" />
-          </a>
+        <Link to="/" className="navbar-section navbar-logo">
+          <img src="images/gallery.png" alt="logo" className="navbar-logo-img" />
+          <h1 className="navbar-logo-text">Gallery</h1>
+        </Link>
+        <div className="navbar-section navbar-links">
+          {userToken ? 
+            <>
+              <NavLink id='logout-navlink' route='/' onClickFunc={handleLogOut} >Log out</NavLink>
+              <NavLink id='add-image-navlink' route='/add-image' onClickFunc={handleAddImage} >Upload image</NavLink>
+              <NavLink id='user-navlink' >{user}</NavLink>
+              <NavLink id='user-settings-navlink' className='user-settings-icon nav-link' >⚙️</NavLink>
+            </> : <>
+              <NavLink id='logout-navlink' route='/login' >Log in</NavLink>
+              <NavLink id='logout-navlink' route='/signup' >Sign up</NavLink>
+              <NavLink id='settings-navlink' className='settings-icon nav-link' >⚙️</NavLink>
+          </>}
         </div>
-        {!token && <Button ariaLabel='Navigate to Sign Up'
-            onClick={() => navigate("/Signup")}
-          >Sign Up</Button>}
-
-          {!token && <Button ariaLabel='Navigate to Sign Up'
-            onClick={() => navigate("/Login")}
-          >Log In</Button>}
-
-          {token && <Button ariaLabel='Log out current user'
-            onClick={handleLogOut}
-          >Log Out</Button>}
-
-          {token && <Button ariaLabel='Add an image'
-            onClick={handleAddImage}
-          >Upload Image</Button>}
       </div>
+      <div className="divider-line"></div>
     </nav>
   )
+}
+
+Navbar.propTypes = {
+  userToken: PropTypes.string,
+  setUserToken: PropTypes.func,
+  user: PropTypes.string,
+  setUser: PropTypes.func
 }
 
 export default Navbar

@@ -1,0 +1,16 @@
+.image-layout {
+  margin: 30px 50px;
+}
+.masonry-grid {
+  display: flex;
+  /* margin-top: 35px; */
+  margin-left: 10px; 
+  margin-right: 10px; 
+  width: auto;
+}
+
+.masonry-column {
+  padding: 0 7px; 
+  background-clip: padding-box;
+  min-width: 250px;
+}

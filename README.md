@@ -50,3 +50,9 @@ and should return:
     "message": "Health entry added successfully!"
 }
 ```
+
+## Image Feed
+Uses the `react-masonry-css` library.
+```
+npm install react-masonry-css
+```
