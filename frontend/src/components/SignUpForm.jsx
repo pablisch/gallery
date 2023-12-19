@@ -5,7 +5,6 @@ import axios from 'axios';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 
-
 const SignupForm = ({ setUserToken, setUser }) => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
@@ -23,16 +22,20 @@ const SignupForm = ({ setUserToken, setUser }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(`${baseUrl}/api/v1.0/user/signup`, {
-        name,
-        username,
-        email,
-        password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await axios.post(
+        `${baseUrl}/api/v1.0/user/signup`,
+        {
+          name,
+          username,
+          email,
+          password,
         },
-      });
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
 
       if (response.status === 201) {
         const responseData = response.data;
@@ -47,8 +50,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
       } else {
         console.log('Something went wrong in handleSignUpSubmit');
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.error('Error in handleSignUpSubmit:', error);
     }
   };
@@ -75,13 +77,15 @@ const SignupForm = ({ setUserToken, setUser }) => {
     setUsername('');
     setEmail('');
     setPassword('');
-  }
+  };
 
   return (
     <>
-      <main id="signup-form-container" className='form-container'>
+      <main id='signup-form-container' className='form-container'>
         <form id='signup-form' className='form' onSubmit={handleSignUpSubmit}>
-          <h1 id='signup-title' className='form-title'>Create a new Gallery account</h1>
+          <h1 id='signup-title' className='form-title'>
+            Create a new Gallery account
+          </h1>
           <div className='form-field'>
             <label htmlFor='signup-name-input'>Name</label>
             <input
@@ -92,7 +96,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
               onChange={handleNameChange}
             />
           </div>
-          <div className="form-field">
+          <div className='form-field'>
             <label htmlFor='signup-username-input'>Username</label>
             <input
               id='signup-username-input'
@@ -102,7 +106,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
               onChange={handleUsernameChange}
             />
           </div>
-          <div className="form-field">
+          <div className='form-field'>
             <label htmlFor='signup-email-input'>Email</label>
             <input
               id='signup-email-input'
@@ -112,7 +116,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
               onChange={handleSignupEmailChange}
             />
           </div>
-          <div className="form-field">
+          <div className='form-field'>
             <label htmlFor='signup-password-input'>Password</label>
             <input
               id='signup-password-input'
