@@ -29,7 +29,7 @@ app.use(express.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images'))); 
 
-app.use('/api/v1.0/stuff', imageRoutes); 
+app.use('/api/v1.0/image', imageRoutes); 
 app.use('/api/v1.0/user', userRoutes); 
 app.use('/api/v1.0/health', healthRoutes); 
 

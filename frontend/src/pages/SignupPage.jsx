@@ -2,6 +2,11 @@ import SignupForm from "../components/SignupForm";
 import PropTypes from "prop-types";
 
 const Signup = ({ setUserToken, setUser }) => {
+  window.localStorage.removeItem('token'); 
+  window.localStorage.removeItem('user');
+  setUserToken(null);
+  setUser(null);
+  
   return (
     <div>
       <SignupForm setUserToken={setUserToken} setUser={setUser} />

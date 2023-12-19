@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './SignupForm.css';
+import axios from 'axios';
+import './Form.css';
 import baseUrl from '../utils/baseUrl';
 
 
@@ -15,34 +16,40 @@ const SignupForm = ({ setUserToken, setUser }) => {
 
   useEffect(() => {
     document.title = 'Gallery Sign Up';
+    window.localStorage.clear();
   }, []);
 
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`${baseUrl}/api/v1.0/user/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    try {
+      const response = await axios.post(`${baseUrl}/api/v1.0/user/signup`, {
         name,
         username,
         email,
         password,
-      }),
-    });
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    if (response.status === 201) {
-      const responseData = await response.json();
-      console.log('data', responseData);
-      window.localStorage.setItem('token', responseData.token);
-      window.localStorage.setItem('user', responseData.username);
-      setUserToken(responseData.token);
-      setUser(responseData.username);
-      navigate('/');
-    } else {
-      console.log('Something went wrong in handleSignUpSubmit');
+      if (response.status === 201) {
+        const responseData = response.data;
+        console.log('data', responseData);
+        window.localStorage.setItem('token', responseData.token);
+        window.localStorage.setItem('user', responseData.username);
+        window.localStorage.setItem('cookie', responseData.userId);
+        setUserToken(responseData.token);
+        setUser(responseData.username);
+        clearForm();
+        navigate('/');
+      } else {
+        console.log('Something went wrong in handleSignUpSubmit');
+      }
+    }
+    catch (error) {
+      console.error('Error in handleSignUpSubmit:', error);
     }
   };
 
@@ -74,7 +81,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
     <>
       <main id="signup-form-container" className='form-container'>
         <form id='signup-form' className='form' onSubmit={handleSignUpSubmit}>
-          <h1 id='signup-title'>Create a Gallery account</h1>
+          <h1 id='signup-title' className='form-title'>Create a new Gallery account</h1>
           <div className='form-field'>
             <label htmlFor='signup-name-input'>Name</label>
             <input
@@ -115,7 +122,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
               onChange={handleSignupPasswordChange}
             />
           </div>
-          <button id='sign-up-submit-button' type='submit'>
+          <button id='sign-up-submit-button' className='btn'>
             Sign Up
           </button>
         </form>

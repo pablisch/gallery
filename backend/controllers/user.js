@@ -23,6 +23,7 @@ exports.signup = (req, res, next) => {
           // Include the token in the response
           res.status(201).json({
             message: 'User added successfully!',
+            userId: user._id,
             username,
             token
           });

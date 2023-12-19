@@ -8,9 +8,7 @@ const Navbar = ({ userToken, setUserToken, user, setUser }) => {
   const navigate = useNavigate();
 
   const logout = () => {
-    console.log('logging out')
-    window.localStorage.removeItem('token'); 
-    window.localStorage.removeItem('user');
+    window.localStorage.clear();
     setUserToken(null);
     setUser(null);
   };
@@ -21,7 +19,7 @@ const Navbar = ({ userToken, setUserToken, user, setUser }) => {
   };
 
   const handleAddImage = () => {
-    navigate("/upload-image");
+    navigate("/upload");
   };
 
   return (
@@ -35,7 +33,7 @@ const Navbar = ({ userToken, setUserToken, user, setUser }) => {
           {userToken ? 
             <>
               <NavLink id='logout-navlink' route='/' onClickFunc={handleLogOut} >Log out</NavLink>
-              <NavLink id='add-image-navlink' route='/add-image' onClickFunc={handleAddImage} >Upload image</NavLink>
+              <NavLink id='add-image-navlink' route='/upload' onClickFunc={handleAddImage} >Upload image</NavLink>
               <NavLink id='user-navlink' >{user}</NavLink>
               <NavLink id='user-settings-navlink' className='user-settings-icon nav-link' >⚙️</NavLink>
             </> : <>

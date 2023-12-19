@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -18,36 +17,32 @@ const LoginForm = ({ setUserToken, setUser }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
-  
-    try {
-      const response = await axios.post(`${baseUrl}/api/v1.0/user/login`, {
+
+    const response = await fetch(`${baseUrl}/api/v1.0/user/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
         username,
         password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.status === 200) {
-        const responseData = response.data; // Assuming the data is in response.data
-        console.log('data', responseData);
-        window.localStorage.setItem('token', responseData.token);
-        window.localStorage.setItem('user', responseData.username);
-        window.localStorage.setItem('cookie', responseData.userId);
-        setUserToken(responseData.token);
-        setUser(responseData.username);
-        clearForm();
-        navigate('/');
-      } else {
-        console.log('Something went wrong in handleLoginSubmit');
-      }
-    } catch (error) {
-      console.error('Error in handleLoginSubmit:', error);
-      // Handle the error as needed
+      }),
+    });
+
+    if (response.status === 200) {
+      const responseData = await response.json();
+      console.log('data', responseData);
+      window.localStorage.setItem('token', responseData.token);
+      window.localStorage.setItem('user', responseData.username);
+      window.localStorage.setItem('cookie', responseData.userId);
+      setUserToken(responseData.token);
+      setUser(responseData.username);
+      clearForm();
+      navigate('/');
+    } else {
+      console.log('Something went wrong in handleLoginSubmit');
     }
   };
-  
 
   // Input field functions
   const handleUsernameChange = (event) => {
@@ -61,14 +56,16 @@ const LoginForm = ({ setUserToken, setUser }) => {
   const clearForm = () => {
     setUsername('');
     setPassword('');
-  }
+  };
 
   return (
     <>
-      <main id="login-form-container" className='form-container'>
+      <main id='login-form-container' className='form-container'>
         <form id='login-form' className='form' onSubmit={handleLoginSubmit}>
-          <h1 id='login-title' className='form-title'>Log in to Gallery</h1>
-          <div className="form-field">
+          <h1 id='login-title' className='form-title'>
+            Log in to Gallery
+          </h1>
+          <div className='form-field'>
             <label htmlFor='login-username-input'>Username</label>
             <input
               id='login-username-input'
@@ -78,7 +75,7 @@ const LoginForm = ({ setUserToken, setUser }) => {
               onChange={handleUsernameChange}
             />
           </div>
-          <div className="form-field">
+          <div className='form-field'>
             <label htmlFor='login-password-input'>Password</label>
             <input
               id='login-password-input'

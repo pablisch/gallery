@@ -7,11 +7,14 @@ exports.getAllImages = (req, res, next) => {
 }
 
 exports.addImage = (req, res, next) => { 
-  req.body.image = JSON.parse(req.body.image); 
+  console.log("you have reached the addImage controller");
+  const { src, altText, userId, username } = req.body;
+  console.log('src:', src, '& altText:', altText, '& userId:', userId)
   const image = new Image({ 
-    src: req.body.image.src, 
-    altText: req.body.image.altText, 
-    userId: req.body.image.userId,
+    src, 
+    altText, 
+    userId,
+    username
   }); 
   image.save() 
     .then(() => res.status(201).json({ message: 'Image saved successfully!' }))
