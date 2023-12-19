@@ -10,20 +10,6 @@
     outline: 1px solid var(--nav-bg);
 }
 
-/* #user-settings-navlink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  text-align: center;
-}
-
-#user-settings-navlink a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 .settings-icon, .user-settings-icon {
   padding: 0 8px;
   font-size: 1.8rem;
@@ -51,3 +37,4 @@
 .nav-link:hover a {
     color: #5a5a5b;
 }
+

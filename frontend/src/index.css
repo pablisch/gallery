@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Cabin+Sketch:wght@400;700&family=Concert+One&family=Lobster+Two&family=Mansalva&family=Pacifico&family=Pragati+Narrow:wght@700&family=Raleway:wght@400;700&family=Rubik&family=Rubik+Moonrocks&family=Yanone+Kaffeesatz&display=swap');
 
 :root {
   --primary-text-color: #707072;
@@ -8,7 +8,9 @@
 
   --lime: #c3f73a;
 
-  --body-width: 1000px;
+  --body-width: 3000px;
+  --sides: 50px;
+  --nav-sides: calc(var(--sides) + 17px);
 }
 
 * {
@@ -22,5 +24,43 @@ body {
   font-size: 18px;
   background-color: var(--main-bg);
   color: var(--primary-text-color);
+}
+
+@media (max-width: 1000px) {
+  #nav-title-text {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-link {
+    background-color: #fff;
+    font-size: 0.9rem;
+    margin-left: 8px;
+    padding: 4px 10px;
+    text-decoration: none;
+  }
+  .settings-icon, .user-settings-icon {
+    padding: 0 8px;
+    font-size: 1.8rem;
+    border: 1px solid var(--nav-bg);
+    background-color: var(--nav-bg);
+    margin-left: 5px;
+  }
+  .user-settings-icon {
+    font-size: 1.5rem;
+    margin-left: -10px;
+  }
+  .navbar-logo img {
+    height: 28px;
+    margin-right: 15px;
+  }
+  .navbar-container {
+    height: 50px;
+  }
+  .form-container {
+    /* height calc is vh - (navbar height + dividing line height) */
+    height: calc(100vh - 51px); 
+  }
 }
 

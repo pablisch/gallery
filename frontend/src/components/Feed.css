@@ -1,5 +1,5 @@
 .image-layout {
-  margin: 30px 50px;
+  margin: 30px var(--sides);
 }
 .masonry-grid {
   display: flex;

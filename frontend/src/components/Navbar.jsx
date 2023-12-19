@@ -26,8 +26,9 @@ const Navbar = ({ userToken, setUserToken, user, setUser }) => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-section navbar-logo">
-          <img src="images/gallery.png" alt="logo" className="navbar-logo-img" />
-          <h1 className="navbar-logo-text">Gallery</h1>
+          <img id='nav-logo' src="images/PicturePadLogo.png" alt="logo" className="navbar-logo-img" />
+          {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
+          <h1 id='nav-title-text' className="navbar-logo-text">Picture Pad</h1>
         </Link>
         <div className="navbar-section navbar-links">
           {userToken ? 

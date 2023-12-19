@@ -12,9 +12,17 @@ const imageRoutes = require('./routes/image');
 const userRoutes = require('./routes/user');
 const healthRoutes = require('./routes/health');
 
-const app = express(); 
+const app = express();
 
-app.use(cors());
+const corsOrigin = process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com/';
+console.log('🪧  >>> CORS:', corsOrigin);
+
+const corsOptions = {
+  origin: corsOrigin,
+};
+
+
+app.use(cors(corsOptions));
 
 mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`)
   .then(() => { 

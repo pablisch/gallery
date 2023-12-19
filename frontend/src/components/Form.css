@@ -2,7 +2,8 @@
 .form-container {
   display: flex;
   justify-content: center;
-  height: calc(100vh - 50px); 
+  /* height calc is vh - (navbar height + dividing line height) */
+  height: calc(100vh - 71px); 
 }
 
 .form {
