@@ -1,4 +1,4 @@
-import SignupForm from '../components/SignupForm';
+import SignupForm from '../components/SignupForm2';
 import PropTypes from "prop-types";
 
 const Signup = ({ setUserToken, setUser }) => {
