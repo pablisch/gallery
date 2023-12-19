@@ -14,7 +14,7 @@ const healthRoutes = require('./routes/health');
 
 const app = express();
 
-const corsOrigin = process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com/';
+const corsOrigin = process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com';
 console.log('🪧  >>> CORS:', corsOrigin);
 
 const corsOptions = {
