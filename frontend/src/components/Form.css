@@ -72,7 +72,15 @@ input {
   border: 1px solid #ccc;
 }
 
-#image-upload-select {
+#avatar-image-preview {
+  margin: -10px 0 20px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.custom-file-input {
   position: relative;
   overflow: hidden;
   cursor: pointer;

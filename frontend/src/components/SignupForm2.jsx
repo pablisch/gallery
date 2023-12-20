@@ -5,11 +5,13 @@ import axios from 'axios';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 
-const SignupForm = ({ setUserToken, setUser }) => {
+const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [imageToUpload, setImageToUpload] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const navigate = useNavigate();
 
@@ -22,13 +24,26 @@ const SignupForm = ({ setUserToken, setUser }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
+
+      const formData = new FormData();
+      formData.append('file', imageToUpload);
+      formData.append('upload_preset', 'xwkdy0vz');
+
+      const CloudinaryResponse = await axios.post('https://api.cloudinary.com/v1_1/ddinmpzrr/image/upload', formData);
+
+      // console.log(response);
+      const avatar = CloudinaryResponse.data.secure_url;
+      setPreview(null);
+      setImageToUpload(null);
+
+      const DbResponse = await axios.post(
         `${baseUrl}/api/v1.0/user/signup`,
         {
           name,
           username,
           email,
           password,
+          avatar
         },
         {
           headers: {
@@ -37,14 +52,15 @@ const SignupForm = ({ setUserToken, setUser }) => {
         }
       );
 
-      if (response.status === 201) {
-        const responseData = response.data;
+      if (DbResponse.status === 201) {
+        const responseData = DbResponse.data;
         console.log('data', responseData);
         window.localStorage.setItem('token', responseData.token);
         window.localStorage.setItem('user', responseData.username);
         window.localStorage.setItem('cookie', responseData.userId);
         setUserToken(responseData.token);
         setUser(responseData.username);
+        setAvatar(responseData.avatar);
         clearForm();
         navigate('/');
       } else {
@@ -72,12 +88,36 @@ const SignupForm = ({ setUserToken, setUser }) => {
     setUsername(event.target.value);
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setImageToUpload(file);
+    console.log('file', file);
+    console.log('file name', file.name);
+  };
+
   const clearForm = () => {
     setName('');
     setUsername('');
     setEmail('');
     setPassword('');
   };
+
+  const previewFiles = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setPreview(reader.result);
+    };
+  };
+
+  useEffect(() => {
+    if (!imageToUpload) {
+      setPreview(null);
+      return;
+    }
+    previewFiles(imageToUpload);
+  }, [imageToUpload]);
 
   return (
     <>
@@ -126,6 +166,25 @@ const SignupForm = ({ setUserToken, setUser }) => {
               onChange={handleSignupPasswordChange}
             />
           </div>
+          <div className='form-field'>
+            <label htmlFor='file-input'>Avatar image</label>
+            <button id='avatar-image-upload-select' className='btn custom-file-input'>
+              <label htmlFor='file-input'>
+                Choose file
+                <input
+                  type='file'
+                  id='avatar-file-input'
+                  onChange={handleFileChange}
+                />
+              </label>
+            </button>
+          </div>
+          {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
+          {preview && (
+            <div id='avatar-image-upload-preview' className='preview'>
+              <img id='avatar-image-preview' src={preview} alt='Preview image' />
+            </div>
+          )}
           <button id='sign-up-submit-button' className='btn'>
             Sign Up
           </button>
@@ -138,6 +197,7 @@ const SignupForm = ({ setUserToken, setUser }) => {
 SignupForm.propTypes = {
   setUserToken: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
+  setAvatar: PropTypes.func.isRequired,
 };
 
 export default SignupForm;

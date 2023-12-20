@@ -4,9 +4,7 @@ import './NavLink.css';
 
 const NavLink = ({id, route, onClickFunc, className = 'nav-link', children}) => {
   return (
-    <div id={id} className={className} onClick={onClickFunc} >
-      <Link to={route}>{children}</Link>
-    </div>
+      <Link to={route} id={id} className={className} onClick={onClickFunc}>{children}</Link>
   )
 }
 

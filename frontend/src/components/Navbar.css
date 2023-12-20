@@ -10,7 +10,6 @@
   height: 70px;
   max-width: var(--body-width);
   margin: 0 var(--nav-sides);
-  /* position: fixed; */
   top: 0;
   z-index: 1;
   opacity: 0.9;
@@ -19,12 +18,31 @@
 .navbar-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .navbar-logo img {
   height: 40px;
   margin-right: 15px;
+}
+
+.settings-link, .settings-icon, .avatar-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.settings-link {
+  margin-left: 15px;
+}
+
+.avatar-icon {
+  object-fit: cover;
+  border-radius: 50%;
+  border: 0.5px solid #777;
+}
+
+.settings-icon {
+  opacity: 0.9;
 }
 
 #nav-title-text {

@@ -12,14 +12,15 @@ function App() {
   }
   const [userToken, setUserToken] = useState(window.localStorage.getItem("token"));
   const [user, setUser] = useState(window.localStorage.getItem("user"));
+  const [avatar, setAvatar] = useState(window.localStorage.getItem("avatar"));
 
   return (
     <BrowserRouter>
-      <Navbar userToken={userToken} setUserToken={setUserToken} user={user} setUser={setUser} />
+      <Navbar userToken={userToken} setUserToken={setUserToken} user={user} setUser={setUser} avatar={avatar} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage setUserToken={setUserToken} setUser={setUser} />} />
-        <Route path="/signup" element={<SignupPage setUserToken={setUserToken} setUser={setUser} />} />
+        <Route path="/login" element={<LoginPage setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} />} />
+        <Route path="/signup" element={<SignupPage setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} />} />
         <Route path="/upload" element={<ImageUploadPage user={user} userToken={userToken} />} />
       </Routes>
     </BrowserRouter>

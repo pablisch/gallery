@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import NavLink from './NavLink';
 
-const Navbar = ({ userToken, setUserToken, user, setUser }) => {
+const Navbar = ({ userToken, setUserToken, user, setUser, avatar }) => {
   const navigate = useNavigate();
 
   const logout = () => {
@@ -46,12 +46,11 @@ const Navbar = ({ userToken, setUserToken, user, setUser }) => {
             <>
               <NavLink id='logout-navlink' route='/' onClickFunc={handleLogOut} >Log out</NavLink>
               <NavLink id='add-image-navlink' route='/upload' onClickFunc={handleAddImage} >Upload image</NavLink>
-              <NavLink id='user-navlink' >{user}</NavLink>
-              <NavLink id='user-settings-navlink' className='user-settings-icon nav-link' >⚙️</NavLink>
+              <Link id='user-settings-navlink' className='settings-link' ><img className='avatar-icon' src={avatar} alt="avatar and settings icon" /></Link>
             </> : <>
               <NavLink id='logout-navlink' route='/login' >Log in</NavLink>
               <NavLink id='logout-navlink' route='/signup' >Sign up</NavLink>
-              <NavLink id='settings-navlink' className='settings-icon nav-link' >⚙️</NavLink>
+              <Link id='settings-navlink' className='settings-icon settings-link' ><img className='settings-icon' src='images/gearIcon.png' alt="settings icon" /></Link>
           </>}
         </div>
       </div>
@@ -64,7 +63,8 @@ Navbar.propTypes = {
   userToken: PropTypes.string,
   setUserToken: PropTypes.func,
   user: PropTypes.string,
-  setUser: PropTypes.func
+  setUser: PropTypes.func,
+  avatar: PropTypes.string,
 }
 
 export default Navbar
