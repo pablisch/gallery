@@ -6,14 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
-    "server:test": "MONGODB_TEST_DB='gallery_TEST' npm run server",
+    "server:test": "MONGODB_DB='gallery_TEST' npm run server",
     "start": "concurrently \"npm run server\" \"cd ../frontend && npm run dev\"",
-    "start:test": "MONGODB_TEST_DB='gallery_TEST' concurrently \"npm run server:test\" \"cd ../frontend && npm run dev\"",
+    "start:test": "MONGODB_DB='gallery_TEST' concurrently \"npm run server:test\" \"cd ../frontend && npm run dev\"",
     "prod": "node server.js",
-    "seed:images": "node ./seed-data/seedImages.js",
-    "seed:users": "node ./seed-data/seedUsers.js",
-    "seed:images:test": "MONGODB_TEST_DB='gallery_TEST' node ./seed-data/seedImages.js",
-    "seed:users:test": "MONGODB_TEST_DB='gallery_TEST' node ./seed-data/seedUsers.js"
+    "seed:images:dev": "MONGODB_DB='gallery_DEV' node ./seed-data/seedImages.js",
+    "seed:users:dev": "MONGODB_DB='gallery_DEV' node ./seed-data/seedUsers.js",
+    "seed:images:test": "MONGODB_DB='gallery_TEST' node ./seed-data/seedImages.js",
+    "seed:users:test": "MONGODB_DB='gallery_TEST' node ./seed-data/seedUsers.js",
+    "seed:images:prod": "MONGODB_DB='gallery' node ./seed-data/seedImages.js",
+    "seed:users:prod": "MONGODB_DB='gallery' node ./seed-data/seedUsers.js"
   },
   "keywords": [],
   "author": "",
