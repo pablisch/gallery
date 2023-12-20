@@ -6,7 +6,7 @@ require('dotenv').config()
 
 const dbPassword = process.env.MONGODB_PW;
 const dbUser = process.env.MONGODB_USER;
-const dbName = process.env.MONGODB_TEST_DB || 'gallery';
+const dbName = process.env.MONGODB_DB || 'gallery_DEV';
 const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`;
 
 const imageRoutes = require('./routes/image'); 
