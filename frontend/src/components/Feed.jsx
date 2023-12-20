@@ -42,8 +42,8 @@ const Feed = () => {
         gutter="200px"
       >
         {imageData.length > 0 && [...imageData].reverse().map((image, index) => (
-          <div key={image.src} className={`image-card custom-class-${index}`}>
-            <ImagePanel src={image.src} />
+          <div key={image._id} className={`image-card custom-class-${index}`}>
+            <ImagePanel image={image} />
           </div>
         ))}
       </Masonry>

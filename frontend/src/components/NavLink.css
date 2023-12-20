@@ -1,5 +1,5 @@
 .nav-link {
-    background-color: #fff;
+    background-color: var(--nav-link-color);
     font-size: 1.2rem;
     margin-left: 15px;
     padding: 8px 20px;

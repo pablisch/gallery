@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -11,6 +11,8 @@ const ImageUploadForm = ({ user, userToken }) => {
   const [fileName, setFileName] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [uploadSuccess, setUploadSuccess] = useState(false);
+
+  const uploadButtonRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -60,30 +62,32 @@ const ImageUploadForm = ({ user, userToken }) => {
           src,
           altText: '',
           userId: window.localStorage.getItem('cookie'),
-          username: user
+          username: user,
         };
-        console.log('imageObject:', imageObject)
-        console.log('userToken:', userToken)
-        console.log('window token:', window.localStorage.getItem('token'))
+        console.log('imageObject:', imageObject);
+        console.log('userToken:', userToken);
+        console.log('window token:', window.localStorage.getItem('token'));
 
-        axios.post(`${baseUrl}/api/v1.0/image/upload`, imageObject, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-          },
-        }).then((dbResponse) => {
-          console.log(dbResponse);
-          console.log('Image uploaded successfully!')
-          setUploadSuccess(true);
-          setTimeout(() => {
-            setUploadSuccess(false);
-            navigate('/');
-          }
-          , 10000);
-        } 
-        ).catch((error) => {
-          console.log(error);
-        });
+        axios
+          .post(`${baseUrl}/api/v1.0/image/upload`, imageObject, {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+            },
+          })
+          .then((dbResponse) => {
+            console.log(dbResponse);
+            console.log('Image uploaded successfully!');
+            // setUploadSuccess(true);
+            // setTimeout(() => {
+            //   setUploadSuccess(false);
+            //   navigate('/');
+            // }
+            // , 10000);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -95,6 +99,7 @@ const ImageUploadForm = ({ user, userToken }) => {
     const file = event.target.files[0];
     setImageToUpload(file);
     setFileName(file.name);
+    uploadButtonRef.current.focus();
   };
 
   return (
@@ -120,7 +125,10 @@ const ImageUploadForm = ({ user, userToken }) => {
             </button>
           </div>
           <div id='file-name'>{fileName}</div>
-          <button id='image-upload-submit-button' className='btn'>
+          <button
+            id='image-upload-submit-button'
+            className='btn'
+            ref={uploadButtonRef} >
             Upload image
           </button>
           {preview && (

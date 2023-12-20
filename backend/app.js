@@ -7,6 +7,7 @@ require('dotenv').config()
 const dbPassword = process.env.MONGODB_PW;
 const dbUser = process.env.MONGODB_USER;
 const dbName = process.env.MONGODB_TEST_DB || 'gallery';
+const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`;
 
 const imageRoutes = require('./routes/image'); 
 const userRoutes = require('./routes/user');
@@ -21,10 +22,9 @@ const corsOptions = {
   origin: corsOrigin,
 };
 
-
 app.use(cors(corsOptions));
 
-mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`)
+mongoose.connect(mongoDbUrl)
   .then(() => { 
     console.log(`🥳 Successfully connected to MongoDB Atlas ${dbName} database! 🌎`); 
   })

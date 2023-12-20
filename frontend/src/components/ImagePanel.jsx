@@ -2,11 +2,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ImagePanel.css';
 
-const ImagePanel = ({ src }) => {
+const ImagePanel = ({ image }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = () => {
-    console.log(`You clicked on ${src}`);
+    console.log(`You clicked on ${image.src}`);
     setIsSelected(selected => !selected);
     
   };
@@ -14,15 +14,15 @@ const ImagePanel = ({ src }) => {
   return (
     <img
       onClick={handleClick}
-      src={src}
-      alt="person"
+      src={image.src}
+      alt={image.altText}
       className={isSelected ? "selected image-card" : "image-card"}
     />
   );
 };
 
 ImagePanel.propTypes = {
-  src: PropTypes.string.isRequired
+  image: PropTypes.object.isRequired
 }
 
 export default ImagePanel;
