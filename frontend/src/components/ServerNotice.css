@@ -1,0 +1,21 @@
+.login-form {
+  /* width: 100%; */
+  max-width: 500px;
+  margin: 50px auto 0;
+  padding: 40px;
+  border: 3px solid #888;
+  border-radius: 15px;
+  background: #9cd7ff;
+  box-shadow: 3 4 10px rgba(0,0,0,0.6);   
+  color: #333;
+}
+
+.notice p {
+  margin-bottom: 10px;
+}
+
+#server-coutdown {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
