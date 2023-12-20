@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import NavLink from './NavLink';
 
-const Navbar = ({ userToken, setUserToken, user, setUser, avatar }) => {
+const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const navigate = useNavigate();
 
   const logout = () => {
@@ -42,22 +42,32 @@ const Navbar = ({ userToken, setUserToken, user, setUser, avatar }) => {
           </h1>
         </Link>
         <div className="navbar-section navbar-links">
-          {userToken ? 
+          {userToken ?
             <>
               <NavLink id='logout-navlink' route='/' onClickFunc={handleLogOut} >Log out</NavLink>
               <NavLink id='add-image-navlink' route='/upload' onClickFunc={handleAddImage} >Upload image</NavLink>
-              <Link id='user-settings-navlink' className='settings-link' ><img className='avatar-icon' src={avatar} alt="avatar and settings icon" /></Link>
+              {avatar?.length > 1 ?
+                <Link id='user-settings-navlink' className='settings-link' ><img className='avatar-icon' src={avatar} alt="avatar and settings icon" /></Link> :
+                <>  
+                <div id="user-settings-navlink" className="settings-letter-container settings-link">
+                  <Link className='avatar-letter-container' ><h1 >{avatar}</h1></Link>
+                </div>
+                {/* <div id="settings-navlink" className="settings-link">
+                  <Link id='settings-navlink' className='settings-icon settings-link' ><h1 className='settings-icon' >{avatar}</h1></Link>
+                </div> */}
+                  </>
+              }
             </> : <>
               <NavLink id='logout-navlink' route='/login' >Log in</NavLink>
               <NavLink id='logout-navlink' route='/signup' >Sign up</NavLink>
               <Link id='settings-navlink' className='settings-icon settings-link' ><img className='settings-icon' src='images/gearIcon.png' alt="settings icon" /></Link>
-          </>}
+            </>}
         </div>
       </div>
       <div className="divider-line"></div>
     </nav>
   )
-}
+};
 
 Navbar.propTypes = {
   userToken: PropTypes.string,

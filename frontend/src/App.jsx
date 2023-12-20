@@ -16,7 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar userToken={userToken} setUserToken={setUserToken} user={user} setUser={setUser} avatar={avatar} />
+      <Navbar userToken={userToken} setUserToken={setUserToken} setUser={setUser} avatar={avatar} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} />} />

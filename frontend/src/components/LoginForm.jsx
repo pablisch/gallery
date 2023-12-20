@@ -35,6 +35,7 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
         window.localStorage.setItem('token', responseData.token);
         window.localStorage.setItem('user', responseData.username);
         window.localStorage.setItem('cookie', responseData.userId);
+        window.localStorage.setItem('avatar', responseData.avatar);
         setUserToken(responseData.token);
         setUser(responseData.username);
         setAvatar(responseData.avatar);
