@@ -3,8 +3,9 @@
 :root {
   --primary-text-color: #707072;
   --secondary-color: #606060;
-  --main-bg: #f9f9f9;
-  --nav-bg: #f9f9f9;
+  --main-bg: #fff;
+  --nav-bg: var(--main-bg);
+  --nav-link-color: #f6fdfe;
 
   --lime: #c3f73a;
 

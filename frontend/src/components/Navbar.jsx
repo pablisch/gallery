@@ -28,7 +28,18 @@ const Navbar = ({ userToken, setUserToken, user, setUser }) => {
         <Link to="/" className="navbar-section navbar-logo">
           <img id='nav-logo' src="images/PicturePadLogo.png" alt="logo" className="navbar-logo-img" />
           {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
-          <h1 id='nav-title-text' className="navbar-logo-text">Picture Pad</h1>
+          <h1 id='nav-title-text' className="navbar-logo-text">
+            <span className='letter1'>P</span>
+            <span className='letter7'>i</span>
+            <span className='letter3'>c</span>
+            <span className='letter4'>t</span>
+            <span className='letter1'>u</span>
+            <span className='letter5'>r</span>
+            <span className='letter6'>e </span>
+            <span className='letter8'>P</span>
+            <span className='letter7'>a</span>
+            <span className='letter5'>d</span>
+          </h1>
         </Link>
         <div className="navbar-section navbar-links">
           {userToken ? 
