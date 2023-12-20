@@ -22,19 +22,25 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
 
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
+    let avatar = username[0].toUpperCase();
 
     try {
+      if (imageToUpload) {
+        console.log('uploading image! ImageToUpload:', imageToUpload)
+        const formData = new FormData();
+        formData.append('file', imageToUpload);
+        formData.append('upload_preset', 'xwkdy0vz');
 
-      const formData = new FormData();
-      formData.append('file', imageToUpload);
-      formData.append('upload_preset', 'xwkdy0vz');
+        const CloudinaryResponse = await axios.post(
+          'https://api.cloudinary.com/v1_1/ddinmpzrr/image/upload',
+          formData
+        );
 
-      const CloudinaryResponse = await axios.post('https://api.cloudinary.com/v1_1/ddinmpzrr/image/upload', formData);
-
-      // console.log(response);
-      const avatar = CloudinaryResponse.data.secure_url;
-      setPreview(null);
-      setImageToUpload(null);
+        // console.log(response);
+        avatar = CloudinaryResponse.data.secure_url;
+        setPreview(null);
+        setImageToUpload(null);
+      }
 
       const DbResponse = await axios.post(
         `${baseUrl}/api/v1.0/user/signup`,
@@ -43,7 +49,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
           username,
           email,
           password,
-          avatar
+          avatar,
         },
         {
           headers: {
@@ -54,13 +60,14 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
 
       if (DbResponse.status === 201) {
         const responseData = DbResponse.data;
-        console.log('data', responseData);
+        // console.log('data', responseData);
         window.localStorage.setItem('token', responseData.token);
         window.localStorage.setItem('user', responseData.username);
         window.localStorage.setItem('cookie', responseData.userId);
+        window.localStorage.setItem('avatar', responseData.avatar);
         setUserToken(responseData.token);
         setUser(responseData.username);
-        setAvatar(responseData.avatar);
+        setAvatar(avatar);
         clearForm();
         navigate('/');
       } else {
@@ -168,7 +175,9 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
           </div>
           <div className='form-field'>
             <label htmlFor='file-input'>Avatar image</label>
-            <button id='avatar-image-upload-select' className='btn custom-file-input'>
+            <button
+              id='avatar-image-upload-select'
+              className='btn custom-file-input'>
               <label htmlFor='file-input'>
                 Choose file
                 <input
@@ -182,7 +191,11 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
           {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
           {preview && (
             <div id='avatar-image-upload-preview' className='preview'>
-              <img id='avatar-image-preview' src={preview} alt='Preview image' />
+              <img
+                id='avatar-image-preview'
+                src={preview}
+                alt='Preview image'
+              />
             </div>
           )}
           <button id='sign-up-submit-button' className='btn'>

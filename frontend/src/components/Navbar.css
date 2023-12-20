@@ -45,6 +45,27 @@
   opacity: 0.9;
 }
 
+.settings-letter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1180d4;
+  border-radius: 50%;
+  border: 0.5px solid #777;
+}
+
+.avatar-letter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-letter-container h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #ffdf3e;
+}
+
 #nav-title-text {
   font-family: 'Cabin Sketch', sans-serif;
   font-size: 3rem;
