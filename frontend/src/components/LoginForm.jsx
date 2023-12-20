@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 
-const LoginForm = ({ setUserToken, setUser }) => {
+const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -37,6 +37,7 @@ const LoginForm = ({ setUserToken, setUser }) => {
         window.localStorage.setItem('cookie', responseData.userId);
         setUserToken(responseData.token);
         setUser(responseData.username);
+        setAvatar(responseData.avatar);
         clearForm();
         navigate('/');
       } else {
@@ -100,6 +101,7 @@ const LoginForm = ({ setUserToken, setUser }) => {
 LoginForm.propTypes = {
   setUserToken: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
+  setAvatar: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

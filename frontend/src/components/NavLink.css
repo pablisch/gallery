@@ -10,19 +10,6 @@
     outline: 1px solid var(--nav-bg);
 }
 
-.settings-icon, .user-settings-icon {
-  padding: 0 8px;
-  font-size: 1.8rem;
-  border: 1px solid var(--nav-bg);
-  background-color: var(--nav-bg);
-  margin-left: 5px;
-}
-
-.user-settings-icon {
-  font-size: 1.8rem;
-  margin-left: -20px;
-}
-
 .nav-link a {
     color: var(--primary-text-color);
     text-decoration: none;

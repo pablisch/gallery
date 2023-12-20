@@ -1,7 +1,7 @@
 import SignupForm from '../components/SignupForm2';
 import PropTypes from "prop-types";
 
-const Signup = ({ setUserToken, setUser }) => {
+const Signup = ({ setUserToken, setUser, setAvatar }) => {
   window.localStorage.removeItem('token'); 
   window.localStorage.removeItem('user');
   setUserToken(null);
@@ -9,7 +9,7 @@ const Signup = ({ setUserToken, setUser }) => {
   
   return (
     <div>
-      <SignupForm setUserToken={setUserToken} setUser={setUser} />
+      <SignupForm setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} />
     </div>
   );
 };
@@ -17,6 +17,7 @@ const Signup = ({ setUserToken, setUser }) => {
 Signup.propTypes = {
   setUserToken: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
+  setAvatar: PropTypes.func.isRequired,
 };
 
 export default Signup;

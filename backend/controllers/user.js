@@ -3,14 +3,15 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user'); 
 
 exports.signup = (req, res, next) => { 
-  const { name, username, email, password } = req.body;
+  const { name, username, email, password, avatar } = req.body;
   bcrypt.hash(password, 10)
     .then(hash => {
       const user = new User({
         name,
         username,
         email,
-        password: hash
+        password: hash,
+        avatar
       });
 
       user.save()
@@ -25,7 +26,8 @@ exports.signup = (req, res, next) => {
             message: 'User added successfully!',
             userId: user._id,
             username,
-            token
+            token,
+            avatar
           });
         })
         .catch(error => res.status(500).json({ error: error }));
@@ -54,7 +56,8 @@ exports.login = (req, res, next) => {
             message: 'User logged in successfully!',
             username: user.username,
             userId: user._id, 
-            token: token 
+            token,
+            avatar: user.avatar
           }); 
         }) 
         .catch(error => res.status(500).json({ error: error }));
