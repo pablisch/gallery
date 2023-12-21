@@ -19,16 +19,21 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   };
 
   const handleAddImage = () => {
-    navigate("/upload");
+    navigate('/upload');
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-section navbar-logo">
-          <img id='nav-logo' src="/images/PicturePadLogo.png" alt="logo" className="navbar-logo-img" />
+    <nav className='navbar'>
+      <div className='navbar-container'>
+        <Link to='/' className='navbar-section navbar-logo'>
+          <img
+            id='nav-logo'
+            src='/images/PicturePadLogo.png'
+            alt='logo'
+            className='navbar-logo-img'
+          />
           {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
-          <h1 id='nav-title-text' className="navbar-logo-text">
+          <h1 id='nav-title-text' className='navbar-logo-text'>
             <span className='letter1'>P</span>
             <span className='letter7'>i</span>
             <span className='letter3'>c</span>
@@ -41,32 +46,67 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
             <span className='letter5'>d</span>
           </h1>
         </Link>
-        <div className="navbar-section navbar-links">
-          {userToken ?
+        <div className='navbar-section navbar-links'>
+          {userToken ? (
             <>
-              <NavLink id='logout-navlink' route='/images' onClickFunc={handleLogOut} >Log out</NavLink>
-              <NavLink id='add-image-navlink' route='/upload' onClickFunc={handleAddImage} >Upload image</NavLink>
-              {avatar?.length > 1 ?
-                <Link id='user-settings-navlink' className='settings-link' ><img className='avatar-icon' src={avatar} alt="avatar and settings icon" /></Link> :
-                <>  
-                <div id="user-settings-navlink" className="settings-letter-container settings-link">
-                  <Link className='avatar-letter-container' ><h1 >{avatar}</h1></Link>
-                </div>
-                {/* <div id="settings-navlink" className="settings-link">
-                  <Link id='settings-navlink' className='settings-icon settings-link' ><h1 className='settings-icon' >{avatar}</h1></Link>
-                </div> */}
-                  </>
-              }
-            </> : <>
-              <NavLink id='logout-navlink' route='/login' >Log in</NavLink>
-              <NavLink id='logout-navlink' route='/signup' >Sign up</NavLink>
-              <Link id='settings-navlink' className='settings-icon settings-link' ><img className='settings-icon' src='images/gearIcon.png' alt="settings icon" /></Link>
-            </>}
+              <NavLink
+                id='logout-navlink'
+                route='/images'
+                onClickFunc={handleLogOut}>
+                Log out
+              </NavLink>
+              <NavLink
+                id='add-image-navlink'
+                route='/upload'
+                onClickFunc={handleAddImage}>
+                Upload image
+              </NavLink>
+              {avatar?.length > 1 ? (
+                <Link
+                  id='user-settings-navlink'
+                  className='icon settings-avatar-margin'>
+                  <img
+                    className='icon avatar-icon'
+                    src={avatar}
+                    alt='avatar and settings icon'
+                  />
+                </Link>
+              ) : (
+                <>
+                  <div
+                    id='user-settings-navlink'
+                    className='icon avatar-letter-outer-container settings-link settings-avatar-margin'>
+                    <Link className='avatar-letter-container'>
+                      <h1>{avatar}</h1>
+                    </Link>
+                  </div>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <NavLink id='logout-navlink' route='/login'>
+                Log in
+              </NavLink>
+              <NavLink id='logout-navlink' route='/signup'>
+                Sign up
+              </NavLink>
+              <Link
+                id='settings-navlink'
+                className='icon settings-avatar-margin'>
+                <img
+                  className='icon settings-icon'
+                  src='images/gearIcon.png'
+                  alt='settings icon'
+                />
+              </Link>
+            </>
+          )}
         </div>
       </div>
-      <div className="divider-line"></div>
+      <div className='divider-line'></div>
     </nav>
-  )
+  );
 };
 
 Navbar.propTypes = {
@@ -75,6 +115,6 @@ Navbar.propTypes = {
   user: PropTypes.string,
   setUser: PropTypes.func,
   avatar: PropTypes.string,
-}
+};
 
-export default Navbar
+export default Navbar;

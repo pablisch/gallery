@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import SingleImage from '../components/SingleImage';
+import './SingleImagePage.css';
+import SingleImageInfo from '../components/SingleImageInfo';
 
 const SingleImagePage = ({selectedImage}) => {
   const { id } = useParams();
-  // const imageToDisplay = imageData.find(image => image._id === id);
-  console.log('id:', id);
-  console.log('selected image:', selectedImage);
   
   return (
-    <div>
-      <img src={selectedImage.src} alt={selectedImage.altText} />
+    <div id='single-image-container'>
+      {selectedImage._id === id && <>
+        <SingleImage selectedImage={selectedImage} />
+        <SingleImageInfo selectedImage={selectedImage} />
+        </>}
     </div>
   );
 };

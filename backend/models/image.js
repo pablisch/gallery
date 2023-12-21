@@ -4,7 +4,8 @@ const imageSchema = mongoose.Schema({
   src: { type: String, required: true }, 
   altText: { type: String, },
   userId: { type: String, required: true }, 
-  username: { type: String}
+  username: { type: String },
+  userAvatar: { type: String },
 }, {
   timestamps: true
 });

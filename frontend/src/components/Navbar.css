@@ -1,4 +1,3 @@
-
 .navbar {
   background-color: var(--nav-bg);
 }
@@ -26,44 +25,8 @@
   margin-right: 15px;
 }
 
-.settings-link, .settings-icon, .avatar-icon {
-  height: 40px;
-  width: 40px;
-}
-
-.settings-link {
+.settings-avatar-margin {
   margin-left: 15px;
-}
-
-.avatar-icon {
-  object-fit: cover;
-  border-radius: 50%;
-  border: 0.5px solid #777;
-}
-
-.settings-icon {
-  opacity: 0.9;
-}
-
-.settings-letter-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #1180d4;
-  border-radius: 50%;
-  border: 0.5px solid #777;
-}
-
-.avatar-letter-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar-letter-container h1 {
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: #ffdf3e;
 }
 
 #nav-title-text {
