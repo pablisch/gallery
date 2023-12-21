@@ -40,7 +40,7 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
         setUser(responseData.username);
         setAvatar(responseData.avatar);
         clearForm();
-        navigate('/');
+        navigate('/images');
       } else {
         console.log('Something went wrong in handleLoginSubmit');
       }

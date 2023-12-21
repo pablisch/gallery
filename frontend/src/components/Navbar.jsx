@@ -15,7 +15,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
 
   const handleLogOut = () => {
     logout();
-    navigate('/');
+    navigate('/images');
   };
 
   const handleAddImage = () => {
@@ -26,7 +26,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-section navbar-logo">
-          <img id='nav-logo' src="images/PicturePadLogo.png" alt="logo" className="navbar-logo-img" />
+          <img id='nav-logo' src="/images/PicturePadLogo.png" alt="logo" className="navbar-logo-img" />
           {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
           <h1 id='nav-title-text' className="navbar-logo-text">
             <span className='letter1'>P</span>
@@ -44,7 +44,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
         <div className="navbar-section navbar-links">
           {userToken ?
             <>
-              <NavLink id='logout-navlink' route='/' onClickFunc={handleLogOut} >Log out</NavLink>
+              <NavLink id='logout-navlink' route='/images' onClickFunc={handleLogOut} >Log out</NavLink>
               <NavLink id='add-image-navlink' route='/upload' onClickFunc={handleAddImage} >Upload image</NavLink>
               {avatar?.length > 1 ?
                 <Link id='user-settings-navlink' className='settings-link' ><img className='avatar-icon' src={avatar} alt="avatar and settings icon" /></Link> :

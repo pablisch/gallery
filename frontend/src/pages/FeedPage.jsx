@@ -6,7 +6,7 @@ import ServerNotice from '../components/ServerNotice';
 
 const expectedServerSpinupTime = 90;
 
-const Home = ({ isServerUp, setIsServerUp }) => {
+const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage }) => {
   const [counter, setCounter] = useState(expectedServerSpinupTime);
 
   useEffect(() => {
@@ -40,19 +40,24 @@ const Home = ({ isServerUp, setIsServerUp }) => {
     }
 
     return () => clearInterval(intervalId); // Clear interval when component unmounts
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isServerUp]);
 
   return (
     <>
-      {isServerUp ? <Feed /> : <ServerNotice counter={counter} target={expectedServerSpinupTime} />}
+      {isServerUp ? (
+        <Feed imageData={imageData} setSelectedImage={setSelectedImage} />
+      ) : (
+        <ServerNotice counter={counter} target={expectedServerSpinupTime} />
+      )}
     </>
   );
 };
 
-Home.propTypes = {
+FeedPage.propTypes = {
   isServerUp: PropTypes.bool.isRequired,
   setIsServerUp: PropTypes.func.isRequired,
+  imageData: PropTypes.array,
 };
 
-export default Home;
+export default FeedPage;
