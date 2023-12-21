@@ -5,12 +5,7 @@
   opacity: 1;
 }
 
-.image-card:hover {
+.selected {
   cursor: pointer;
   opacity: 0.92;
-  
-}
-
-.selected {
-  opacity: 0.5 !important;
 }

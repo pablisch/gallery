@@ -4,24 +4,25 @@ import PropTypes from 'prop-types';
 import './ImagePanel.css';
 
 const ImagePanel = ({ image, setSelectedImage }) => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const navigate = useNavigate();
 
   const handleClick = () => {
     console.log(`You clicked on ${image._id}`);
-    setIsSelected(selected => !selected);
     setSelectedImage(image);
     navigate(`/images/${image._id}`)
   };
-  
+
   return (
     <img
       id={`image-${image.src}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
       src={image.src}
       alt={image.altText}
-      className={isSelected ? "selected image-card" : "image-card"}
+      className={isHovered ? "selected image-card" : "image-card"}
     />
   );
 };
