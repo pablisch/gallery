@@ -1,31 +1,96 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import SignupPage from "./pages/SignupPage.jsx";
-import ImageUploadPage from "./pages/ImageUploadPage.jsx";
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
+import baseUrl from './utils/baseUrl';
+import Navbar from './components/Navbar.jsx';
+import FeedPage from './pages/FeedPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
+import ImageUploadPage from './pages/ImageUploadPage.jsx';
+import SingleImagePage from './pages/SingleImagePage.jsx';
 
 function App() {
-  if (!window.localStorage.getItem("user")) {
+  if (!window.localStorage.getItem('user')) {
     window.localStorage.clear();
   }
-  const [userToken, setUserToken] = useState(window.localStorage.getItem("token"));
-  const [user, setUser] = useState(window.localStorage.getItem("user"));
-  const [avatar, setAvatar] = useState(window.localStorage.getItem("avatar"));
+  const [imageData, setImageData] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [userToken, setUserToken] = useState(
+    window.localStorage.getItem('token')
+  );
+  const [user, setUser] = useState(window.localStorage.getItem('user'));
+  const [avatar, setAvatar] = useState(window.localStorage.getItem('avatar'));
   const [isServerUp, setIsServerUp] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Gallery';
+    const fetchImageArrayData = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/api/v1.0/image`); 
+        setImageData(response.data); 
+      } catch (error) {
+        console.error('Error fetching image data:', error);
+      }
+    };
+
+    fetchImageArrayData(); // Call the fetchData function when the component mounts
+  }, []);
 
   return (
     <BrowserRouter>
-      <Navbar userToken={userToken} setUserToken={setUserToken} setUser={setUser} avatar={avatar} />
+      <Navbar
+        userToken={userToken}
+        setUserToken={setUserToken}
+        setUser={setUser}
+        avatar={avatar}
+      />
       <Routes>
-        <Route path="/" element={<HomePage isServerUp={isServerUp} setIsServerUp={setIsServerUp} />} />
-        <Route path="/login" element={<LoginPage setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} />} />
-        <Route path="/signup" element={<SignupPage setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} />} />
-        <Route path="/upload" element={<ImageUploadPage user={user} userToken={userToken} />} />
+        <Route
+          path='/'
+          element={
+            <FeedPage isServerUp={isServerUp} setIsServerUp={setIsServerUp}
+            setSelectedImage={setSelectedImage} imageData={imageData} />
+          }
+        />
+        <Route
+          path='/images'
+          element={
+            <FeedPage isServerUp={isServerUp} setIsServerUp={setIsServerUp} setSelectedImage={setSelectedImage} imageData={imageData} />
+          }
+        />
+        <Route
+          path='/images/:id'
+          element={
+            <SingleImagePage selectedImage={selectedImage} />
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <LoginPage
+              setUserToken={setUserToken}
+              setUser={setUser}
+              setAvatar={setAvatar}
+            />
+          }
+        />
+        <Route
+          path='/signup'
+          element={
+            <SignupPage
+              setUserToken={setUserToken}
+              setUser={setUser}
+              setAvatar={setAvatar}
+            />
+          }
+        />
+        <Route
+          path='/upload'
+          element={<ImageUploadPage user={user} userToken={userToken} />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default App
+export default App;

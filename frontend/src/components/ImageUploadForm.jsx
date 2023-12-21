@@ -17,7 +17,7 @@ const ImageUploadForm = ({ user, userToken }) => {
 
   useEffect(() => {
     document.title = 'Gallery Sign Up';
-    if (user === null) navigate('/');
+    if (user === null) navigate('/images');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -76,7 +76,7 @@ const ImageUploadForm = ({ user, userToken }) => {
       console.log(dbResponse);
       console.log('Image uploaded successfully!');
       // setUploadSuccess(true);
-      navigate('/');
+      navigate('/images');
     } catch (error) {
       console.log(error);
       setImageToUpload(null);

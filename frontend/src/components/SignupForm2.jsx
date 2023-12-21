@@ -69,7 +69,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
         setUser(responseData.username);
         setAvatar(avatar);
         clearForm();
-        navigate('/');
+        navigate('/images');
       } else {
         console.log('Something went wrong in handleSignUpSubmit');
       }
