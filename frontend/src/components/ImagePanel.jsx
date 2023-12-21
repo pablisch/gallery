@@ -36,6 +36,8 @@ const ImagePanel = ({ image, setSelectedImage }) => {
         id={`image-${image.src}`}
         onMouseEnter={onHoverStart}
         onMouseLeave={onHoverEnd}
+        onTouchStart={onHoverStart}
+        onTouchEnd={onHoverEnd}
         onClick={handleClick}
         src={image.src}
         alt={image.altText}
@@ -45,6 +47,8 @@ const ImagePanel = ({ image, setSelectedImage }) => {
         <div className="hover-icon-container"
           onMouseEnter={onHoverStart}
           onMouseLeave={onHoverEnd}
+          onTouchStart={onHoverStart}
+          onTouchEnd={onHoverEnd}
         >
           {image.userAvatar && image.userAvatar?.length > 1 ? (
             <img className="hover-icon icon avatar-icon" src={image.userAvatar} alt="avatar and settings icon" />
