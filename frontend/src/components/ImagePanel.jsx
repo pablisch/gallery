@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ImagePanel.css';
-import { set } from 'date-fns';
 
 const ImagePanel = ({ image, setSelectedImage }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  let avatar = null;
+  // let avatar = null;
 
   const navigate = useNavigate();
 
@@ -17,11 +16,11 @@ const ImagePanel = ({ image, setSelectedImage }) => {
     navigate(`/images/${image._id}`)
   };
 
-  avatar = image.userAvatar?.length > 1 ?
-    <img className='hover-icon icon avatar-icon' src={image.userAvatar} alt="avatar and settings icon" /> :
-    <div id="image-post-avatar-container" className="hover-icon icon avatar-letter-outer-container avatar-letter-container">
-        <h1 >{image.userAvatar}</h1>
-    </div>;
+  // avatar = image.userAvatar?.length > 1 ?
+  //   <img className='hover-icon icon avatar-icon' src={image.userAvatar} alt="avatar and settings icon" /> :
+  //   <div id="image-post-avatar-container" className="hover-icon icon avatar-letter-outer-container avatar-letter-container">
+  //       <h1 >{image.userAvatar}</h1>
+  //   </div>;
   
   const onHoverStart = () => {
       setIsHovered(true);
