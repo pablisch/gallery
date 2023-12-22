@@ -38,8 +38,6 @@ const ImageUploadForm = ({ user, userToken }) => {
     previewFiles(imageToUpload);
   }, [imageToUpload]);
 
-
-
   const handleUploadImage = async (event) => {
     try {
       event.preventDefault();
@@ -48,7 +46,10 @@ const ImageUploadForm = ({ user, userToken }) => {
       formData.append('file', imageToUpload);
       formData.append('upload_preset', 'xwkdy0vz');
 
-      const response = await axios.post('https://api.cloudinary.com/v1_1/ddinmpzrr/image/upload', formData);
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/ddinmpzrr/image/upload',
+        formData
+      );
 
       // console.log(response);
       const src = response.data.secure_url;
@@ -66,12 +67,16 @@ const ImageUploadForm = ({ user, userToken }) => {
       console.log('userToken:', userToken);
       console.log('window token:', window.localStorage.getItem('token'));
 
-      const dbResponse = await axios.post(`${baseUrl}/api/v1.0/image/upload`, imageObject, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-        },
-      });
+      const dbResponse = await axios.post(
+        `${baseUrl}/api/v1.0/images/upload`,
+        imageObject,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+          },
+        }
+      );
 
       console.log(dbResponse);
       console.log('Image uploaded successfully!');
@@ -82,7 +87,6 @@ const ImageUploadForm = ({ user, userToken }) => {
       setImageToUpload(null);
     }
   };
-
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -116,7 +120,7 @@ const ImageUploadForm = ({ user, userToken }) => {
           <button
             id='image-upload-submit-button'
             className='btn'
-            ref={uploadButtonRef} >
+            ref={uploadButtonRef}>
             Upload image
           </button>
           {preview && (

@@ -26,8 +26,8 @@ function App() {
     document.title = 'Gallery';
     const fetchImageArrayData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/api/v1.0/image`); 
-        setImageData(response.data); 
+        const response = await axios.get(`${baseUrl}/api/v1.0/images`);
+        setImageData(response.data);
       } catch (error) {
         console.error('Error fetching image data:', error);
       }
@@ -48,21 +48,34 @@ function App() {
         <Route
           path='/'
           element={
-            <FeedPage isServerUp={isServerUp} setIsServerUp={setIsServerUp}
-            setSelectedImage={setSelectedImage} imageData={imageData} />
+            <FeedPage
+              isServerUp={isServerUp}
+              setIsServerUp={setIsServerUp}
+              setSelectedImage={setSelectedImage}
+              imageData={imageData}
+            />
           }
         />
         <Route
           path='/images'
           element={
-            <FeedPage isServerUp={isServerUp} setIsServerUp={setIsServerUp} setSelectedImage={setSelectedImage} imageData={imageData} />
+            <FeedPage
+              isServerUp={isServerUp}
+              setIsServerUp={setIsServerUp}
+              setSelectedImage={setSelectedImage}
+              imageData={imageData}
+            />
           }
         />
         <Route
           path='/images/:id'
           element={
-            <SingleImagePage selectedImage={selectedImage} setSelectedImage={setSelectedImage}
-              setAvatar={setAvatar} setUser={setUser} />
+            <SingleImagePage
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
+              setAvatar={setAvatar}
+              setUser={setUser}
+            />
           }
         />
         <Route

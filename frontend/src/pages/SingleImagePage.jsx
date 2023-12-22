@@ -7,7 +7,12 @@ import SingleImageInfo from '../components/SingleImageInfo';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
 
-const SingleImagePage = ({selectedImage, setSelectedImage, setAvatar, setUser}) => {
+const SingleImagePage = ({
+  selectedImage,
+  setSelectedImage,
+  setAvatar,
+  setUser,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -19,12 +24,17 @@ const SingleImagePage = ({selectedImage, setSelectedImage, setAvatar, setUser}) 
       } else {
         const getSingleImage = async () => {
           try {
-            const response = await axios.get(`${baseUrl}/api/v1.0/image/${id}`, {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-              },
-            });
+            const response = await axios.get(
+              `${baseUrl}/api/v1.0/images/${id}`,
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${window.localStorage.getItem(
+                    'token'
+                  )}`,
+                },
+              }
+            );
             setSelectedImage(response.data);
           } catch (error) {
             console.error('Error fetching single image data:', error);
@@ -41,13 +51,15 @@ const SingleImagePage = ({selectedImage, setSelectedImage, setAvatar, setUser}) 
       }
     }
   }, [id, selectedImage, setSelectedImage]);
-  
+
   return (
     <div id='single-image-container'>
-      {selectedImage && selectedImage?._id === id && <>
-        <SingleImage selectedImage={selectedImage} />
-        <SingleImageInfo selectedImage={selectedImage} />
-        </>}
+      {selectedImage && selectedImage?._id === id && (
+        <>
+          <SingleImage selectedImage={selectedImage} />
+          <SingleImageInfo selectedImage={selectedImage} />
+        </>
+      )}
     </div>
   );
 };
@@ -57,6 +69,6 @@ SingleImagePage.propTypes = {
   setSelectedImage: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   setAvatar: PropTypes.func.isRequired,
-  }
+};
 
-export default SingleImagePage
+export default SingleImagePage;
