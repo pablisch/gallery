@@ -9,7 +9,7 @@ const SingleImagePage = ({selectedImage}) => {
   
   return (
     <div id='single-image-container'>
-      {selectedImage._id === id && <>
+      {selectedImage?._id === id && <>
         <SingleImage selectedImage={selectedImage} />
         <SingleImageInfo selectedImage={selectedImage} />
         </>}

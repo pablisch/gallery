@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import baseUrl from '../utils/baseUrl';
 import ServerNotice from '../components/ServerNotice';
 
-const expectedServerSpinupTime = 90;
+const expectedServerSpinupTime = 40;
 
 const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage }) => {
   const [counter, setCounter] = useState(expectedServerSpinupTime);
@@ -58,6 +58,7 @@ FeedPage.propTypes = {
   isServerUp: PropTypes.bool.isRequired,
   setIsServerUp: PropTypes.func.isRequired,
   imageData: PropTypes.array,
+  setSelectedImage: PropTypes.func.isRequired,
 };
 
 export default FeedPage;
