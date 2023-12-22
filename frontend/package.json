@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://gallery-58b4.onrender.com/",
+  "homepage": "https://gallery-58b4.onrender.com",
   "scripts": {
     "prod": "NODE_ENV='deploy' vite",
     "dev": "vite",
