@@ -40,5 +40,12 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/v1.0/image', imageRoutes); 
 app.use('/api/v1.0/user', userRoutes); 
 app.use('/api/v1.0/health', healthRoutes); 
+app.get('*', (req, res) => {
+  const indexPath = process.env.NODE_ENV === 'deploy'
+    ? path.resolve(__dirname, '../frontend/dist/index.html')
+    : path.resolve(__dirname, '../frontend/public/index.html');
+
+  res.sendFile(indexPath);
+});
 
 module.exports = app; 
