@@ -56,7 +56,7 @@ function App() {
             />
           }
         />
-        <Route
+        {/* <Route
           path='/images'
           element={
             <FeedPage
@@ -66,9 +66,9 @@ function App() {
               imageData={imageData}
             />
           }
-        />
+        /> */}
         <Route
-          path='/images/:id'
+          path='/:id'
           element={
             <SingleImagePage
               selectedImage={selectedImage}

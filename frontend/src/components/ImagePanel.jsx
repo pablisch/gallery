@@ -13,7 +13,7 @@ const ImagePanel = ({ image, setSelectedImage }) => {
     console.log(`You clicked on ${JSON.stringify(image)}`);
     window.localStorage.setItem('image', JSON.stringify(image));
     setSelectedImage(image);
-    navigate(`/images/${image._id}`)
+    navigate(`/${image._id}`)
     const singleImage = JSON.parse(window.localStorage.getItem('image'));
     console.log('single image stored in local:', singleImage)
   };

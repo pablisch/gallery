@@ -44,7 +44,7 @@ const SingleImagePage = ({
               setUser(null);
               setAvatar(null);
             }
-            navigate('/images');
+            navigate('/');
           }
         };
         getSingleImage();

@@ -15,7 +15,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
 
   const handleLogOut = () => {
     logout();
-    navigate('/images');
+    navigate('/');
   };
 
   const handleAddImage = () => {

@@ -17,7 +17,7 @@ const ImageUploadForm = ({ user, userToken }) => {
 
   useEffect(() => {
     document.title = 'Gallery Sign Up';
-    if (user === null) navigate('/images');
+    if (user === null) navigate('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -61,6 +61,7 @@ const ImageUploadForm = ({ user, userToken }) => {
         altText: '',
         userId: window.localStorage.getItem('cookie'),
         username: user,
+        userAvatar: window.localStorage.getItem('avatar'),
       };
 
       console.log('imageObject:', imageObject);
@@ -81,7 +82,7 @@ const ImageUploadForm = ({ user, userToken }) => {
       console.log(dbResponse);
       console.log('Image uploaded successfully!');
       // setUploadSuccess(true);
-      navigate('/images');
+      navigate('/');
     } catch (error) {
       console.log(error);
       setImageToUpload(null);

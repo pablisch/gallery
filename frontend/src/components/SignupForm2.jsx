@@ -26,7 +26,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
 
     try {
       if (imageToUpload) {
-        console.log('uploading image! ImageToUpload:', imageToUpload)
+        console.log('uploading image! ImageToUpload:', imageToUpload);
         const formData = new FormData();
         formData.append('file', imageToUpload);
         formData.append('upload_preset', 'xwkdy0vz');
@@ -69,7 +69,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
         setUser(responseData.username);
         setAvatar(avatar);
         clearForm();
-        navigate('/images');
+        navigate('/');
       } else {
         console.log('Something went wrong in handleSignUpSubmit');
       }
