@@ -1,10 +1,35 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FaPlus } from 'react-icons/fa';
 import './Navbar.css';
 import NavLink from './NavLink';
 
 const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
+  const [isLogoRotated, setIsLogoRotated] = useState(false);
+  const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenLessThan450px(window.innerWidth < 450);
+    };
+  
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    setIsLogoRotated(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsLogoRotated(false);
+  };
+
   const navigate = useNavigate();
 
   const logout = () => {
@@ -23,14 +48,14 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   };
 
   return (
-    <nav className='navbar'>
+    <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className='navbar-container'>
-        <Link to='/' className='navbar-section navbar-logo'>
+      <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
             src='/images/PicturePadLogo.png'
             alt='logo'
-            className='navbar-logo-img'
+            className={`navbar-logo-img ${isLogoRotated ? 'rotate' : ''}`}
           />
           {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
           <h1 id='nav-title-text' className='navbar-logo-text'>
@@ -57,9 +82,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               </NavLink>
               <NavLink
                 id='add-image-navlink'
+                className={isScreenLessThan450px ? 'big-plus' : ''}
                 route='/upload'
                 onClickFunc={handleAddImage}>
-                Upload image
+                {isScreenLessThan450px ? <FaPlus /> : 'Upload image'}
               </NavLink>
               {avatar?.length > 1 ? (
                 <Link

@@ -23,5 +23,7 @@
 .single-image {
   border: 1px solid #777;
   border-radius: 5px;
+  max-width: 90vw;
+  max-height: 75vh;
 }
 

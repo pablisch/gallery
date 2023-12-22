@@ -43,7 +43,7 @@
 
 .navbar-container a {
   text-decoration: none;
-  color: var(--primary-text-color);
+  /* color: var(--primary-text-color); */
 }
 
 .divider-line {
@@ -75,3 +75,11 @@
 .letter8 {
   color: #5d2ca1;
 }
+
+/* navbar logo spin */
+.rotate {
+  transform: rotate(1080deg);
+  transition: transform 1s ease-in-out;
+}
+
+
