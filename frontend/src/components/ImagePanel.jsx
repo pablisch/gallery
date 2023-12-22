@@ -6,21 +6,17 @@ import './ImagePanel.css';
 const ImagePanel = ({ image, setSelectedImage }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // let avatar = null;
-
   const navigate = useNavigate();
 
   const handleClick = () => {
     console.log(`You clicked on ${image._id}`);
+    console.log(`You clicked on ${JSON.stringify(image)}`);
+    window.localStorage.setItem('image', JSON.stringify(image));
     setSelectedImage(image);
     navigate(`/images/${image._id}`)
+    const singleImage = JSON.parse(window.localStorage.getItem('image'));
+    console.log('single image stored in local:', singleImage)
   };
-
-  // avatar = image.userAvatar?.length > 1 ?
-  //   <img className='hover-icon icon avatar-icon' src={image.userAvatar} alt="avatar and settings icon" /> :
-  //   <div id="image-post-avatar-container" className="hover-icon icon avatar-letter-outer-container avatar-letter-container">
-  //       <h1 >{image.userAvatar}</h1>
-  //   </div>;
   
   const onHoverStart = () => {
       setIsHovered(true);

@@ -37,6 +37,7 @@ const Feed = ({imageData, setSelectedImage}) => {
 Feed.propTypes = {
   imageData: PropTypes.array,
   setImageData: PropTypes.func,
+  setSelectedImage: PropTypes.func.isRequired,
 };
 
 export default Feed;

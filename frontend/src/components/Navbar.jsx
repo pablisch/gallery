@@ -96,7 +96,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 className='icon settings-avatar-margin'>
                 <img
                   className='icon settings-icon'
-                  src='images/gearIcon.png'
+                  src='/images/gearIcon.png'
                   alt='settings icon'
                 />
               </Link>

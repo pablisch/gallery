@@ -61,7 +61,8 @@ function App() {
         <Route
           path='/images/:id'
           element={
-            <SingleImagePage selectedImage={selectedImage} />
+            <SingleImagePage selectedImage={selectedImage} setSelectedImage={setSelectedImage}
+              setAvatar={setAvatar} setUser={setUser} />
           }
         />
         <Route
