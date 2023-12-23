@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
+import Button from './Button';
 
 const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
   const [username, setUsername] = useState('');
@@ -95,9 +96,7 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
               onChange={handleLoginPasswordChange}
             />
           </div>
-          <button id='login-submit-button' className='btn'>
-            Log in
-          </button>
+          <Button id='login-submit-button' >Log in</Button>
         </form>
       </main>
     </>

@@ -139,7 +139,7 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
             Upload an Image
           </h1>
           <div className='form-field'>
-            <Button id='image-upload-select' className='btn custom-file-input' >
+            <Button id='image-upload-select' className='btn custom-file-input'>
               <label htmlFor='file-input'>
                 Choose file
                 <input
@@ -151,7 +151,7 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
             </Button>
           </div>
           {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
-          <Button id='image-upload-submit-button' ref={uploadButtonRef}>
+          <Button id='image-upload-submit-btn' ref={uploadButtonRef}>
             Upload image
           </Button>
           {preview && (

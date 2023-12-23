@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
+import Button from './Button';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
   const [name, setName] = useState('');
@@ -175,10 +176,8 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
           </div>
           <div className='form-field'>
             <label htmlFor='file-input'>Avatar image</label>
-            <button
-              id='avatar-image-upload-select'
-              className='btn custom-file-input'>
-              <label htmlFor='file-input'>
+            <Button id='avatar-image-upload-select' className='btn custom-file-input'>
+            <label htmlFor='file-input'>
                 Choose file
                 <input
                   type='file'
@@ -186,7 +185,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
                   onChange={handleFileChange}
                 />
               </label>
-            </button>
+            </Button>
           </div>
           {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
           {preview && (
@@ -198,9 +197,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
               />
             </div>
           )}
-          <button id='sign-up-submit-button' className='btn'>
-            Sign Up
-          </button>
+          <Button id='sign-up-submit-button' >Sign Up</Button>
         </form>
       </main>
     </>
