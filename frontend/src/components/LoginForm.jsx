@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import Button from './Button';
+import InputField from './InputField';
 
 const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
   const [username, setUsername] = useState('');
@@ -60,7 +61,7 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
     setUsername(event.target.value);
   };
 
-  const handleLoginPasswordChange = (event) => {
+  const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
@@ -76,27 +77,22 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
           <h1 id='login-title' className='form-title'>
             Log in to Gallery
           </h1>
-          <div className='form-field'>
-            <label htmlFor='login-username-input'>Username</label>
-            <input
-              id='login-username-input'
-              type='text'
-              placeholder='Username'
-              value={username}
-              onChange={handleUsernameChange}
-            />
-          </div>
-          <div className='form-field'>
-            <label htmlFor='login-password-input'>Password</label>
-            <input
-              id='login-password-input'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={handleLoginPasswordChange}
-            />
-          </div>
-          <Button id='login-submit-button' >Log in</Button>
+          <InputField
+            id={'login-username-input'}
+            placeholder={'Username'}
+            value={username}
+            onChangeFunc={handleUsernameChange}>
+            Username
+          </InputField>
+          <InputField
+            id={'login-password-input'}
+            type={'password'}
+            placeholder={'Password'}
+            value={password}
+            onChangeFunc={handlePasswordChange}>
+            Password
+          </InputField>
+          <Button id='login-submit-button'>Log in</Button>
         </form>
       </main>
     </>
