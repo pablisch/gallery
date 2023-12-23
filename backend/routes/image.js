@@ -18,6 +18,8 @@ router.get('/:id', imageCtrl.getSingleImage);
 
 router.delete('/:id', auth, imageCtrl.deleteImage); 
 
+router.put('/:id/comments', multer, imageCtrl.addComment); 
+
 // router.put('/:id', auth, multer, imageCtrl.modifyImage); 
 
 module.exports = router; 

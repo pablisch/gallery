@@ -1,0 +1,11 @@
+.comment-list-item {
+  list-style-type: none;
+}
+
+#comments-title {
+  margin-top: 20px;
+}
+
+.margin-left {
+  margin-left: 10px;
+}

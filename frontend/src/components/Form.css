@@ -6,6 +6,12 @@
   height: calc(100vh - 71px); 
 }
 
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .form {
   width: 350px;
   margin: 20px auto;

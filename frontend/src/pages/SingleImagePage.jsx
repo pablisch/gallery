@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import SingleImage from '../components/SingleImage';
@@ -6,6 +6,9 @@ import './SingleImagePage.css';
 import SingleImageInfo from '../components/SingleImageInfo';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
+import Button from '../components/Button';
+import CommentBox from '../components/CommentBox';
+import AddCommentForm from '../components/AddCommentForm';
 
 const SingleImagePage = ({
   selectedImage,
@@ -13,8 +16,10 @@ const SingleImagePage = ({
   setAvatar,
   setUser,
 }) => {
+  const [addComment, setAddComment] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
+  const token = window.localStorage.getItem('token');
 
   useEffect(() => {
     if (!selectedImage) {
@@ -41,6 +46,7 @@ const SingleImagePage = ({
         getSingleImage();
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, selectedImage, setSelectedImage]);
 
   return (
@@ -49,6 +55,14 @@ const SingleImagePage = ({
         <>
           <SingleImage selectedImage={selectedImage} />
           <SingleImageInfo selectedImage={selectedImage} />
+          {(token && !addComment) && <Button
+            id='add-comment-btn'
+            aria-label='Add comment'
+            onClick={() => setAddComment((prev => !prev))}
+            className='btn add-btn'
+          >Add a comment</Button>}
+          {addComment && <AddCommentForm comments={selectedImage.comments} setAddComment={setAddComment} />}
+          {selectedImage?.comments?.length > 0 && <CommentBox comments={selectedImage.comments} />}
         </>
       )}
     </div>
