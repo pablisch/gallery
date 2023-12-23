@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
-import baseUrl from './utils/baseUrl';
 import Navbar from './components/Navbar.jsx';
 import FeedPage from './pages/FeedPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import ImageUploadPage from './pages/ImageUploadPage.jsx';
 import SingleImagePage from './pages/SingleImagePage.jsx';
+import getImageArrayData from './utils/getImageData.js';
 
 function App() {
   if (!window.localStorage.getItem('user')) {
@@ -24,16 +23,7 @@ function App() {
 
   useEffect(() => {
     document.title = 'Gallery';
-    const fetchImageArrayData = async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/api/v1.0/images`);
-        setImageData(response.data);
-      } catch (error) {
-        console.error('Error fetching image data:', error);
-      }
-    };
-
-    fetchImageArrayData(); // Call the fetchData function when the component mounts
+    getImageArrayData(setImageData);
   }, []);
 
   return (
@@ -56,17 +46,6 @@ function App() {
             />
           }
         />
-        {/* <Route
-          path='/images'
-          element={
-            <FeedPage
-              isServerUp={isServerUp}
-              setIsServerUp={setIsServerUp}
-              setSelectedImage={setSelectedImage}
-              imageData={imageData}
-            />
-          }
-        /> */}
         <Route
           path='/:id'
           element={
