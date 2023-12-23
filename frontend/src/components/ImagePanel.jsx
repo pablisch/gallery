@@ -8,7 +8,6 @@ const ImagePanel = ({ image, setSelectedImage }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const userId = window.localStorage.getItem('cookie');
-  console.log(userId, image.userId);
 
   const navigate = useNavigate();
 
