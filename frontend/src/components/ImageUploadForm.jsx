@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import getImageArrayData from '../utils/getImageData';
+import Button from './Button';
 
 // eslint-disable-next-line no-unused-vars
 const ImageUploadForm = ({ user, userToken, setImageData }) => {
@@ -138,7 +139,7 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
             Upload an Image
           </h1>
           <div className='form-field'>
-            <button id='image-upload-select' className='btn custom-file-input'>
+            <Button id='image-upload-select' className='btn custom-file-input' >
               <label htmlFor='file-input'>
                 Choose file
                 <input
@@ -147,15 +148,12 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
                   onChange={handleFileChange}
                 />
               </label>
-            </button>
+            </Button>
           </div>
           {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
-          <button
-            id='image-upload-submit-button'
-            className='btn'
-            ref={uploadButtonRef}>
+          <Button id='image-upload-submit-button' ref={uploadButtonRef}>
             Upload image
-          </button>
+          </Button>
           {preview && (
             <div id='image-upload-preview' className='preview'>
               <h4 id='image-upload-preview-title'>Image upload preview</h4>

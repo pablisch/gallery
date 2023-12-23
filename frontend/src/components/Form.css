@@ -80,30 +80,4 @@ input {
   border: 1px solid #ccc;
 }
 
-.custom-file-input {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  padding-top: 10px;
-  padding-bottom: 4px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-  background-color: #fff;
-  color: var(--primary-text-color);
-  border: 1px solid #ccc;
-}
 
-.custom-file-input input {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-}
-
-#file-name {
-  margin: -5px auto 20px;
-}
