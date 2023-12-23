@@ -78,13 +78,13 @@
 
 /* navbar logo spin */
 .rotateCw {
-  transform: rotate(1080deg);
-  transition: transform 1s ease-in-out;
+  transform: rotate(-1080deg);
+  transition: transform 0.6s ease-in-out;
 }
 
 .rotateCcw {
   transform: rotate(-1080deg);
-  transition: transform 1s ease-in-out;
+  transition: transform 1.2s ease-in-out;
 }
 
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import InputField from './InputField';
 import axios from 'axios';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
@@ -63,7 +64,6 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
 
       if (DbResponse.status === 201) {
         const responseData = DbResponse.data;
-        // console.log('data', responseData);
         window.localStorage.setItem('token', responseData.token);
         window.localStorage.setItem('user', responseData.username);
         window.localStorage.setItem('cookie', responseData.userId);
@@ -82,11 +82,11 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
   };
 
   // Input field functions
-  const handleSignupEmailChange = (event) => {
+  const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
-  const handleSignupPasswordChange = (event) => {
+  const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
@@ -136,46 +136,32 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
           <h1 id='signup-title' className='form-title'>
             Create a new Gallery account
           </h1>
-          <div className='form-field'>
-            <label htmlFor='signup-name-input'>Name</label>
-            <input
-              id='signup-name-input'
-              type='text'
-              placeholder='Name'
-              value={name}
-              onChange={handleNameChange}
-            />
-          </div>
-          <div className='form-field'>
-            <label htmlFor='signup-username-input'>Username</label>
-            <input
-              id='signup-username-input'
-              type='text'
-              placeholder='Username'
-              value={username}
-              onChange={handleUsernameChange}
-            />
-          </div>
-          <div className='form-field'>
-            <label htmlFor='signup-email-input'>Email</label>
-            <input
-              id='signup-email-input'
-              type='email'
-              placeholder='Email'
-              value={email}
-              onChange={handleSignupEmailChange}
-            />
-          </div>
-          <div className='form-field'>
-            <label htmlFor='signup-password-input'>Password</label>
-            <input
-              id='signup-password-input'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={handleSignupPasswordChange}
-            />
-          </div>
+          <InputField
+            id={'signup-name-input'}
+            value={name}
+            onChangeFunc={handleNameChange}>
+            Name
+          </InputField>
+          <InputField
+            id={'signup-username-input'}
+            value={username}
+            onChangeFunc={handleUsernameChange}>
+            Username
+          </InputField>
+          <InputField
+            id={'signup-email-input'}
+            type={'email'}
+            value={email}
+            onChangeFunc={handleEmailChange}>
+            Email
+          </InputField>
+          <InputField
+            id={'signup-password-input'}
+            type={'password'}
+            value={password}
+            onChangeFunc={handlePasswordChange}>
+            Password
+          </InputField>
           <div className='form-field'>
             <label htmlFor='file-input'>Avatar image</label>
             <Button id='avatar-image-upload-select' className='btn custom-file-input'>

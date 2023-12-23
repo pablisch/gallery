@@ -2,13 +2,13 @@
 import PropTypes from 'prop-types';
 
 const InputField = ({
+  children,
   id,
   type = 'text',
-  placeholder,
+  placeholder = children,
   value,
   onChangeFunc,
   className = 'form-field',
-  children,
 }) => {
   return (
     <div className={className}>
