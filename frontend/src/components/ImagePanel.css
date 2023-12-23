@@ -7,7 +7,7 @@
 
 .selected {
   cursor: pointer;
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 
@@ -20,13 +20,11 @@
 .hover-icon-container {
   position: absolute;
   bottom: 10px;
-  /* left: 5px; */
   width: 100%;
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.6);
   padding: 10px;
-  /* border-top-right-radius: 15px; */
   box-shadow: 0 0 5px 4px rgba(255, 255, 255, 0.6);
 
 }

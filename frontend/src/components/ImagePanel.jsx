@@ -45,11 +45,12 @@ const ImagePanel = ({ image, setSelectedImage }) => {
         className={isHovered ? 'selected image-card' : 'image-card'}
       />
       {isHovered && (
-        <div className="hover-icon-container"
+        <div className={`hover-icon-container ${isHovered ? 'selected' : ''}`} 
           onMouseEnter={onHoverStart}
           onMouseLeave={onHoverEnd}
           onTouchStart={onHoverStart}
           onTouchEnd={onHoverEnd}
+          onClick={handleClick}
         >
           {image.userAvatar && image.userAvatar?.length > 1 ? (
             <img className="hover-icon icon avatar-icon" src={image.userAvatar} alt="avatar and settings icon" />
