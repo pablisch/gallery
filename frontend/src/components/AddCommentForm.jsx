@@ -5,8 +5,10 @@ import { useState } from 'react';
 import Button from './Button';
 import baseUrl from '../utils/baseUrl';
 import generateId from '../utils/generateId';
+import getSingleImageData from '../utils/getSingleImageData';
+import getImageData from '../utils/getImageData';
 
-const AddCommentForm = ({ setAddComment }) => {
+const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
   const [comment, setComment] = useState('');
 
   const token = window.localStorage.getItem('token');
@@ -42,7 +44,10 @@ const AddCommentForm = ({ setAddComment }) => {
         }
       )
       console.log(response);
+      await getImageData(setImageData);
+      await getSingleImageData(image._id, setSelectedImage);
       setAddComment(prev => !prev);
+
     }
     catch (error) {
       console.error('Error in handleAddComment:', error);
@@ -50,7 +55,7 @@ const AddCommentForm = ({ setAddComment }) => {
   };
 
   return (
-    <div className='form-container'>
+    <div className='in-page-form-container'>
       <form id='add-comment-form' className='form'>
         <div className='form-field'>
           <label htmlFor='comment'>Add Comment</label>
@@ -79,6 +84,8 @@ const AddCommentForm = ({ setAddComment }) => {
 AddCommentForm.propTypes = {
   user: PropTypes.string,
   setAddComment: PropTypes.func.isRequired,
+  setSelectedImage: PropTypes.func.isRequired,
+  setImageData: PropTypes.func.isRequired,
 };
 
 export default AddCommentForm;

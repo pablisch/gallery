@@ -15,6 +15,7 @@ const SingleImagePage = ({
   setSelectedImage,
   setAvatar,
   setUser,
+  setImageData,
 }) => {
   const [addComment, setAddComment] = useState(false);
   const { id } = useParams();
@@ -61,7 +62,7 @@ const SingleImagePage = ({
             onClick={() => setAddComment((prev => !prev))}
             className='btn add-btn'
           >Add a comment</Button>}
-          {addComment && <AddCommentForm comments={selectedImage.comments} setAddComment={setAddComment} />}
+          {addComment && <AddCommentForm comments={selectedImage.comments} setAddComment={setAddComment} setSelectedImage={setSelectedImage} setImageData={setImageData} />}
           {selectedImage?.comments?.length > 0 && <CommentBox comments={selectedImage.comments} />}
         </>
       )}
@@ -74,6 +75,7 @@ SingleImagePage.propTypes = {
   setSelectedImage: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   setAvatar: PropTypes.func.isRequired,
+  setImageData: PropTypes.func.isRequired,
 };
 
 export default SingleImagePage;

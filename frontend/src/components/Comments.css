@@ -1,11 +1,25 @@
+#comment-box {
+  width: 60%;
+  margin: 10px auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.comment-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
 .comment-list-item {
   list-style-type: none;
 }
 
 #comments-title {
-  margin-top: 20px;
+  margin: -10px 0 20px;
 }
 
 .margin-left {
   margin-left: 10px;
 }
+

@@ -11,7 +11,7 @@ const Comment = ({ comment }) => {
     </div>;
 
   return (
-    <div id={`comment-${comment.id}`} className='comment flex-container'>
+    <div id={`comment-${comment.id}`} className='comment comment-container'>
       {comment.userAvatar && avatar}
       <p className='margin-left' >{comment.comment}</p>
       

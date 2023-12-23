@@ -54,6 +54,7 @@ function App() {
               setSelectedImage={setSelectedImage}
               setAvatar={setAvatar}
               setUser={setUser}
+              setImageData={setImageData}
             />
           }
         />

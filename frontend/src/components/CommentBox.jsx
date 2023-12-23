@@ -5,7 +5,7 @@ import './Comments.css'
 
 const CommentBox = ({comments}) => {
   return (
-    <div>
+    <div id='comment-box' >
       <h3 id='comments-title'>Comments</h3>
       <ul>
         {comments.map((comment) => {
