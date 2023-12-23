@@ -26,6 +26,11 @@ const ImagePanel = ({ image, setSelectedImage }) => {
     setIsHovered(false);
   }
 
+  const getDisplaySrc = (src) => {
+    const srcParts = src.split('/upload/');
+    return `${srcParts[0]}/upload/w_400/${srcParts[1]}`;
+  }
+
   return (
     <div className="image-card-container">
       <img
@@ -35,7 +40,7 @@ const ImagePanel = ({ image, setSelectedImage }) => {
         onTouchStart={onHoverStart}
         onTouchEnd={onHoverEnd}
         onClick={handleClick}
-        src={image.src}
+        src={getDisplaySrc(image.src)}
         alt={image.altText}
         className={isHovered ? 'selected image-card' : 'image-card'}
       />

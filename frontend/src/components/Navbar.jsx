@@ -48,7 +48,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   };
 
   return (
-    <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={handleMouseEnter} onTouchEnd={handleMouseLeave} >
       <div className='navbar-container'>
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img

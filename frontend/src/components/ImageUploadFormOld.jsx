@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 
-// eslint-disable-next-line no-unused-vars
 const ImageUploadForm = ({ user, userToken }) => {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -22,55 +21,22 @@ const ImageUploadForm = ({ user, userToken }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const resizeImage = (file, maxWidth, maxHeight) => {
-    return new Promise((resolve) => {
-      const img = new Image();
-
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > maxWidth) {
-            height *= maxWidth / width;
-            width = maxWidth;
-          }
-        } else {
-          if (height > maxHeight) {
-            width *= maxHeight / height;
-            height = maxHeight;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        ctx.drawImage(img, 0, 0, width, height);
-
-        canvas.toBlob((blob) => {
-          resolve(blob);
-        }, file.type);
-      };
-
-      img.src = URL.createObjectURL(file);
-    });
-  };
-
-  const previewFiles = async (file) => {
-    const resizedImageBlob = await resizeImage(file, 1000, 1000);
-
+  const previewFiles = (file) => {
     const reader = new FileReader();
-    reader.readAsDataURL(resizedImageBlob);
+    reader.readAsDataURL(file);
 
     reader.onloadend = () => {
       setPreview(reader.result);
     };
-
-    setImageToUpload(resizedImageBlob);
   };
+
+  useEffect(() => {
+    if (!imageToUpload) {
+      setPreview(null);
+      return;
+    }
+    previewFiles(imageToUpload);
+  }, [imageToUpload]);
 
   const handleUploadImage = async (event) => {
     try {
@@ -85,6 +51,7 @@ const ImageUploadForm = ({ user, userToken }) => {
         formData
       );
 
+      // console.log(response);
       const src = response.data.secure_url;
       setPreview(null);
       setImageToUpload(null);
@@ -96,6 +63,10 @@ const ImageUploadForm = ({ user, userToken }) => {
         username: user,
         userAvatar: window.localStorage.getItem('avatar'),
       };
+
+      console.log('imageObject:', imageObject);
+      console.log('userToken:', userToken);
+      console.log('window token:', window.localStorage.getItem('token'));
 
       const dbResponse = await axios.post(
         `${baseUrl}/api/v1.0/images/upload`,
@@ -120,7 +91,7 @@ const ImageUploadForm = ({ user, userToken }) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    previewFiles(file);
+    setImageToUpload(file);
     uploadButtonRef.current.focus();
   };
 
