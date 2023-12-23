@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// import { AiOutlineClose } from 'react-icons/ai';
+import { IoCloseSharp } from "react-icons/io5";
 import './ImagePanel.css';
 
 const ImagePanel = ({ image, setSelectedImage }) => {
+
   const [isHovered, setIsHovered] = useState(false);
+
+  const userId = window.localStorage.getItem('cookie');
+  console.log(userId, image.userId)
 
   const navigate = useNavigate();
 
@@ -47,11 +53,12 @@ const ImagePanel = ({ image, setSelectedImage }) => {
       {isHovered && (
         <div className={`hover-icon-container ${isHovered ? 'selected' : ''}`} 
           onMouseEnter={onHoverStart}
-          onMouseLeave={onHoverEnd}
+          // onMouseLeave={onHoverEnd}
           onTouchStart={onHoverStart}
           onTouchEnd={onHoverEnd}
           onClick={handleClick}
         >
+          <div id="image-user-info">
           {image.userAvatar && image.userAvatar?.length > 1 ? (
             <img className="hover-icon icon avatar-icon" src={image.userAvatar} alt="avatar and settings icon" />
           ) : (
@@ -60,6 +67,11 @@ const ImagePanel = ({ image, setSelectedImage }) => {
             </div>
           )}
           {image.username ? <p className="hover-username">{image.username}</p> : <p></p>}
+          </div>
+          {/* <AiOutlineClose /> */}
+          {userId === image.userId && <div id="close-symbol">
+            <IoCloseSharp />
+          </div>}
         </div>
       )}
     </div>
