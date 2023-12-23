@@ -25,16 +25,7 @@ const SingleImagePage = ({
         const getSingleImage = async () => {
           try {
             const response = await axios.get(
-              `${baseUrl}/api/v1.0/images/${id}`,
-              {
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${window.localStorage.getItem(
-                    'token'
-                  )}`,
-                },
-              }
-            );
+              `${baseUrl}/api/v1.0/images/${id}`);
             setSelectedImage(response.data);
           } catch (error) {
             console.error('Error fetching single image data:', error);
