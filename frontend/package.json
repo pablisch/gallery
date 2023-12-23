@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://gallery-58b4.onrender.com",
   "scripts": {
     "prod": "NODE_ENV='deploy' vite",
     "dev": "vite",
@@ -15,6 +16,7 @@
     "masonry-layout": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
     "react-masonry-css": "^1.0.16",
     "react-router-dom": "^6.21.0"
   },

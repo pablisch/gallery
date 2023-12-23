@@ -18,17 +18,21 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
-      const response = await axios.post(`${baseUrl}/api/v1.0/user/login`, {
-        username,
-        password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await axios.post(
+        `${baseUrl}/api/v1.0/user/login`,
+        {
+          username,
+          password,
         },
-      });
-  
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
       if (response.status === 200) {
         const responseData = response.data; // Assuming the data is in response.data
         console.log('data', responseData);
@@ -49,7 +53,6 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
       // Handle the error as needed
     }
   };
-  
 
   // Input field functions
   const handleUsernameChange = (event) => {
@@ -63,14 +66,16 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
   const clearForm = () => {
     setUsername('');
     setPassword('');
-  }
+  };
 
   return (
     <>
-      <main id="login-form-container" className='form-container'>
+      <main id='login-form-container' className='form-container'>
         <form id='login-form' className='form' onSubmit={handleLoginSubmit}>
-          <h1 id='login-title' className='form-title'>Log in to Gallery</h1>
-          <div className="form-field">
+          <h1 id='login-title' className='form-title'>
+            Log in to Gallery
+          </h1>
+          <div className='form-field'>
             <label htmlFor='login-username-input'>Username</label>
             <input
               id='login-username-input'
@@ -80,7 +85,7 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
               onChange={handleUsernameChange}
             />
           </div>
-          <div className="form-field">
+          <div className='form-field'>
             <label htmlFor='login-password-input'>Password</label>
             <input
               id='login-password-input'

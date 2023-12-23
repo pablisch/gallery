@@ -27,9 +27,55 @@ body {
   color: var(--primary-text-color);
 }
 
+/* Avatar CSS */
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
+.avatar-icon {
+  object-fit: cover;
+  border-radius: 50%;
+  border: 0.5px solid #777;
+}
+
+.settings-icon {
+  opacity: 0.8;
+}
+
+.avatar-letter-outer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1180d4;
+  border-radius: 50%;
+  border: 0.5px solid #777;
+}
+
+.avatar-letter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-letter-container h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #ffdf3e;
+}
+
 @media (max-width: 1000px) {
+  :root {
+    --sides: 30px;
+  }
+}
+
+@media (max-width: 800px) {
   #nav-title-text {
     display: none;
+  }
+  :root {
+    --sides: 15px;
   }
 }
 
@@ -37,8 +83,8 @@ body {
   .nav-link {
     background-color: #fff;
     font-size: 0.9rem;
-    margin-left: 8px;
-    padding: 4px 10px;
+    margin-left: 15px;
+    padding: 8px 14px;
     text-decoration: none;
   }
   .settings-icon, .user-settings-icon {
@@ -46,7 +92,7 @@ body {
     font-size: 1.8rem;
     border: 1px solid var(--nav-bg);
     background-color: var(--nav-bg);
-    margin-left: 5px;
+    margin-left: 10px;
   }
   .user-settings-icon {
     font-size: 1.5rem;
@@ -62,6 +108,24 @@ body {
   .form-container {
     /* height calc is vh - (navbar height + dividing line height) */
     height: calc(100vh - 51px); 
+  }
+}
+
+@media (max-width: 450px) {
+  :root {
+    --sides: 8px;
+  }
+  .nav-link {
+    background-color: #fff;
+    font-size: 0.9rem;
+    margin-left: 8px;
+    padding: 8px 12px;
+    text-decoration: none;
+  }
+  .big-plus {
+    font-size: 1rem;
+    padding: 8px;
+    /* color: #f80a0a; */
   }
 }
 

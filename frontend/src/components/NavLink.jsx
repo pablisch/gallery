@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './NavLink.css';
 
-const NavLink = ({id, route, onClickFunc, className = 'nav-link', children}) => {
+const NavLink = ({id, route, onClickFunc, className, children}) => {
   return (
-      <Link to={route} id={id} className={className} onClick={onClickFunc}>{children}</Link>
+      <Link to={route} id={id} className={`nav-link ${className}`} onClick={onClickFunc}>{children}</Link>
   )
 }
 

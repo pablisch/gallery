@@ -1,16 +1,38 @@
 .image-card {
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   opacity: 1;
 }
 
-.image-card:hover {
+.selected {
   cursor: pointer;
-  opacity: 0.92;
-  
+  opacity: 1;
 }
 
-.selected {
-  opacity: 0.5 !important;
+
+.image-card-container {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.hover-icon-container {
+  position: absolute;
+  bottom: 10px;
+  /* left: 5px; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  /* border-top-right-radius: 15px; */
+  box-shadow: 0 0 5px 4px rgba(255, 255, 255, 0.6);
+
+}
+
+.hover-username {
+  color: #000;
+  font-weight: bold;
+  margin-left: 8px;
 }
