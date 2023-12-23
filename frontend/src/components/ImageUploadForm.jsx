@@ -96,6 +96,7 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
         userId: window.localStorage.getItem('cookie'),
         username: user,
         userAvatar: window.localStorage.getItem('avatar'),
+        comments: [],
       };
 
       const dbResponse = await axios.post(

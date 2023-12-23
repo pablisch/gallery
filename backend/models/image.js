@@ -6,6 +6,7 @@ const imageSchema = mongoose.Schema({
   userId: { type: String, required: true }, 
   username: { type: String },
   userAvatar: { type: String },
+  comments: [],
 }, {
   timestamps: true
 });
