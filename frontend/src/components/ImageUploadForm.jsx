@@ -6,6 +6,7 @@ import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import getImageArrayData from '../utils/getImageData';
 import Button from './Button';
+import resizeImage from '../utils/resizeImage';
 
 // eslint-disable-next-line no-unused-vars
 const ImageUploadForm = ({ user, userToken, setImageData }) => {
@@ -23,43 +24,6 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
     if (user === null) navigate('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const resizeImage = (file, maxWidth, maxHeight) => {
-    return new Promise((resolve) => {
-      const img = new Image();
-
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > maxWidth) {
-            height *= maxWidth / width;
-            width = maxWidth;
-          }
-        } else {
-          if (height > maxHeight) {
-            width *= maxHeight / height;
-            height = maxHeight;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        ctx.drawImage(img, 0, 0, width, height);
-
-        canvas.toBlob((blob) => {
-          resolve(blob);
-        }, file.type);
-      };
-
-      img.src = URL.createObjectURL(file);
-    });
-  };
 
   const previewFiles = async (file) => {
     const resizedImageBlob = await resizeImage(file, 1000, 1000);

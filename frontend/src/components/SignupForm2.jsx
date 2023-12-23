@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import Button from './Button';
+import resizeImage from '../utils/resizeImage';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
   const [name, setName] = useState('');
@@ -27,9 +28,10 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
 
     try {
       if (imageToUpload) {
-        console.log('uploading image! ImageToUpload:', imageToUpload);
+        const resizedImageBlob = await resizeImage(imageToUpload, 50, 50);
+        console.log('uploading image! ImageToUpload:', resizedImageBlob);
         const formData = new FormData();
-        formData.append('file', imageToUpload);
+        formData.append('file', resizedImageBlob);
         formData.append('upload_preset', 'xwkdy0vz');
 
         const CloudinaryResponse = await axios.post(
