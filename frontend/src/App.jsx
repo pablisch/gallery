@@ -79,7 +79,7 @@ function App() {
         />
         <Route
           path='/upload'
-          element={<ImageUploadPage user={user} userToken={userToken} />}
+          element={<ImageUploadPage user={user} userToken={userToken} setImageData={setImageData} />}
         />
       </Routes>
     </BrowserRouter>

@@ -4,9 +4,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
+import getImageArrayData from '../utils/getImageData';
 
 // eslint-disable-next-line no-unused-vars
-const ImageUploadForm = ({ user, userToken }) => {
+const ImageUploadForm = ({ user, userToken, setImageData }) => {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
   // eslint-disable-next-line no-unused-vars
@@ -111,6 +112,7 @@ const ImageUploadForm = ({ user, userToken }) => {
       console.log(dbResponse);
       console.log('Image uploaded successfully!');
       // setUploadSuccess(true);
+      getImageArrayData(setImageData);
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -168,6 +170,7 @@ const ImageUploadForm = ({ user, userToken }) => {
 ImageUploadForm.propTypes = {
   user: PropTypes.string,
   userToken: PropTypes.string,
+  setImageData: PropTypes.func.isRequired,
 };
 
 export default ImageUploadForm;
