@@ -58,7 +58,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
 
   return (
     <div className='in-page-form-container'>
-      <form id='add-comment-form' className='form'>
+      <form id='add-comment-form' className='form add-comment-form'>
         <div className='add-comment-field'>
           <label htmlFor='comment'>What would you like to say?</label>
           <textarea

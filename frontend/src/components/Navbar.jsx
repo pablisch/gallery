@@ -59,22 +59,17 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
-          {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
-          <h1 id='nav-title-text' className="navbar-logo-text">
-            <span className={`letter${randomNumber()}`}>M</span>
-            <span className={`letter${randomNumber()}`}>e</span>
-            <span className={`letter${randomNumber()}`}>r</span>
-            <span className={`letter${randomNumber()}`}>r</span>
-            <span className={`letter${randomNumber()}`}>y</span>
-            <span className={`letter${randomNumber()}`}> C</span>
-            <span className={`letter${randomNumber()}`}>h</span>
-            <span className={`letter${randomNumber()}`}>r</span>
-            <span className={`letter${randomNumber()}`}>i</span>
-            <span className={`letter${randomNumber()}`}>s</span>
-            <span className={`letter${randomNumber()}`}>t</span>
-            <span className={`letter${randomNumber()}`}>m</span>
-            <span className={`letter${randomNumber()}`}>a</span>
-            <span className={`letter${randomNumber()}`}>s</span>
+          <h1 id='nav-title-text' className='navbar-logo-text'>
+            <span className='letter1'>P</span>
+            <span className='letter7'>i</span>
+            <span className='letter3'>c</span>
+            <span className='letter4'>t</span>
+            <span className='letter1'>u</span>
+            <span className='letter5'>r</span>
+            <span className='letter6'>e </span>
+            <span className='letter8'>P</span>
+            <span className='letter7'>a</span>
+            <span className='letter5'>d</span>
           </h1>
         </Link>
         <div className='navbar-section navbar-links'>
