@@ -123,7 +123,8 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               </NavLink>
               <NavLink id='logout-navlink' route='/signup'>
                 Sign up
-              </NavLink>
+                </NavLink>
+                
               <Link
                 id='settings-navlink'
                   className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
@@ -133,7 +134,8 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                   src='/images/gearIcon.png'
                   alt='settings icon'
                 />
-              </Link>
+                </Link>
+                
             </>
           )}
         </div>

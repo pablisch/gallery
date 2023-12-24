@@ -7,6 +7,7 @@ require('dotenv').config();
 const dbPassword = process.env.MONGODB_PW;
 const dbUser = process.env.MONGODB_USER;
 const dbName = process.env.MONGODB_DB || 'xmas-gallery_DEV';
+
 // Original site 'gallery' connection string:
 // const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`;
 
@@ -19,18 +20,15 @@ const healthRoutes = require('./routes/health');
 
 const app = express();
 
-// const corsOrigin =
-//   // process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com';
-//   process.env.CORS_ORIGIN || 'http://localhost:5173';
-  
-// console.log('🪧  >>> CORS:', corsOrigin);
+const corsOrigin = process.env.CORS_ORIGIN || 'https://xmas-gallery-g2fq.onrender.com/';
+console.log('🪧  >>> CORS:', corsOrigin);
 
-// const corsOptions = {
-//   origin: corsOrigin,
-// };
+const corsOptions = {
+  origin: corsOrigin,
+};
 
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 
 mongoose
   .connect(mongoDbUrl)
