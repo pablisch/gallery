@@ -77,12 +77,12 @@ body {
   :root {
     --sides: 30px;
   }
-}
-
-@media (max-width: 800px) {
   #nav-title-text {
     display: none;
   }
+}
+
+@media (max-width: 800px) {
   :root {
     --sides: 15px;
   }
