@@ -23,6 +23,10 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
 
   const handleAddComment = async (event) => {
     event.preventDefault();
+    if (!comment) {
+      setAddComment((prev) => !prev)
+      return;
+    }
 
     try {
       const response = await axios.put(
@@ -55,8 +59,8 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
   return (
     <div className='in-page-form-container'>
       <form id='add-comment-form' className='form'>
-        <div className='form-field'>
-          <label htmlFor='comment'>Add Comment</label>
+        <div className='add-comment-field'>
+          <label htmlFor='comment'>What would you like to say?</label>
           <textarea
             id='comment'
             placeholder='Add comment'

@@ -1,5 +1,4 @@
 #comment-box {
-  width: 60%;
   margin: 10px auto;
   padding: 20px;
   text-align: left;
@@ -17,9 +16,25 @@
 
 #comments-title {
   margin: -10px 0 20px;
+  text-align: center;
 }
 
 .margin-left {
   margin-left: 10px;
 }
+
+.in-page-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.add-comment-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 
