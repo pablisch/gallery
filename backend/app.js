@@ -20,7 +20,9 @@ const healthRoutes = require('./routes/health');
 const app = express();
 
 const corsOrigin =
-  process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com';
+  // process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com';
+  process.env.CORS_ORIGIN || 'http://localhost:5173';
+  
 console.log('🪧  >>> CORS:', corsOrigin);
 
 const corsOptions = {
@@ -48,13 +50,13 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/v1.0/images', imageRoutes);
 app.use('/api/v1.0/user', userRoutes);
 app.use('/api/v1.0/health', healthRoutes);
-app.get('*', (req, res) => {
-  const indexPath =
-    process.env.NODE_ENV === 'deploy'
-      ? path.resolve(__dirname, '../frontend/dist/index.html')
-      : path.resolve(__dirname, '../frontend/public/index.html');
+// app.get('*', (req, res) => {
+//   const indexPath =
+//     process.env.NODE_ENV === 'deploy'
+//       ? path.resolve(__dirname, '../frontend/dist/index.html')
+//       : path.resolve(__dirname, '../frontend/public/index.html');
 
-  res.sendFile(indexPath);
-});
+//   res.sendFile(indexPath);
+// });
 
 module.exports = app;
