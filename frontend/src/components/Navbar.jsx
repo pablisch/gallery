@@ -57,7 +57,6 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
-          {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
           <h1 id='nav-title-text' className='navbar-logo-text'>
             <span className='letter1'>P</span>
             <span className='letter7'>i</span>
