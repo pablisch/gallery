@@ -7,6 +7,7 @@ import baseUrl from '../utils/baseUrl';
 import getImageData from '../utils/getImageData';
 import Button from './Button';
 import './ImagePanel.css';
+import getLetterAvatarColourClass from '../utils/letterAvatarColours';
 
 const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -15,8 +16,13 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   const userId = window.localStorage.getItem('cookie');
   const username = window.localStorage.getItem('user');
   const displayUsername = image?.username?.length > 12 ? `${image.username.slice(0, 9)}...` : image.username;
+  let avatarLetterClass = '';
 
   const navigate = useNavigate();
+
+  if (image.userAvatar.length === 1) {
+    avatarLetterClass = getLetterAvatarColourClass(image.userAvatar);
+  }
 
   const handleSelect = () => {
     console.log(`You clicked on ${image._id}`);
@@ -142,7 +148,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
               ) : (
                 <div
                   id='image-post-avatar-container'
-                  className='hover-icon icon avatar-letter-outer-container avatar-letter-container'>
+                  className={`hover-icon icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
                   <h1>{image.userAvatar}</h1>
                 </div>
               )}

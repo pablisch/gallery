@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
 import './Navbar.css';
 import NavLink from './NavLink';
+import getLetterAvatarColourClass from '../utils/letterAvatarColours';
+
+let avatarLetterClass = '';
 
 const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
@@ -21,6 +24,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  if (avatar?.length === 1) {
+    avatarLetterClass = getLetterAvatarColourClass(avatar);
+  }
 
   const handleMouseEnter = () => {
     setIsLogoRotated(true);
@@ -107,10 +114,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 <>
                   <div
                       id='user-settings-navlink'
-                      className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
+                      className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${avatarLetterClass} ${isLogoRotated ? 'rotateCcw' : ''}`}
                     >
                     <Link className='avatar-letter-container'>
-                      <h1>{avatar}</h1>
+                      <h1 className={avatarLetterClass}>{avatar}</h1>
                     </Link>
                   </div>
                 </>
