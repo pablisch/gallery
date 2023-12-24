@@ -20,7 +20,7 @@ const healthRoutes = require('./routes/health');
 
 const app = express();
 
-const corsOrigin = process.env.CORS_ORIGIN || 'https://xmas-gallery-g2fq.onrender.com/';
+const corsOrigin = process.env.CORS_ORIGIN || 'https://xmas-gallery-g2fq.onrender.com';
 console.log('🪧  >>> CORS:', corsOrigin);
 
 const corsOptions = {
