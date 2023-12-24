@@ -14,6 +14,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
 
   const userId = window.localStorage.getItem('cookie');
   const username = window.localStorage.getItem('user');
+  const displayUsername = image?.username?.length > 12 ? `${image.username.slice(0, 9)}...` : image.username;
 
   const navigate = useNavigate();
 
@@ -145,8 +146,8 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
                   <h1>{image.userAvatar}</h1>
                 </div>
               )}
-              {image.username ? (
-                <p className='hover-username'>{image.username}</p>
+              {displayUsername ? (
+                <p className='hover-username'>{displayUsername}</p>
               ) : (
                 <p></p>
               )}
