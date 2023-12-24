@@ -19,17 +19,18 @@ const healthRoutes = require('./routes/health');
 
 const app = express();
 
-const corsOrigin =
-  // process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com';
-  process.env.CORS_ORIGIN || 'http://localhost:5173';
+// const corsOrigin =
+//   // process.env.CORS_ORIGIN || 'https://gallery-58b4.onrender.com';
+//   process.env.CORS_ORIGIN || 'http://localhost:5173';
   
-console.log('🪧  >>> CORS:', corsOrigin);
+// console.log('🪧  >>> CORS:', corsOrigin);
 
-const corsOptions = {
-  origin: corsOrigin,
-};
+// const corsOptions = {
+//   origin: corsOrigin,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 mongoose
   .connect(mongoDbUrl)
