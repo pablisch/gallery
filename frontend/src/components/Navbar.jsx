@@ -50,14 +50,14 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const randomNumber= () =>  Math.floor((Math.random() * 8) + 1);
 
   return (
-    <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={handleMouseEnter} onTouchEnd={handleMouseLeave} >
       <div className='navbar-container'>
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
             src='/images/PicturePadLogo.png'
             alt='logo'
-            className={`navbar-logo-img ${isLogoRotated ? 'rotate' : ''}`}
+            className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
           {/* <img id='nav-title-image' src="images/PicturePadTitle.png" alt="site-title-picture-pad" className="navbar-logo-img" /> */}
           <h1 id='nav-title-text' className="navbar-logo-text">
@@ -96,7 +96,9 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               {avatar?.length > 1 ? (
                 <Link
                   id='user-settings-navlink'
-                  className='icon settings-avatar-margin'>
+                  className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
+                  // className='icon settings-avatar-margin'
+                >
                   <img
                     className='icon avatar-icon'
                     src={avatar}
@@ -106,8 +108,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               ) : (
                 <>
                   <div
-                    id='user-settings-navlink'
-                    className='icon avatar-letter-outer-container settings-link settings-avatar-margin'>
+                      id='user-settings-navlink'
+                      className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
+                      // className='icon avatar-letter-outer-container settings-link settings-avatar-margin'
+                    >
                     <Link className='avatar-letter-container'>
                       <h1>{avatar}</h1>
                     </Link>
@@ -125,7 +129,9 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               </NavLink>
               <Link
                 id='settings-navlink'
-                className='icon settings-avatar-margin'>
+                  // className='icon settings-avatar-margin'
+                  className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
+                >
                 <img
                   className='icon settings-icon'
                   src='/images/gearIcon.png'

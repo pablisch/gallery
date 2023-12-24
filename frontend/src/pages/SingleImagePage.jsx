@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import SingleImage from '../components/SingleImage';
@@ -6,15 +6,21 @@ import './SingleImagePage.css';
 import SingleImageInfo from '../components/SingleImageInfo';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
+import Button from '../components/Button';
+import CommentBox from '../components/CommentBox';
+import AddCommentForm from '../components/AddCommentForm';
 
 const SingleImagePage = ({
   selectedImage,
   setSelectedImage,
   setAvatar,
   setUser,
+  setImageData,
 }) => {
+  const [addComment, setAddComment] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
+  const token = window.localStorage.getItem('token');
 
   useEffect(() => {
     if (!selectedImage) {
@@ -25,16 +31,7 @@ const SingleImagePage = ({
         const getSingleImage = async () => {
           try {
             const response = await axios.get(
-              `${baseUrl}/api/v1.0/images/${id}`,
-              {
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${window.localStorage.getItem(
-                    'token'
-                  )}`,
-                },
-              }
-            );
+              `${baseUrl}/api/v1.0/images/${id}`);
             setSelectedImage(response.data);
           } catch (error) {
             console.error('Error fetching single image data:', error);
@@ -50,6 +47,7 @@ const SingleImagePage = ({
         getSingleImage();
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, selectedImage, setSelectedImage]);
 
   return (
@@ -58,6 +56,14 @@ const SingleImagePage = ({
         <>
           <SingleImage selectedImage={selectedImage} />
           <SingleImageInfo selectedImage={selectedImage} />
+          {(token && !addComment) && <Button
+            id='add-comment-btn'
+            aria-label='Add comment'
+            onClick={() => setAddComment((prev => !prev))}
+            className='btn add-btn'
+          >Add a comment</Button>}
+          {addComment && <AddCommentForm comments={selectedImage.comments} setAddComment={setAddComment} setSelectedImage={setSelectedImage} setImageData={setImageData} />}
+          {selectedImage?.comments?.length > 0 && <CommentBox comments={selectedImage.comments} />}
         </>
       )}
     </div>
@@ -69,6 +75,7 @@ SingleImagePage.propTypes = {
   setSelectedImage: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   setAvatar: PropTypes.func.isRequired,
+  setImageData: PropTypes.func.isRequired,
 };
 
 export default SingleImagePage;

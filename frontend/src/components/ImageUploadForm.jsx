@@ -4,8 +4,12 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import './Form.css';
 import baseUrl from '../utils/baseUrl';
+import getImageArrayData from '../utils/getImageData';
+import Button from './Button';
+import resizeImage from '../utils/resizeImage';
 
-const ImageUploadForm = ({ user, userToken }) => {
+// eslint-disable-next-line no-unused-vars
+const ImageUploadForm = ({ user, userToken, setImageData }) => {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
   // eslint-disable-next-line no-unused-vars
@@ -21,22 +25,18 @@ const ImageUploadForm = ({ user, userToken }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const previewFiles = (file) => {
+  const previewFiles = async (file) => {
+    const resizedImageBlob = await resizeImage(file, 1000, 1000);
+
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(resizedImageBlob);
 
     reader.onloadend = () => {
       setPreview(reader.result);
     };
-  };
 
-  useEffect(() => {
-    if (!imageToUpload) {
-      setPreview(null);
-      return;
-    }
-    previewFiles(imageToUpload);
-  }, [imageToUpload]);
+    setImageToUpload(resizedImageBlob);
+  };
 
   const handleUploadImage = async (event) => {
     try {
@@ -51,7 +51,6 @@ const ImageUploadForm = ({ user, userToken }) => {
         formData
       );
 
-      // console.log(response);
       const src = response.data.secure_url;
       setPreview(null);
       setImageToUpload(null);
@@ -62,11 +61,8 @@ const ImageUploadForm = ({ user, userToken }) => {
         userId: window.localStorage.getItem('cookie'),
         username: user,
         userAvatar: window.localStorage.getItem('avatar'),
+        comments: [],
       };
-
-      console.log('imageObject:', imageObject);
-      console.log('userToken:', userToken);
-      console.log('window token:', window.localStorage.getItem('token'));
 
       const dbResponse = await axios.post(
         `${baseUrl}/api/v1.0/images/upload`,
@@ -82,6 +78,7 @@ const ImageUploadForm = ({ user, userToken }) => {
       console.log(dbResponse);
       console.log('Image uploaded successfully!');
       // setUploadSuccess(true);
+      getImageArrayData(setImageData);
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -91,7 +88,7 @@ const ImageUploadForm = ({ user, userToken }) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setImageToUpload(file);
+    previewFiles(file);
     uploadButtonRef.current.focus();
   };
 
@@ -106,7 +103,7 @@ const ImageUploadForm = ({ user, userToken }) => {
             Upload an Image
           </h1>
           <div className='form-field'>
-            <button id='image-upload-select' className='btn custom-file-input'>
+            <Button id='image-upload-select' className='btn custom-file-input'>
               <label htmlFor='file-input'>
                 Choose file
                 <input
@@ -115,15 +112,12 @@ const ImageUploadForm = ({ user, userToken }) => {
                   onChange={handleFileChange}
                 />
               </label>
-            </button>
+            </Button>
           </div>
           {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
-          <button
-            id='image-upload-submit-button'
-            className='btn'
-            ref={uploadButtonRef}>
+          <Button id='image-upload-submit-btn' ref={uploadButtonRef}>
             Upload image
-          </button>
+          </Button>
           {preview && (
             <div id='image-upload-preview' className='preview'>
               <h4 id='image-upload-preview-title'>Image upload preview</h4>
@@ -139,6 +133,7 @@ const ImageUploadForm = ({ user, userToken }) => {
 ImageUploadForm.propTypes = {
   user: PropTypes.string,
   userToken: PropTypes.string,
+  setImageData: PropTypes.func.isRequired,
 };
 
 export default ImageUploadForm;
