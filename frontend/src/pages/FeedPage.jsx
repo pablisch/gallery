@@ -6,7 +6,7 @@ import ServerNotice from '../components/ServerNotice';
 
 const expectedServerSpinupTime = 40;
 
-const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage }) => {
+const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage, setImageData }) => {
   const [counter, setCounter] = useState(expectedServerSpinupTime);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage }) =>
   return (
     <>
       {isServerUp ? (
-        <Feed imageData={imageData} setSelectedImage={setSelectedImage} />
+        <Feed imageData={imageData} setSelectedImage={setSelectedImage} setImageData={setImageData} />
       ) : (
         <ServerNotice counter={counter} target={expectedServerSpinupTime} />
       )}
@@ -59,6 +59,7 @@ FeedPage.propTypes = {
   setIsServerUp: PropTypes.func.isRequired,
   imageData: PropTypes.array,
   setSelectedImage: PropTypes.func.isRequired,
+  setImageData: PropTypes.func.isRequired,
 };
 
 export default FeedPage;

@@ -12,7 +12,7 @@ const columnBreakpoints = {
   600: 1,     
 };
 
-const Feed = ({imageData, setSelectedImage}) => {
+const Feed = ({imageData, setSelectedImage, setImageData}) => {
 
   useEffect(() => {
     document.title = 'Gallery';
@@ -27,7 +27,7 @@ const Feed = ({imageData, setSelectedImage}) => {
         gutter="200px"
       >
         {imageData.length > 0 && [...imageData].reverse().map((image) => (
-            <ImagePanel key={image._id} image={image} setSelectedImage={setSelectedImage} />
+            <ImagePanel key={image._id} image={image} setSelectedImage={setSelectedImage} setImageData={setImageData} />
         ))}
       </Masonry>
     </div>

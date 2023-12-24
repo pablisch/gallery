@@ -34,9 +34,6 @@ exports.deleteImage = (req, res, next) => {
     if (!image) {
       return res.status(404).json({ error: 'Image not found!' });
     }
-    if (image.userId !== req.auth.userId) {
-      return res.status(401).json({ error: 'Unauthorized request!' });
-    }
     Image.deleteOne({ _id: req.params.id })
       .then(() => res.status(200).json({ message: 'Deleted!' }))
       .catch((error) =>

@@ -43,6 +43,7 @@ function App() {
               setIsServerUp={setIsServerUp}
               setSelectedImage={setSelectedImage}
               imageData={imageData}
+              setImageData={setImageData}
             />
           }
         />

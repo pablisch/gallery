@@ -46,13 +46,13 @@
   max-width: 300px;
 }
 
-.cancel-btn {
-  background-color: #e67452;
-} 
+.warning-btn {
+  background-color: #e67452 !important;
+}
 
-.cancel-btn:hover {
-  background-color: #ea572a;
-} 
+.warning-btn:hover {
+  background-color: #ea572a !important;
+}
 
 .left-margin {
   margin-left: 20px;

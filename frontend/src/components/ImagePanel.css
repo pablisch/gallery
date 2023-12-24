@@ -10,7 +10,6 @@
   /* opacity: 1; */
 }
 
-
 .image-card-container {
   width: 100%;
   position: relative;
@@ -26,20 +25,18 @@
   background-color: rgba(255, 255, 255, 0.6);
   padding: 3px 10px 7px;
   box-shadow: 0 0 5px 4px rgba(255, 255, 255, 0.6);
-
 }
 
 .hover-close-container {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 196, 196, 0.6);
   border-radius: 50%;
   box-shadow: 0 0 5px 4px rgba(255, 196, 196, 0.6);
-
 }
 
 .hover-username {
@@ -59,4 +56,19 @@
   font-size: 2.2rem;
   color: #dc0000;
   cursor: grabbing;
+}
+
+.delete-btn-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  top: 30px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.margin-top {
+  margin-top: 10px;
 }

@@ -34,7 +34,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
             userId,
             username,
             userAvatar,
-          }
+          },
         },
         {
           headers: {
@@ -42,14 +42,12 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
             Authorization: `Bearer ${token}`,
           },
         }
-      )
+      );
       console.log(response);
       await getImageData(setImageData);
       await getSingleImageData(image._id, setSelectedImage);
-      setAddComment(prev => !prev);
-
-    }
-    catch (error) {
+      setAddComment((prev) => !prev);
+    } catch (error) {
       console.error('Error in handleAddComment:', error);
     }
   };
@@ -68,13 +66,20 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
             onChange={handleCommentChange}
           />
         </div>
-        <div className="flex-container">
-        <Button id='add-comment-btn' ariaLabel='add-comment-button' onClick={handleAddComment} >
-          Add Comment
-        </Button>
-        <Button id='cancel-add-comment-btn' className='btn cancel-btn left-margin' ariaLabel='cancel-add-comment-button' onClick={() => setAddComment(prev => !prev)} >
-          Cancel
-        </Button>
+        <div className='flex-container'>
+          <Button
+            id='add-comment-btn'
+            ariaLabel='add-comment-button'
+            onClick={handleAddComment}>
+            Add Comment
+          </Button>
+          <Button
+            id='cancel-add-comment-btn'
+            className='btn warning-btn left-margin'
+            ariaLabel='cancel-add-comment-button'
+            onClick={() => setAddComment((prev) => !prev)}>
+            Cancel
+          </Button>
         </div>
       </form>
     </div>
