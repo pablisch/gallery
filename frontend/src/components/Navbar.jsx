@@ -55,7 +55,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
-            src='/images/PicturePadLogo.png'
+            src='/images/grinch.png'
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
@@ -96,7 +96,6 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 <Link
                   id='user-settings-navlink'
                   className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
-                  // className='icon settings-avatar-margin'
                 >
                   <img
                     className='icon avatar-icon'
@@ -109,7 +108,6 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                   <div
                       id='user-settings-navlink'
                       className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
-                      // className='icon avatar-letter-outer-container settings-link settings-avatar-margin'
                     >
                     <Link className='avatar-letter-container'>
                       <h1>{avatar}</h1>
@@ -128,7 +126,6 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               </NavLink>
               <Link
                 id='settings-navlink'
-                  // className='icon settings-avatar-margin'
                   className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
                 >
                 <img

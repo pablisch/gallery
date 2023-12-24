@@ -100,19 +100,8 @@ body {
     padding: 8px 14px;
     text-decoration: none;
   }
-  .settings-icon, .user-settings-icon {
-    padding: 0 8px;
-    font-size: 1.8rem;
-    border: 1px solid var(--nav-bg);
-    background-color: var(--nav-bg);
-    margin-left: 10px;
-  }
-  .user-settings-icon {
-    font-size: 1.5rem;
-    margin-left: -10px;
-  }
   .navbar-logo img {
-    height: 28px;
+    height: 40px;
     margin-right: 15px;
   }
   .navbar-container {
