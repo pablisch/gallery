@@ -54,7 +54,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
 
   const handleCancelDelete = () => {
     setConfirmDelete((prev) => !prev);
-  }
+  };
 
   const onHoverStart = () => {
     setIsHovered(true);
@@ -107,20 +107,20 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
                 onTouchEnd={onHoverEnd}
                 className='delete-btn-container'>
                 <div id='delete-button-container'>
-                <Button
-                  id='delete-image-button'
-                  onClick={handleCancelDelete}
-                  arialabel='confirm-delete'
-                  className='btn'>
-                  Keep image
-                </Button>
-                <Button
-                  id='delete-image-button'
-                  onClick={handleConfirmDelete}
-                  arialabel='confirm-delete'
-                  className='btn warning-btn margin-top'>
-                  Confirm delete
-                </Button>
+                  <Button
+                    id='delete-image-button'
+                    onClick={handleCancelDelete}
+                    arialabel='confirm-delete'
+                    className='btn'>
+                    Keep image
+                  </Button>
+                  <Button
+                    id='delete-image-button'
+                    onClick={handleConfirmDelete}
+                    arialabel='confirm-delete'
+                    className='btn warning-btn margin-top'>
+                    Confirm delete
+                  </Button>
                 </div>
               </div>
             )}
@@ -131,24 +131,27 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
             onTouchStart={onHoverStart}
             onTouchEnd={onHoverEnd}
             onClick={handleSelect}>
-            {image.userAvatar && image.userAvatar?.length > 1 ? (
-              <img
-                className='hover-icon icon avatar-icon'
-                src={image.userAvatar}
-                alt='avatar and settings icon'
-              />
-            ) : (
-              <div
-                id='image-post-avatar-container'
-                className='hover-icon icon avatar-letter-outer-container avatar-letter-container'>
-                <h1>{image.userAvatar}</h1>
-              </div>
-            )}
-            {image.username ? (
-              <p className='hover-username'>{image.username}</p>
-            ) : (
-              <p></p>
-            )}
+            <div className='hover-left'>
+              {image.userAvatar && image.userAvatar?.length > 1 ? (
+                <img
+                  className='hover-icon icon avatar-icon'
+                  src={image.userAvatar}
+                  alt='avatar and settings icon'
+                />
+              ) : (
+                <div
+                  id='image-post-avatar-container'
+                  className='hover-icon icon avatar-letter-outer-container avatar-letter-container'>
+                  <h1>{image.userAvatar}</h1>
+                </div>
+              )}
+              {image.username ? (
+                <p className='hover-username'>{image.username}</p>
+              ) : (
+                <p></p>
+              )}
+            </div>
+            {image.comments.length > 0 && <p className="hover-right">{`${image.comments.length} comment${image.comments.length > 1 ? 's' : ''}`}</p>}
           </div>
         </>
       )}

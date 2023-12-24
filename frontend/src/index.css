@@ -77,7 +77,7 @@ body {
   :root {
     --sides: 30px;
   }
-  #nav-title-text {
+  .word1 {
     display: none;
   }
 }
@@ -86,9 +86,13 @@ body {
   :root {
     --sides: 15px;
   }
+  #nav-title-text {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
+  
   .nav-link {
     background-color: #fff;
     font-size: 0.9rem;
