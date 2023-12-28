@@ -36,15 +36,19 @@ exports.signup = (req, res, next) => {
 }; 
 
 exports.login = (req, res, next) => { 
+  console.log('login')
   const { username, password } = req.body;
+  console.log(username, password)
   User.findOne({ username }) 
     .then(user => { 
       if (!user) { 
         return res.status(401).json({ error: 'User not found!' }); 
       } 
+      console.log('user found', user)
       bcrypt.compare(password, user.password) 
         .then(valid => { 
-          if (!valid) { 
+          if (!valid) {
+            console.log(password, user.password)
             return res.status(401).json({ error: 'Incorrect password!' }); 
           } 
           const token = jwt.sign( 
