@@ -6,13 +6,13 @@ require('dotenv').config();
 
 const dbPassword = process.env.MONGODB_PW;
 const dbUser = process.env.MONGODB_USER;
-const dbName = process.env.MONGODB_DB || 'xmas-gallery_DEV';
+const dbName = process.env.MONGODB_DB || 'gallery_DEV';
 
 // Original site 'gallery' connection string:
-// const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`;
+const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongodb.net/${dbName}`;
 
 // New site 'xmas-gallery' connection string:
-const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.dubfzws.mongodb.net/${dbName}`;
+// const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.dubfzws.mongodb.net/${dbName}`;
 
 const imageRoutes = require('./routes/image');
 const userRoutes = require('./routes/user');
