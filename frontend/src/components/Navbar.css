@@ -31,6 +31,7 @@
 
 #nav-title-text {
   font-family: 'Cabin Sketch', sans-serif;
+  font-family: 'Pacifico', sans-serif;
   font-size: 3rem;
   /* text-transform: uppercase; */
   font-weight: 700;
@@ -52,7 +53,7 @@
 }
 
 .letter1 {
-  color: #3bae02;
+  color: #0d39da;
 }
 .letter2 {
   color: #cd1111;
@@ -61,22 +62,16 @@
   color: #1adc1a;
 }
 .letter4 {
-  color: #b816ca;
+  color: #ffbb00;
 }
 .letter5 {
-  color: #b50962;
+  color: #8e158e;
 }
 .letter6 {
-  color: #e3e700;
-}
-.letter7 {
-  color: #e9b816;
-}
-.letter8 {
   color: #5d2ca1;
 }
 
-/* navbar logo spin */
+/* NAVBAR LOGO SPINS */
 .rotateCw {
   transform: rotate(1080deg);
   transition: transform 0.6s ease-in-out;
@@ -87,6 +82,7 @@
   transition: transform 1.2s ease-in-out;
 }
 
+/* COLOURS FOR LETTER AVATARS */
 .blue {
   background-color: #1180d4;
   color: #ffdf3e;

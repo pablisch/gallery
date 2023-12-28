@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { formatDateOutput } from '../utils/formatDateOutput';
+import getLetterAvatarColourClass from '../utils/letterAvatarColours';
 
 const SingleImageInfo = ({ selectedImage }) => {
+  let avatarLetterClass = '';
   let avatar = null;
   console.log(selectedImage);
   
@@ -9,12 +11,16 @@ const SingleImageInfo = ({ selectedImage }) => {
   
   console.log(formattedDate); 
 
+    if (selectedImage.userAvatar?.length === 1) {
+      avatarLetterClass = getLetterAvatarColourClass(selectedImage.userAvatar);
+    }
+  
   avatar = selectedImage.userAvatar?.length > 1 ?
-    <img className='icon avatar-icon' src={selectedImage.userAvatar} alt="avatar and settings icon" /> :
-    <div id="image-post-avatar-container" className="icon avatar-letter-outer-container avatar-letter-container">
-        <h1 >{selectedImage.userAvatar}</h1>
+  <img className='icon avatar-icon' src={selectedImage.userAvatar} alt="avatar and settings icon" /> :
+  <div id="image-post-avatar-container" className={`icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
+        <h1 className={`${avatarLetterClass}`} >{selectedImage.userAvatar}</h1>
     </div>;
-
+  
   return (
     <div id='selected-image-info-container'>
       {selectedImage.userAvatar && avatar}

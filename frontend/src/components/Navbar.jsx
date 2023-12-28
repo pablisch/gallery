@@ -7,11 +7,11 @@ import './Navbar.css';
 import NavLink from './NavLink';
 import getLetterAvatarColourClass from '../utils/letterAvatarColours';
 
-let avatarLetterClass = '';
 
 const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
   const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
+  let avatarLetterClass = '';
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +54,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
     navigate('/upload');
   };
 
-  const randomNumber= () =>  Math.floor((Math.random() * 8) + 1);
+  const randomNumber= () =>  Math.floor((Math.random() * 6) + 1);
 
   return (
     <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={handleMouseEnter} onTouchEnd={handleMouseLeave} >
@@ -62,25 +62,21 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
-            src='/images/grinch.png'
+            src='/images/picturePadLogo.png'
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
           <h1 id='nav-title-text' className='navbar-logo-text'>
-            <span className={`letter${randomNumber()} word1`}>M</span>
-            <span className={`letter${randomNumber()} word1`}>e</span>
+            <span className={`letter${randomNumber()} word1`}>P</span>
+            <span className={`letter${randomNumber()} word1`}>i</span>
+            <span className={`letter${randomNumber()} word1`}>c</span>
+            <span className={`letter${randomNumber()} word1`}>t</span>
+            <span className={`letter${randomNumber()} word1`}>u</span>
             <span className={`letter${randomNumber()} word1`}>r</span>
-            <span className={`letter${randomNumber()} word1`}>r</span>
-            <span className={`letter${randomNumber()} word1`}>y </span>
-            <span className={`letter${randomNumber()} word2`}>C</span>
-            <span className={`letter${randomNumber()} word2`}>h</span>
-            <span className={`letter${randomNumber()} word2`}>r</span>
-            <span className={`letter${randomNumber()} word2`}>i</span>
-            <span className={`letter${randomNumber()} word2`}>s</span>
-            <span className={`letter${randomNumber()} word2`}>t</span>
-            <span className={`letter${randomNumber()} word2`}>m</span>
+            <span className={`letter${randomNumber()} word1`}>e </span>
+            <span className={`letter${randomNumber()} word2`}>P</span>
             <span className={`letter${randomNumber()} word2`}>a</span>
-            <span className={`letter${randomNumber()} word2`}>s</span>
+            <span className={`letter${randomNumber()} word2`}>d</span>
           </h1>
         </Link>
         <div className='navbar-section navbar-links'>
