@@ -12,6 +12,7 @@ import resizeImage from '../utils/resizeImage';
 const ImageUploadForm = ({ user, userToken, setImageData }) => {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [fileName, setFileName] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
@@ -26,6 +27,8 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
   }, []);
 
   const previewFiles = async (file) => {
+    setFileName(file.name);
+    console.log('file', file)
     const resizedImageBlob = await resizeImage(file, 1000, 1000);
 
     const reader = new FileReader();
@@ -102,7 +105,6 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
           <h1 id='image-upload-title' className='form-title'>
             Upload an Image
           </h1>
-          <div className='form-field'>
             <Button id='image-upload-select' className='btn custom-file-input'>
               <label htmlFor='file-input'>
                 Choose file
@@ -113,14 +115,12 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
                 />
               </label>
             </Button>
-          </div>
-          {imageToUpload && <div id='file-name'>{imageToUpload.name}</div>}
           <Button id='image-upload-submit-btn' ref={uploadButtonRef}>
             Upload image
           </Button>
           {preview && (
             <div id='image-upload-preview' className='preview'>
-              <h4 id='image-upload-preview-title'>Image upload preview</h4>
+              <p id='image-upload-preview-title'>{`${fileName} preview`}</p>
               <img id='preview-image' src={preview} alt='Preview image' />
             </div>
           )}

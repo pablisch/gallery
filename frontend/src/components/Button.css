@@ -17,8 +17,9 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  padding-top: 10px;
-  padding-bottom: 4px;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  margin-bottom: 15px;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   background-color: #fff;
@@ -35,6 +36,10 @@
   font-size: 20px;
   cursor: pointer;
   opacity: 0;
+}
+
+.custom-file-input label {
+  margin-bottom: 0;
 }
 
 #file-name {
