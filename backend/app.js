@@ -17,6 +17,7 @@ const mongoDbUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.asp5yzo.mongo
 const imageRoutes = require('./routes/image');
 const userRoutes = require('./routes/user');
 const healthRoutes = require('./routes/health');
+const testDataRoutes = require('./routes/testData');
 
 const app = express();
 
@@ -49,13 +50,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/v1.0/images', imageRoutes);
 app.use('/api/v1.0/user', userRoutes);
 app.use('/api/v1.0/health', healthRoutes);
-// app.get('*', (req, res) => {
-//   const indexPath =
-//     process.env.NODE_ENV === 'deploy'
-//       ? path.resolve(__dirname, '../frontend/dist/index.html')
-//       : path.resolve(__dirname, '../frontend/public/index.html');
-
-//   res.sendFile(indexPath);
-// });
+app.use('/api/v1.0/testData', testDataRoutes);
 
 module.exports = app;

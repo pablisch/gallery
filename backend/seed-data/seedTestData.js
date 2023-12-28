@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const Image = require('../models/image');
 const User = require('../models/user');
+const imageSeedData = require('./image-seed-data-for-tests');
 const userSeedData = require('./user-seed-data');
+require('dotenv').config();
 const bcrypt = require('bcrypt');
-require('dotenv').config()
 
 const dbPassword = process.env.MONGODB_PW;
 const dbUser = process.env.MONGODB_USER;
@@ -25,17 +27,24 @@ const hashPasswords = async (users) => {
   return users;
 };
 
-mongoose.connect(mongoDbUrl)
-  .then(() => { 
-    console.log(`🥳 Successfully connected to MongoDB Atlas ${dbName} database! 🌎`); 
+mongoose
+  .connect(mongoDbUrl)
+  .then(() => {
+    console.log(
+      `🥳 Successfully connected to MongoDB Atlas ${dbName} database! 🌎`
+    );
   })
-  .catch((error) => { 
-    console.log(`😖 Unable to connect to MongoDB Atlas ${dbName} database! ❌`); 
-    console.error(error); 
+  .catch((error) => {
+    console.log(`😖 Unable to connect to MongoDB Atlas ${dbName} database! ❌`);
+    console.error(error);
   });
 
 const clearUsers = async () => {
   await User.deleteMany({});
+};
+
+const clearImages = async () => {
+  await Image.deleteMany({});
 };
 
 const insertUsers = async () => {
@@ -43,18 +52,22 @@ const insertUsers = async () => {
   await User.insertMany(hashedUsers);
 };
 
-// for TEST db => npm run seed:users:test
-// for dev/production db => npm run seed:users
-const seedUsers = async () => {
+const insertImages = async () => {
+  await Image.insertMany(imageSeedData);
+};
+
+const seedUsersAndImages = async () => {
   try {
     await clearUsers();
+    await clearImages();
     await insertUsers();
-    console.log('User seeding completed successfully.');
+    await insertImages();
+    console.log('User & Image seeding completed successfully.');
   } catch (error) {
-    console.error('User seeding failed:', error);
+    console.error('User & image seeding failed:', error);
   } finally {
     process.exit(0);
   }
 };
 
-seedUsers();
+seedUsersAndImages();

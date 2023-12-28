@@ -6,7 +6,7 @@ const userSeedData = [
     email: 'pablo@example.com',
     password: 'Password123',
     avatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086665/b74lrixnrvcazn4tbllv.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
   },
   {
     _id: '658da359db664e4ee686cf0b',
