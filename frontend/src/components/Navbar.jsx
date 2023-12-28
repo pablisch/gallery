@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
 import './Navbar.css';
 import NavLink from './NavLink';
+import getLetterAvatarColourClass from '../utils/letterAvatarColours';
+
 
 const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
   const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
+  let avatarLetterClass = '';
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +24,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  if (avatar?.length === 1) {
+    avatarLetterClass = getLetterAvatarColourClass(avatar);
+  }
 
   const handleMouseEnter = () => {
     setIsLogoRotated(true);
@@ -47,27 +54,29 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
     navigate('/upload');
   };
 
+  const randomNumber= () =>  Math.floor((Math.random() * 6) + 1);
+
   return (
     <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={handleMouseEnter} onTouchEnd={handleMouseLeave} >
       <div className='navbar-container'>
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
-            src='/images/PicturePadLogo.png'
+            src='/images/picturePadLogo.png'
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
           <h1 id='nav-title-text' className='navbar-logo-text'>
-            <span className='letter1'>P</span>
-            <span className='letter7'>i</span>
-            <span className='letter3'>c</span>
-            <span className='letter4'>t</span>
-            <span className='letter1'>u</span>
-            <span className='letter5'>r</span>
-            <span className='letter6'>e </span>
-            <span className='letter8'>P</span>
-            <span className='letter7'>a</span>
-            <span className='letter5'>d</span>
+            <span className={`letter${randomNumber()} word1`}>P</span>
+            <span className={`letter${randomNumber()} word1`}>i</span>
+            <span className={`letter${randomNumber()} word1`}>c</span>
+            <span className={`letter${randomNumber()} word1`}>t</span>
+            <span className={`letter${randomNumber()} word1`}>u</span>
+            <span className={`letter${randomNumber()} word1`}>r</span>
+            <span className={`letter${randomNumber()} word1`}>e </span>
+            <span className={`letter${randomNumber()} word2`}>P</span>
+            <span className={`letter${randomNumber()} word2`}>a</span>
+            <span className={`letter${randomNumber()} word2`}>d</span>
           </h1>
         </Link>
         <div className='navbar-section navbar-links'>
@@ -90,7 +99,6 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 <Link
                   id='user-settings-navlink'
                   className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
-                  // className='icon settings-avatar-margin'
                 >
                   <img
                     className='icon avatar-icon'
@@ -102,11 +110,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 <>
                   <div
                       id='user-settings-navlink'
-                      className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
-                      // className='icon avatar-letter-outer-container settings-link settings-avatar-margin'
+                      className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${avatarLetterClass} ${isLogoRotated ? 'rotateCcw' : ''}`}
                     >
                     <Link className='avatar-letter-container'>
-                      <h1>{avatar}</h1>
+                      <h1 className={avatarLetterClass}>{avatar}</h1>
                     </Link>
                   </div>
                 </>
@@ -119,10 +126,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               </NavLink>
               <NavLink id='logout-navlink' route='/signup'>
                 Sign up
-              </NavLink>
+                </NavLink>
+                
               <Link
                 id='settings-navlink'
-                  // className='icon settings-avatar-margin'
                   className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
                 >
                 <img
@@ -130,7 +137,8 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                   src='/images/gearIcon.png'
                   alt='settings icon'
                 />
-              </Link>
+                </Link>
+                
             </>
           )}
         </div>
