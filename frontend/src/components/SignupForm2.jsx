@@ -185,7 +185,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
               />
             </div>
           )}
-          <Button id='sign-up-submit-button' >Sign Up</Button>
+          <Button id='signup-submit-button' >Sign Up</Button>
         </form>
       </main>
     </>

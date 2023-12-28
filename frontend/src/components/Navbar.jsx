@@ -116,23 +116,21 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 </Link>
               ) : (
                 <>
-                  <div
+                  <Link
                       id='user-settings-navlink'
-                      className={`icon avatar-letter-outer-container settings-link settings-avatar-margin ${avatarLetterClass} ${isLogoRotated ? 'rotateCcw' : ''}`}
+                      className={`icon avatar-letter-container settings-link settings-avatar-margin ${avatarLetterClass} ${isLogoRotated ? 'rotateCcw' : ''}`}
                     >
-                    <Link className='avatar-letter-container'>
                       <h1 className={avatarLetterClass}>{avatar}</h1>
-                    </Link>
-                  </div>
+                  </Link>
                 </>
               )}
             </>
           ) : (
             <>
-              <NavLink id='logout-navlink' route='/login'>
+              <NavLink id='login-navlink' route='/login'>
                 Log in
               </NavLink>
-              <NavLink id='logout-navlink' route='/signup'>
+              <NavLink id='signup-navlink' route='/signup'>
                 Sign up
                 </NavLink>
                 

@@ -52,8 +52,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #1180d4; */
-  /* color: #ffdf3e; */
   border-radius: 50%;
   border: 0.5px solid #777;
 }
@@ -62,12 +60,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  border: 0.5px solid #777;
 }
 
 .avatar-letter-container h1 {
   font-size: 1.8rem;
   font-weight: 400;
-  /* color: #ffdf3e; */
 }
 
 .letter-s h1 {
