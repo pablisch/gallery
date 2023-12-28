@@ -1,4 +1,4 @@
-const imageSeedData = [
+const userSeedData = [
   {
     _id: '658da443ff44f399dc310cf6',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781443/moadwvgvunbnhtappmm8.jpg',
@@ -8,6 +8,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:23.578Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:23.578Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da44cff44f399dc310cf9',
@@ -16,8 +23,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:32.027Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:32.027Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da450ff44f399dc310cfc',
@@ -26,8 +40,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:36.975Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:36.975Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da455ff44f399dc310cff',
@@ -38,6 +59,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086797/ortst5101lh11kish1b7.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:41.629Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:41.629Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da45cff44f399dc310d02',
@@ -46,8 +74,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:48.188Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:48.188Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da461ff44f399dc310d05',
@@ -58,6 +93,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:53.308Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:53.308Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da465ff44f399dc310d08',
@@ -66,8 +108,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:37:57.931Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:37:57.931Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da46eff44f399dc310d0b',
@@ -76,8 +125,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:06.214Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:06.214Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da473ff44f399dc310d0e',
@@ -88,6 +144,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:11.712Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:11.712Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da47aff44f399dc310d11',
@@ -98,6 +161,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086797/ortst5101lh11kish1b7.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:18.521Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:18.521Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da47fff44f399dc310d14',
@@ -106,8 +176,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:23.677Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:23.677Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da485ff44f399dc310d17',
@@ -118,6 +195,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:29.607Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:29.607Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da48aff44f399dc310d1a',
@@ -126,8 +210,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:34.813Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:34.813Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da490ff44f399dc310d1d',
@@ -138,6 +229,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:40.037Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:40.037Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da495ff44f399dc310d20',
@@ -146,8 +244,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:45.467Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:45.467Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da49cff44f399dc310d23',
@@ -158,6 +263,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:52.120Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:52.120Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4a2ff44f399dc310d26',
@@ -166,8 +278,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-    'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:38:58.058Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:38:58.058Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4a7ff44f399dc310d29',
@@ -176,8 +295,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:39:03.811Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:39:03.811Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4aeff44f399dc310d2c',
@@ -188,6 +314,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086797/ortst5101lh11kish1b7.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:39:10.247Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:39:10.247Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4b7ff44f399dc310d2f',
@@ -198,6 +331,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:39:19.054Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:39:19.054Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4e3ff44f399dc310d32',
@@ -208,6 +348,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:03.497Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:03.497Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4e9ff44f399dc310d35',
@@ -216,8 +363,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:09.534Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:09.534Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4efff44f399dc310d38',
@@ -226,8 +380,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:15.411Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:15.411Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4f6ff44f399dc310d3b',
@@ -236,8 +397,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:22.453Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:22.453Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da4fbff44f399dc310d3e',
@@ -248,6 +416,13 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086797/ortst5101lh11kish1b7.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:27.661Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:27.661Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da500ff44f399dc310d41',
@@ -256,8 +431,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:32.295Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:32.295Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da505ff44f399dc310d44',
@@ -266,8 +448,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:37.799Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:37.799Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da50aff44f399dc310d47',
@@ -276,8 +465,15 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
+    createdAt: {
+      $date: '2023-12-28T16:40:42.914Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:42.914Z',
+    },
+    __v: 0,
   },
   {
     _id: '658da511ff44f399dc310d4a',
@@ -288,7 +484,12 @@ const imageSeedData = [
     userAvatar:
       'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
-  }
+    createdAt: {
+      $date: '2023-12-28T16:40:49.572Z',
+    },
+    updatedAt: {
+      $date: '2023-12-28T16:40:49.572Z',
+    },
+    __v: 0,
+  },
 ];
-
-module.exports = imageSeedData;

@@ -1,4 +1,4 @@
-const imageSeedData = [
+const userSeedData = [
   {
     _id: '658da443ff44f399dc310cf6',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781443/moadwvgvunbnhtappmm8.jpg',
@@ -16,7 +16,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -26,7 +26,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -46,7 +46,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -66,7 +66,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -76,7 +76,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -106,7 +106,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -126,7 +126,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -146,7 +146,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -166,7 +166,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-    'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -176,7 +176,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -216,7 +216,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -226,7 +226,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -236,7 +236,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -256,7 +256,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar:
-      'M',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -266,7 +266,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086717/zida1v1leuaebidfjqgu.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -276,7 +276,7 @@ const imageSeedData = [
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
-      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703086628/idpdkuypyzzcysszrsld.png',
+      'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703780223/recjcbkqafbsin4fhr3r.png',
     comments: [],
   },
   {
@@ -290,5 +290,3 @@ const imageSeedData = [
     comments: [],
   }
 ];
-
-module.exports = imageSeedData;
