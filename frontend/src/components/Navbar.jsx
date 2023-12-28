@@ -12,6 +12,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
   const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
   let avatarLetterClass = '';
+  let prevNumber = 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +55,14 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
     navigate('/upload');
   };
 
-  const randomNumber= () =>  Math.floor((Math.random() * 6) + 1);
+  const randomNumber = () => {
+    let num = Math.floor((Math.random() * 6) + 1);
+    while (num === prevNumber) {
+      num = Math.floor((Math.random() * 6) + 1);
+    }
+    prevNumber = num;
+    return num;
+  }
 
   return (
     <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={handleMouseEnter} onTouchEnd={handleMouseLeave} >
