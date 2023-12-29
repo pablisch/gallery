@@ -34,6 +34,7 @@ function App() {
         setUser={setUser}
         avatar={avatar}
       />
+      <div id='fixed-navbar-offset'></div>
       <Routes>
         <Route
           path='/'
