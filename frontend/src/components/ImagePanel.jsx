@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { IoCloseSharp } from 'react-icons/io5';
+import { FaRegHeart, FaHeart, FaRegCommentDots } from 'react-icons/fa';
 import axios from 'axios';
 import baseUrl from '../utils/baseUrl';
 import getImageData from '../utils/getImageData';
@@ -15,7 +16,10 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
 
   const userId = window.localStorage.getItem('cookie');
   const username = window.localStorage.getItem('user');
-  const displayUsername = image?.username?.length > 12 ? `${image.username.slice(0, 9)}...` : image.username;
+  const displayUsername =
+    image?.username?.length > 12
+      ? `${image.username.slice(0, 9)}...`
+      : image.username;
   let avatarLetterClass = '';
 
   const navigate = useNavigate();
@@ -158,7 +162,16 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
                 <p></p>
               )}
             </div>
-            {image.comments.length > 0 && <p className="hover-right">{`${image.comments.length} comment${image.comments.length > 1 ? 's' : ''}`}</p>}
+            <div className='hover-right'>
+              <p>{image.comments.length}</p>
+              <FaRegCommentDots className='hover-icons comments-icon' />
+              <p>{image.likes.length}</p>
+              {image.likes.length > 0 ? <FaHeart className='hover-icons likes-heart-icon' /> : <FaRegHeart className='hover-icons likes-heart-icon' />}
+            </div>
+            {/* {image.comments.length > 0 && <p className="hover-right">{`${image.comments.length} comment${image.comments.length > 1 ? 's' : ''}`}</p>} */}
+
+            {/* <FaRegHeart className='hover-icons likes-heart-icon' />
+            <FaHeart className='hover-icons likes-heart-icon' /> */}
           </div>
         </>
       )}

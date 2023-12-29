@@ -71,5 +71,16 @@ input {
   border: 1px solid #ccc;
 }
 
+#add-comment-textarea {
+  font-family: inherit;
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
 
 

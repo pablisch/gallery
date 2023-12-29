@@ -1,7 +1,7 @@
 // import React from 'react'
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Button from './Button';
 import baseUrl from '../utils/baseUrl';
 import generateId from '../utils/generateId';
@@ -10,12 +10,17 @@ import getImageData from '../utils/getImageData';
 
 const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
   const [comment, setComment] = useState('');
+  const textareaRef = useRef(null);
 
   const token = window.localStorage.getItem('token');
   const userId = window.localStorage.getItem('cookie');
   const username = window.localStorage.getItem('user');
   const userAvatar = window.localStorage.getItem('avatar');
   const image = JSON.parse(window.localStorage.getItem('image'));
+
+  useEffect(() => {
+    textareaRef.current.focus();
+  }, []);
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
@@ -62,7 +67,8 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
         <div className='add-comment-field'>
           <label htmlFor='comment'>What would you like to say?</label>
           <textarea
-            id='comment'
+            ref={textareaRef}
+            id='add-comment-textarea'
             placeholder='Add comment'
             rows='4'
             cols='50'

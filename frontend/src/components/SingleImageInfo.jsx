@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { formatDateOutput } from '../utils/formatDateOutput';
 import getLetterAvatarColourClass from '../utils/letterAvatarColours';
+import { FaRegCommentDots, FaRegHeart, FaHeart } from "react-icons/fa";
 
 const SingleImageInfo = ({ selectedImage }) => {
   let avatarLetterClass = '';

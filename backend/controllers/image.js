@@ -63,6 +63,25 @@ exports.addComment = (req, res, next) => {
   });
 };
 
+exports.likeImage = (req, res, next) => {
+  const id = req.params.id;
+  const { likes } = req.body;
+  Image.findOne({ _id: id }).then((image) => {
+    if (!image) {
+      return res.status(404).json({ error: 'Image not found!' });
+    }
+    image.likes = likes;
+    image
+      .save()
+      .then(() => res.status(201).json({ message: 'Liked/unliked' }))
+      .catch((error) =>
+        res.status(400).json({
+          error: error,
+        })
+      );
+  });
+};
+
 // exports.modifyImage = (req, res, next) => {
 //   let image = new Image({ _id: req.params._id });
 //   if (req.file) {
