@@ -21,7 +21,7 @@ const testDataRoutes = require('./routes/testData');
 
 const app = express();
 
-const corsOrigin = process.env.CORS_ORIGIN || 'https://xmas-gallery-g2fq.onrender.com';
+const corsOrigin = process.env.CORS_ORIGIN || 'https://gallery-backend-n3lo.onrender.com';
 console.log('🪧  >>> CORS:', corsOrigin);
 
 const corsOptions = {
