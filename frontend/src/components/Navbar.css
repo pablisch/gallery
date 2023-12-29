@@ -81,6 +81,7 @@
 
 /* NAVBAR LOGO SPINS */
 .rotateCw {
+  transform-origin: 50% 60.5%;
   transform: rotate(360deg);
   transition: transform 0.8s ease-in-out;
 }

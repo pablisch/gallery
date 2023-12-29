@@ -70,7 +70,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
-            src='/images/camera-icon.png'
+            src='/images/camera-icon-colour.png'
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
