@@ -8,7 +8,7 @@ const CommentBox = ({comments}) => {
     <div id='comment-box' >
       {/* <h3 id='comments-title'>Comments</h3> */}
       <ul>
-        {comments.map((comment) => {
+        {[...comments].reverse().map((comment) => {
           return (
             <li key={comment.id} className='comment-list-item'>
               <Comment comment={comment} />
