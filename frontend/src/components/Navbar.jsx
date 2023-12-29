@@ -70,12 +70,12 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
       <Link to='/' className={'navbar-section navbar-logo'}>
           <img
             id='nav-logo'
-            src='/images/picturePadLogo.png'
+            src='/images/camera-icon.png'
             alt='logo'
             className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
           />
           <h1 id='nav-title-text' className='navbar-logo-text'>
-            <span className={`letter${randomNumber()} word1`}>P</span>
+            {/* <span className={`letter${randomNumber()} word1`}>P</span>
             <span className={`letter${randomNumber()} word1`}>i</span>
             <span className={`letter${randomNumber()} word1`}>c</span>
             <span className={`letter${randomNumber()} word1`}>t</span>
@@ -84,7 +84,8 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
             <span className={`letter${randomNumber()} word1`}>e </span>
             <span className={`letter${randomNumber()} word2`}>P</span>
             <span className={`letter${randomNumber()} word2`}>a</span>
-            <span className={`letter${randomNumber()} word2`}>d</span>
+            <span className={`letter${randomNumber()} word2`}>d</span> */}
+            Gallery
           </h1>
         </Link>
         <div className='navbar-section navbar-links'>

@@ -22,7 +22,7 @@
 
 .navbar-logo img {
   height: 50px;
-  margin-right: 15px;
+  margin-right: 25px;
 }
 
 .settings-avatar-margin {
@@ -30,11 +30,15 @@
 }
 
 #nav-title-text {
-  font-family: 'Cabin Sketch', sans-serif;
-  font-family: 'Pacifico', sans-serif;
+  /* font-family: 'Cabin Sketch', sans-serif; */
+  /* font-family: 'Pacifico', sans-serif; */
+  /* font-family: 'Amaranth Family', sans-serif; */
+  /* font-family: 'Mansalva', sans-serif; */
+  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Concert One', sans-serif; */
   font-size: 3rem;
   /* text-transform: uppercase; */
-  font-weight: 700;
+  font-weight: 400;
   color: #444;
 }
 
