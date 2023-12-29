@@ -29,13 +29,10 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   }
 
   const handleSelect = () => {
-    console.log(`You clicked on ${image._id}`);
-    console.log(`You clicked on ${JSON.stringify(image)}`);
     window.localStorage.setItem('image', JSON.stringify(image));
     setSelectedImage(image);
     navigate(`/${image._id}`);
-    const singleImage = JSON.parse(window.localStorage.getItem('image'));
-    console.log('single image stored in local:', singleImage);
+    // const singleImage = JSON.parse(window.localStorage.getItem('image'));
   };
 
   const handleDeleteWarning = () => {
@@ -43,7 +40,6 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   };
 
   const handleConfirmDelete = async () => {
-    console.log(`You clicked on delete for ${image._id}`);
     const token = window.localStorage.getItem('token');
     try {
       const response = await axios.delete(
@@ -55,7 +51,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
           },
         }
       );
-      console.log(response);
+      console.log('Response from delete operation', response);
       await getImageData(setImageData);
       navigate(`/`);
     } catch (error) {
@@ -168,10 +164,6 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
               <p>{image.likes.length}</p>
               {image.likes.length > 0 ? <FaHeart className='hover-icons likes-heart-icon' /> : <FaRegHeart className='hover-icons likes-heart-icon' />}
             </div>
-            {/* {image.comments.length > 0 && <p className="hover-right">{`${image.comments.length} comment${image.comments.length > 1 ? 's' : ''}`}</p>} */}
-
-            {/* <FaRegHeart className='hover-icons likes-heart-icon' />
-            <FaHeart className='hover-icons likes-heart-icon' /> */}
           </div>
         </>
       )}

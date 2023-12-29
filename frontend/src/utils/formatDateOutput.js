@@ -16,7 +16,7 @@ const formatTimeSinceUpload = (dateString) => {
 
   const minutes = elapsedMinutes % 60;
   const hours = Math.floor(elapsedMinutes / 60);
-  // console.log(minutes, hours)
+
   if (elapsedMinutes < 1) {
     return 'just now';
   } else if (hours === 0) {
@@ -45,6 +45,3 @@ export const formatDateOutput = (dateString) => {
     return formatDateString(dateString);
   }
 }
-
-const sampleDateString = '2023-12-21T16:36:40.362Z';
-console.log(formatDateOutput(sampleDateString));

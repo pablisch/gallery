@@ -87,3 +87,16 @@
   color: #9a0606;
   border: 1px solid #9a0606;
 }
+
+.unlike-btn {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+.unlike-btn:hover {
+  background-color: #444;
+  color: #ffe0e0;
+  border: 1px solid #9a0606;
+}
+

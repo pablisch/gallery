@@ -6,11 +6,8 @@ import { FaRegCommentDots, FaRegHeart, FaHeart } from 'react-icons/fa';
 const SingleImageInfo = ({ selectedImage }) => {
   let avatarLetterClass = '';
   let avatar = null;
-  console.log(selectedImage);
 
   const formattedDate = formatDateOutput(selectedImage.createdAt);
-
-  console.log(formattedDate);
 
   if (selectedImage.userAvatar?.length === 1) {
     avatarLetterClass = getLetterAvatarColourClass(selectedImage.userAvatar);

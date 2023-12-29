@@ -78,13 +78,12 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
         }
       );
 
-      console.log(dbResponse);
-      console.log('Image uploaded successfully!');
+      console.log('Response from upload operation', dbResponse);
       // setUploadSuccess(true);
       getImageArrayData(setImageData);
       // navigate('/');
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setImageToUpload(null);
     }
   };

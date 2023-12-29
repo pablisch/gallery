@@ -29,7 +29,6 @@ const SingleImagePage = ({
   const handleLike = async () => {
     const currentImage = selectedImage;
     likedByUser = !likedByUser;
-    console.log('likedByUser:', likedByUser);
     if (likedByUser) {
       currentImage.likes.push(username);
     } else {
@@ -50,7 +49,7 @@ const SingleImagePage = ({
           },
         }
       );
-      console.log(response);
+      console.log('Response from like/unlike operation', response);
       await getImageData(setImageData);
       setSelectedImage(currentImage);
     } catch (error) {
@@ -104,7 +103,7 @@ const SingleImagePage = ({
 
             aria-label='like or unlike'
             onClick={handleLike}
-              className='btn like-btn' >
+              className={`btn like-btn ${likedByUser ? 'unlike-btn' : ''}`} >
               <div id="like-btn-contents">
                 {likedByUser ?
                   <><FaHeart className='hover-icons likes-heart-icon'></FaHeart><p className='like-btn-text'>Unlike</p></> : <><FaRegHeart className='hover-icons likes-heart-icon'></FaRegHeart><p className='like-btn-text'>Like</p></>}

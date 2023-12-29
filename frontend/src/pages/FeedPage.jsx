@@ -14,7 +14,7 @@ const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage, setI
       try {
         const response = await fetch(`${baseUrl}/api/v1.0/health/server`);
         if (response.ok) {
-          console.log('server is up');
+          // console.log('server is up');
           setIsServerUp(true);
         } else {
           setIsServerUp(false);
@@ -31,12 +31,12 @@ const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage, setI
     const intervalId = setInterval(() => {
       checkServerStatus(); // check server status every x seconds
       setCounter((prevCounter) => prevCounter - 1);
-      console.log(isServerUp, 'still checking');
+      // console.log(isServerUp, 'still checking');
     }, 1000);
 
     if (isServerUp) {
       clearInterval(intervalId);
-      console.log('stop checking');
+      // console.log('stop checking');
     }
 
     return () => clearInterval(intervalId); // Clear interval when component unmounts
