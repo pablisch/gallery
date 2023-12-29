@@ -24,7 +24,9 @@ const SingleImageInfo = ({ selectedImage }) => {
       <div
         id='image-post-avatar-container'
         className={`icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
-        <h1 className={`icon-letter ${avatarLetterClass}`}>{selectedImage.userAvatar}</h1>
+        <h1 className={`icon-letter ${avatarLetterClass}`}>
+          {selectedImage.userAvatar}
+        </h1>
       </div>
     );
 
@@ -37,14 +39,18 @@ const SingleImageInfo = ({ selectedImage }) => {
         </p>
       </div>
       <div className='hover-right' id='selected-image-comments-likes'>
-        <p>{selectedImage.comments.length}</p>
-        <FaRegCommentDots className='hover-icons comments-icon' />
-        <p>{selectedImage.likes.length}</p>
-        {selectedImage.likes.length > 0 ? (
-          <FaHeart className='hover-icons likes-heart-icon' />
-        ) : (
-          <FaRegHeart className='hover-icons likes-heart-icon' />
-        )}
+        <div className='comments-info-div flex-container'>
+          <p>{selectedImage.comments.length}</p>
+          <FaRegCommentDots className='hover-icons comments-icon' />
+        </div>
+        <div className='likes-info-div flex-container'>
+          <p>{selectedImage.likes.length}</p>
+          {selectedImage.likes.length > 0 ? (
+            <FaHeart className='hover-icons likes-heart-icon' />
+          ) : (
+            <FaRegHeart className='hover-icons likes-heart-icon' />
+          )}
+        </div>
       </div>
     </div>
   );

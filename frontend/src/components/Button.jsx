@@ -8,11 +8,12 @@ const Button = React.forwardRef(
   ariaLabel = 'button',
   className = 'btn',
   onClick,
-  id = '',
+    id = '',
+  disabled = false,
 }, ref) {
 
   return (
-    <button id={id} aria-label={ariaLabel} className={className} onClick={onClick} ref={ref} >
+    <button id={id} aria-label={ariaLabel} className={className} onClick={onClick} disabled={disabled} ref={ref} >
       <span>{children}</span>
     </button>
   );
@@ -25,6 +26,7 @@ Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   id: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 Button.displayName = 'Button';

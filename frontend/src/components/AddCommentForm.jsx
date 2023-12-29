@@ -8,7 +8,7 @@ import generateId from '../utils/generateId';
 import getSingleImageData from '../utils/getSingleImageData';
 import getImageData from '../utils/getImageData';
 
-const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
+const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAddCommentBtnDisabled }) => {
   const [comment, setComment] = useState('');
   const textareaRef = useRef(null);
 
@@ -56,10 +56,16 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
       await getImageData(setImageData);
       await getSingleImageData(image._id, setSelectedImage);
       setAddComment((prev) => !prev);
+      setIsAddCommentBtnDisabled(false);
     } catch (error) {
       console.error('Error in handleAddComment:', error);
     }
   };
+
+  const handleCancelAddComment = () => {
+    setAddComment((prev) => !prev);
+    setIsAddCommentBtnDisabled(false);
+  }
 
   return (
     <div className='in-page-form-container'>
@@ -76,7 +82,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
             onChange={handleCommentChange}
           />
         </div>
-        <div className='flex-container'>
+        <div id='add-cancel-comment-btns' className='flex-container'>
           <Button
             id='add-comment-btn'
             ariaLabel='add-comment-button'
@@ -87,7 +93,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData }) => {
             id='cancel-add-comment-btn'
             className='btn warning-btn left-margin'
             ariaLabel='cancel-add-comment-button'
-            onClick={() => setAddComment((prev) => !prev)}>
+            onClick={handleCancelAddComment}>
             Cancel
           </Button>
         </div>
@@ -101,6 +107,7 @@ AddCommentForm.propTypes = {
   setAddComment: PropTypes.func.isRequired,
   setSelectedImage: PropTypes.func.isRequired,
   setImageData: PropTypes.func.isRequired,
+  setIsAddCommentBtnDisabled: PropTypes.func.isRequired,
 };
 
 export default AddCommentForm;

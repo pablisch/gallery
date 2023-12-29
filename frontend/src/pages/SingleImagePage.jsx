@@ -20,11 +20,17 @@ const SingleImagePage = ({
   setImageData,
 }) => {
   const [addComment, setAddComment] = useState(false);
+  const [isAddCommentBtnDisabled, setIsAddCommentBtnDisabled] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const token = window.localStorage.getItem('token');
   const username = window.localStorage.getItem('user');
   let likedByUser = selectedImage?.likes?.includes(username);
+
+  const handleAddCommentBtnClick = () => {
+    setAddComment((prev) => !prev);
+    setIsAddCommentBtnDisabled(true);
+  };
 
   const handleLike = async () => {
     const currentImage = selectedImage;
@@ -66,7 +72,8 @@ const SingleImagePage = ({
         const getSingleImage = async () => {
           try {
             const response = await axios.get(
-              `${baseUrl}/api/v1.0/images/${id}`);
+              `${baseUrl}/api/v1.0/images/${id}`
+            );
             setSelectedImage(response.data);
           } catch (error) {
             console.error('Error fetching single image data:', error);
@@ -82,7 +89,7 @@ const SingleImagePage = ({
         getSingleImage();
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, selectedImage, setSelectedImage]);
 
   return (
@@ -91,27 +98,50 @@ const SingleImagePage = ({
         <>
           <SingleImage selectedImage={selectedImage} />
           <SingleImageInfo selectedImage={selectedImage} />
-          <div id="comment-like-buttons-container">
-          {(token && !addComment) && <Button
-            id='add-comment-btn'
-            aria-label='Add comment'
-            onClick={() => setAddComment((prev => !prev))}
-            className='btn add-btn'
-            >Add a comment</Button>}
+          <div id='comment-like-buttons-container'>
+            {token && (
+              <Button
+                id='add-comment-btn'
+                aria-label='Add comment'
+                onClick={handleAddCommentBtnClick}
+                className={`btn add-btn ${addComment ? 'inactive-btn' : ''}`}
+                disabled={isAddCommentBtnDisabled}
+              >
+                Add a comment
+              </Button>
+            )}
             <Button
               id='like-btn'
-
-            aria-label='like or unlike'
-            onClick={handleLike}
-              className={`btn like-btn ${likedByUser ? 'unlike-btn' : ''}`} >
-              <div id="like-btn-contents">
-                {likedByUser ?
-                  <><FaHeart className='hover-icons likes-heart-icon'></FaHeart><p className='like-btn-text'>Unlike</p></> : <><FaRegHeart className='hover-icons likes-heart-icon'></FaRegHeart><p className='like-btn-text'>Like</p></>}
+              aria-label='like or unlike'
+              onClick={handleLike}
+              className={`btn like-btn ${likedByUser ? 'unlike-btn' : ''}`}>
+              <div id='like-btn-contents'>
+                {likedByUser ? (
+                  <>
+                    <FaHeart className='hover-icons likes-heart-icon'></FaHeart>
+                    <p className='like-btn-text'>Unlike</p>
+                  </>
+                ) : (
+                  <>
+                    <FaRegHeart className='hover-icons likes-heart-icon'></FaRegHeart>
+                    <p className='like-btn-text'>Like</p>
+                  </>
+                )}
               </div>
             </Button>
           </div>
-          {addComment && <AddCommentForm comments={selectedImage.comments} setAddComment={setAddComment} setSelectedImage={setSelectedImage} setImageData={setImageData} />}
-          {selectedImage?.comments?.length > 0 && <CommentBox comments={selectedImage.comments} />}
+          {addComment && (
+            <AddCommentForm
+              comments={selectedImage.comments}
+              setAddComment={setAddComment}
+              setSelectedImage={setSelectedImage}
+              setImageData={setImageData}
+              setIsAddCommentBtnDisabled={setIsAddCommentBtnDisabled}
+            />
+          )}
+          {selectedImage?.comments?.length > 0 && (
+            <CommentBox comments={selectedImage.comments} />
+          )}
         </>
       )}
     </div>
