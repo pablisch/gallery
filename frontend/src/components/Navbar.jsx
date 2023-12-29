@@ -12,7 +12,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
   const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
   let avatarLetterClass = '';
-  let prevNumber = 0;
+  // let prevNumber = 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,14 +55,14 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
     navigate('/upload');
   };
 
-  const randomNumber = () => {
-    let num = Math.floor((Math.random() * 6) + 1);
-    while (num === prevNumber) {
-      num = Math.floor((Math.random() * 6) + 1);
-    }
-    prevNumber = num;
-    return num;
-  }
+  // const randomNumber = () => {
+  //   let num = Math.floor((Math.random() * 6) + 1);
+  //   while (num === prevNumber) {
+  //     num = Math.floor((Math.random() * 6) + 1);
+  //   }
+  //   prevNumber = num;
+  //   return num;
+  // }
 
   return (
     <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onTouchStart={handleMouseEnter} onTouchEnd={handleMouseLeave} >
@@ -121,7 +121,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                       id='user-settings-navlink'
                       className={`icon avatar-letter-container settings-link settings-avatar-margin ${avatarLetterClass} ${isLogoRotated ? 'rotateCcw' : ''}`}
                     >
-                      <h1 className={avatarLetterClass}>{avatar}</h1>
+                      <h1 className={`icon-letter ${avatarLetterClass}`}>{avatar}</h1>
                   </Link>
                 </>
               )}

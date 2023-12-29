@@ -69,6 +69,10 @@ body {
   font-weight: 400;
 }
 
+.icon-letter {
+  border-radius: 50%;
+}
+
 .letter-s h1 {
   font-size: 1.3rem;
 }
@@ -80,6 +84,12 @@ body {
   .word1 {
     display: none;
   }
+}
+
+@media (max-width: 900px) {
+  #selected-image-info-container {
+    flex-direction: column;
+  } 
 }
 
 @media (max-width: 800px) {
