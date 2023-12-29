@@ -4,7 +4,7 @@
   --primary-text-color: #707072;
   --secondary-color: #606060;
   --main-bg: #fff;
-  --nav-bg: var(--main-bg);
+  --nav-bg: rgba(255, 255, 255, 0.8);
   --nav-link-color: #f6fdfe;
 
   --lime: #c3f73a;
@@ -25,6 +25,10 @@ body {
   font-size: 18px;
   background-color: var(--main-bg);
   color: var(--primary-text-color);
+}
+
+#fixed-navbar-offset {
+  height: 70px;
 }
 
 /* Avatar CSS */
