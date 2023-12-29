@@ -7,6 +7,7 @@ const imageSchema = mongoose.Schema({
   username: { type: String },
   userAvatar: { type: String },
   comments: [],
+  likes: [],
 }, {
   timestamps: true
 });
