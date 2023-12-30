@@ -34,10 +34,11 @@ const SingleImagePage = ({
   };
 
   const handleLike = async () => {
-    setIsSideEffect(true);
+    // setIsSideEffect(true);
     const currentImage = selectedImage;
     likedByUser = !likedByUser;
     if (likedByUser) {
+      setIsSideEffect(true);
       currentImage.likes.push(username);
     } else {
       currentImage.likes = currentImage.likes.filter(
@@ -60,9 +61,11 @@ const SingleImagePage = ({
       console.log('Response from like/unlike operation', response);
       await getImageData(setImageData);
       setSelectedImage(currentImage);
-      setTimeout(() => {
-        setIsSideEffect(false);
-      }, 1500);
+      if (likedByUser) {
+        setTimeout(() => {
+          setIsSideEffect(false);
+        }, 1500);
+      }
     } catch (error) {
       console.error('Error in handleLike:', error);
     }
