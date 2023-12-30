@@ -20,6 +20,7 @@ function App() {
   const [user, setUser] = useState(window.localStorage.getItem('user'));
   const [avatar, setAvatar] = useState(window.localStorage.getItem('avatar'));
   const [isServerUp, setIsServerUp] = useState(false);
+  const [isSideEffect, setIsSideEffect] = useState(false);
 
   useEffect(() => {
     document.title = 'Gallery';
@@ -33,6 +34,7 @@ function App() {
         setUserToken={setUserToken}
         setUser={setUser}
         avatar={avatar}
+        isSideEffect={isSideEffect}
       />
       <div id='fixed-navbar-offset'></div>
       <Routes>
@@ -57,6 +59,7 @@ function App() {
               setAvatar={setAvatar}
               setUser={setUser}
               setImageData={setImageData}
+              setIsSideEffect={setIsSideEffect}
             />
           }
         />
@@ -67,6 +70,7 @@ function App() {
               setUserToken={setUserToken}
               setUser={setUser}
               setAvatar={setAvatar}
+              setIsSideEffect={setIsSideEffect}
             />
           }
         />
@@ -77,12 +81,13 @@ function App() {
               setUserToken={setUserToken}
               setUser={setUser}
               setAvatar={setAvatar}
+              setIsSideEffect={setIsSideEffect}
             />
           }
         />
         <Route
           path='/upload'
-          element={<ImageUploadPage user={user} userToken={userToken} setImageData={setImageData} />}
+          element={<ImageUploadPage user={user} userToken={userToken} setImageData={setImageData} setIsSideEffect={setIsSideEffect} />}
         />
       </Routes>
     </BrowserRouter>

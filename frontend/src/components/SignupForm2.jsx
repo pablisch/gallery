@@ -8,7 +8,7 @@ import baseUrl from '../utils/baseUrl';
 import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 
-const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
+const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -26,6 +26,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
     let avatar = username[0].toUpperCase();
+    setIsSideEffect(true);
 
     try {
       if (imageToUpload) {
@@ -72,6 +73,9 @@ const SignupForm = ({ setUserToken, setUser, setAvatar }) => {
         setUser(responseData.username);
         setAvatar(avatar);
         clearForm();
+        setTimeout(() => {
+          setIsSideEffect(false);
+        }, 1500);
         navigate('/');
       } else {
         console.log('Something went wrong in handleSignUpSubmit');
@@ -196,6 +200,7 @@ SignupForm.propTypes = {
   setUserToken: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   setAvatar: PropTypes.func.isRequired,
+  setIsSideEffect: PropTypes.func.isRequired,
 };
 
 export default SignupForm;

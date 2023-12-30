@@ -9,7 +9,7 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 
 // eslint-disable-next-line no-unused-vars
-const ImageUploadForm = ({ user, userToken, setImageData }) => {
+const ImageUploadForm = ({ user, userToken, setImageData, setIsSideEffect }) => {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
   const [fileName, setFileName] = useState('');
@@ -42,6 +42,7 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
   };
 
   const handleUploadImage = async (event) => {
+    setIsSideEffect(true);
     try {
       event.preventDefault();
 
@@ -81,6 +82,9 @@ const ImageUploadForm = ({ user, userToken, setImageData }) => {
       console.log('Response from upload operation', dbResponse);
       // setUploadSuccess(true);
       getImageArrayData(setImageData);
+      setTimeout(() => {
+        setIsSideEffect(false);
+      }, 1500);
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -133,6 +137,7 @@ ImageUploadForm.propTypes = {
   user: PropTypes.string,
   userToken: PropTypes.string,
   setImageData: PropTypes.func.isRequired,
+  setIsSideEffect: PropTypes.func.isRequired,
 };
 
 export default ImageUploadForm;

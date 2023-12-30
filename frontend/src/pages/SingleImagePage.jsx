@@ -18,6 +18,7 @@ const SingleImagePage = ({
   setAvatar,
   setUser,
   setImageData,
+  setIsSideEffect,
 }) => {
   const [addComment, setAddComment] = useState(false);
   const [isAddCommentBtnDisabled, setIsAddCommentBtnDisabled] = useState(false);
@@ -33,6 +34,7 @@ const SingleImagePage = ({
   };
 
   const handleLike = async () => {
+    setIsSideEffect(true);
     const currentImage = selectedImage;
     likedByUser = !likedByUser;
     if (likedByUser) {
@@ -58,6 +60,9 @@ const SingleImagePage = ({
       console.log('Response from like/unlike operation', response);
       await getImageData(setImageData);
       setSelectedImage(currentImage);
+      setTimeout(() => {
+        setIsSideEffect(false);
+      }, 1500);
     } catch (error) {
       console.error('Error in handleLike:', error);
     }
@@ -137,6 +142,7 @@ const SingleImagePage = ({
               setSelectedImage={setSelectedImage}
               setImageData={setImageData}
               setIsAddCommentBtnDisabled={setIsAddCommentBtnDisabled}
+              setIsSideEffect={setIsSideEffect}
             />
           )}
           {selectedImage?.comments?.length > 0 && (
@@ -154,6 +160,7 @@ SingleImagePage.propTypes = {
   setUser: PropTypes.func.isRequired,
   setAvatar: PropTypes.func.isRequired,
   setImageData: PropTypes.func.isRequired,
+  setIsSideEffect: PropTypes.func.isRequired,
 };
 
 export default SingleImagePage;
