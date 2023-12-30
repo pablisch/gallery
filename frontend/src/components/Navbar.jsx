@@ -8,7 +8,7 @@ import NavLink from './NavLink';
 import getLetterAvatarColourClass from '../utils/letterAvatarColours';
 
 
-const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
+const Navbar = ({ userToken, setUserToken, setUser, avatar, isSideEffect }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
   const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
   let avatarLetterClass = '';
@@ -72,7 +72,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
             id='nav-logo'
             src='/images/camera-icon-colour.png'
             alt='logo'
-            className={`navbar-logo-img ${isLogoRotated ? 'rotateCw' : ''}`}
+            className={`navbar-logo-img ${isSideEffect ? 'rotateCw' : ''}`}
           />
           <h1 id='nav-title-text' className='navbar-logo-text'>
             {/* <span className={`letter${randomNumber()} word1`}>P</span>
@@ -107,7 +107,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
               {avatar?.length > 1 ? (
                 <Link
                   id='user-settings-navlink'
-                  className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
+                  className={`icon settings-avatar-margin ${isSideEffect ? 'rotateCcw' : ''} ${isLogoRotated ? 'rotateUserIconOnce' : ''}`}
                 >
                   <img
                     className='icon avatar-icon'
@@ -119,7 +119,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 <>
                   <Link
                       id='user-settings-navlink'
-                      className={`icon avatar-letter-container settings-link settings-avatar-margin ${avatarLetterClass} ${isLogoRotated ? 'rotateCcw' : ''}`}
+                      className={`icon avatar-letter-container settings-link settings-avatar-margin ${avatarLetterClass} ${isSideEffect ? 'rotateCcw' : ''} ${isLogoRotated ? 'rotateUserIconOnce' : ''}`}
                     >
                       <h1 className={`icon-letter ${avatarLetterClass}`}>{avatar}</h1>
                   </Link>
@@ -137,7 +137,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar }) => {
                 
               <Link
                 id='settings-navlink'
-                  className={`icon settings-avatar-margin ${isLogoRotated ? 'rotateCcw' : ''}`}
+                  className={`icon settings-avatar-margin ${isSideEffect ? 'rotateCcw' : ''} ${isLogoRotated ? 'rotateUserIconOnce' : ''}`}
                 >
                 <img
                   className='icon settings-icon'
@@ -161,6 +161,7 @@ Navbar.propTypes = {
   user: PropTypes.string,
   setUser: PropTypes.func,
   avatar: PropTypes.string,
+  isSideEffect: PropTypes.bool,
 };
 
 export default Navbar;
