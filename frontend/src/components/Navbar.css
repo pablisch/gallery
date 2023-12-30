@@ -83,12 +83,12 @@
 .rotateCw {
   transform-origin: 50% 60.5%;
   transform: rotate(1080deg);
-  transition: transform 1.5s ease-in-out;
+  transition: transform 0.8s ease-in-out;
 }
 
 .rotateCcw {
   transform: rotate(-1080deg);
-  transition: transform 1s ease-in-out;
+  transition: transform 1.2s ease-in-out;
 }
 
 .rotateUserIconOnce {

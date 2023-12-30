@@ -8,7 +8,7 @@ import generateId from '../utils/generateId';
 import getSingleImageData from '../utils/getSingleImageData';
 import getImageData from '../utils/getImageData';
 
-const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAddCommentBtnDisabled }) => {
+const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAddCommentBtnDisabled, setIsSideEffect }) => {
   const [comment, setComment] = useState('');
   const textareaRef = useRef(null);
 
@@ -28,10 +28,13 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
 
   const handleAddComment = async (event) => {
     event.preventDefault();
+    
     if (!comment) {
       setAddComment((prev) => !prev)
       return;
     }
+
+    setIsSideEffect(true);
 
     try {
       const response = await axios.put(
@@ -57,6 +60,9 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
       await getSingleImageData(image._id, setSelectedImage);
       setAddComment((prev) => !prev);
       setIsAddCommentBtnDisabled(false);
+      setTimeout(() => {
+        setIsSideEffect(false);
+      }, 1500);
     } catch (error) {
       console.error('Error in handleAddComment:', error);
     }
@@ -108,6 +114,7 @@ AddCommentForm.propTypes = {
   setSelectedImage: PropTypes.func.isRequired,
   setImageData: PropTypes.func.isRequired,
   setIsAddCommentBtnDisabled: PropTypes.func.isRequired,
+  setIsSideEffect: PropTypes.func.isRequired,
 };
 
 export default AddCommentForm;

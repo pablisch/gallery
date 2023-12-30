@@ -59,6 +59,7 @@ function App() {
               setAvatar={setAvatar}
               setUser={setUser}
               setImageData={setImageData}
+              setIsSideEffect={setIsSideEffect}
             />
           }
         />
