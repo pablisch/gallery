@@ -7,7 +7,7 @@ import baseUrl from '../utils/baseUrl';
 import Button from './Button';
 import InputField from './InputField';
 
-const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
+const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,6 +20,8 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+
+    setIsSideEffect(true);
 
     try {
       const response = await axios.post(
@@ -46,6 +48,9 @@ const LoginForm = ({ setUserToken, setUser, setAvatar }) => {
         setUser(responseData.username);
         setAvatar(responseData.avatar);
         clearForm();
+        setTimeout(() => {
+          setIsSideEffect(false);
+        }, 1500);
         navigate('/');
       } else {
         console.log('Something went wrong in handleLoginSubmit');
@@ -103,6 +108,7 @@ LoginForm.propTypes = {
   setUserToken: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   setAvatar: PropTypes.func.isRequired,
+  setIsSideEffect: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

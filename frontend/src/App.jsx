@@ -70,6 +70,7 @@ function App() {
               setUserToken={setUserToken}
               setUser={setUser}
               setAvatar={setAvatar}
+              setIsSideEffect={setIsSideEffect}
             />
           }
         />
@@ -80,6 +81,7 @@ function App() {
               setUserToken={setUserToken}
               setUser={setUser}
               setAvatar={setAvatar}
+              setIsSideEffect={setIsSideEffect}
             />
           }
         />
