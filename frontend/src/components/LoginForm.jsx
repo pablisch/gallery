@@ -6,10 +6,12 @@ import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import Button from './Button';
 import InputField from './InputField';
+import ErrorMessage from './ErrorMessage';
 
 const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -20,6 +22,12 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+
+    if (username === '' || password === '') {
+      setErrorMessage('Please fill in all fields');
+      console.log('Login error no.1')
+      return;
+    }
 
     setIsSideEffect(true);
 
@@ -98,6 +106,7 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             Password
           </InputField>
           <Button id='login-submit-button'>Log in</Button>
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
         </form>
       </main>
     </>
