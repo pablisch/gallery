@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import InputField from './InputField';
@@ -22,9 +22,14 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
 
   const navigate = useNavigate();
 
+  const nameInputRef = useRef(null);
+
   useEffect(() => {
     document.title = 'Gallery Sign Up';
     window.localStorage.clear();
+    if (nameInputRef.current) {
+      nameInputRef.current.focus();
+    }
   }, []);
 
   const handleSignUpSubmit = async (event) => {
@@ -168,7 +173,8 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
           <InputField
             id={'signup-name-input'}
             value={name}
-            onChangeFunc={handleNameChange}>
+            onChangeFunc={handleNameChange}
+            ref={nameInputRef}>
             Name
           </InputField>
           <InputField
