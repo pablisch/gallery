@@ -7,6 +7,7 @@ import baseUrl from '../utils/baseUrl';
 import getImageArrayData from '../utils/getImageData';
 import Button from './Button';
 import resizeImage from '../utils/resizeImage';
+import InputField from './InputField';
 
 // eslint-disable-next-line no-unused-vars
 const ImageUploadForm = ({
@@ -18,10 +19,12 @@ const ImageUploadForm = ({
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
   const [fileName, setFileName] = useState('');
+  const [description, setDescription] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [isFileSelected, setIsFileSelected] = useState(false);
 
   const uploadButtonRef = useRef(null);
+  // const selectFileButtonRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -68,7 +71,7 @@ const ImageUploadForm = ({
 
       const imageObject = {
         src,
-        altText: '',
+        altText: description,
         userId: window.localStorage.getItem('cookie'),
         username: user,
         userAvatar: window.localStorage.getItem('avatar'),
@@ -105,6 +108,15 @@ const ImageUploadForm = ({
     previewFiles(file);
   };
 
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  }
+
+  // sets focus to the choose file button when form is loaded
+  // useEffect(() => {
+  //   selectFileButtonRef.current.focus();
+  // }, []);
+
   // moves focus to the upload button when a file is selected
   useEffect(() => {
     uploadButtonRef.current.focus();
@@ -116,7 +128,8 @@ const ImageUploadForm = ({
         <form
           id='image-upload-form'
           className='form'
-          onSubmit={handleUploadImage}>
+          onSubmit={handleUploadImage}
+        >
           <h1 id='image-upload-title' className='form-title'>
             Upload an Image
           </h1>
@@ -124,16 +137,27 @@ const ImageUploadForm = ({
             id='image-upload-select'
             className={`btn custom-file-input ${
               isFileSelected ? 'subdued' : ''
-            }`}>
+              }`}
+            // ref={selectFileButtonRef}
+            // onKeyPress={handleFileButtonClick}
+          >
             <label htmlFor='file-input'>
               {isFileSelected ? 'Change file to upload' : 'Choose file'}
               <input type='file' id='file-input' onChange={handleFileChange} />
             </label>
           </Button>
+          <InputField
+            id={'image-upload-description-input'}
+            placeholder={'Image description'}
+            value={description}
+            onChangeFunc={handleDescriptionChange}
+          >Image description <span className='information asterisk'>*</span></InputField>
           <Button
             id='image-upload-submit-btn'
             ref={uploadButtonRef}
-            disabled={!isFileSelected}>
+            disabled={!isFileSelected}
+            // onClick={handleUploadImage}
+          >
             {isFileSelected ? 'Upload selected image' : 'Upload image'}
           </Button>
           {preview && (
@@ -142,6 +166,7 @@ const ImageUploadForm = ({
               <img id='preview-image' src={preview} alt='Preview image' />
             </div>
           )}
+          <p className='information small-info'><span className='asterisk'>*</span> A simple description is important to allow screen readers to provide information about images making the web more widely accessible.</p>
         </form>
       </main>
     </>

@@ -90,6 +90,18 @@ input {
   margin-top: 5px;
 }
 
+.information {
+  color: #d00101;
+}
+
+.small-info {
+  font-size: 0.8rem;
+  margin-top: 15px;
+}
+
+.asterisk {
+  font-size: 1.4rem;
+}
 
 
 

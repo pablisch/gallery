@@ -27,6 +27,12 @@ const SingleImagePage = ({
   const token = window.localStorage.getItem('token');
   const username = window.localStorage.getItem('user');
   let likedByUser = selectedImage?.likes?.includes(username);
+  const ImageDescription = selectedImage?.altText || "Unspecified image";
+
+  useEffect(() => {
+    document.title = `Gallery - ${ImageDescription}`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAddCommentBtnClick = () => {
     setAddComment((prev) => !prev);
