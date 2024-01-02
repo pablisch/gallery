@@ -1,9 +1,10 @@
 
 .form-container {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   /* height calc is vh - (navbar height + dividing line height) */
   height: calc(100vh - 71px); 
+  flex-direction: column;
 }
 
 .flex-container {
@@ -81,6 +82,14 @@ input {
   box-sizing: border-box;
   resize: none;
 }
+
+.optional {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #1674f7;
+  margin-top: 5px;
+}
+
 
 
 

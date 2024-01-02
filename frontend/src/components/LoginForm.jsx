@@ -6,10 +6,12 @@ import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import Button from './Button';
 import InputField from './InputField';
+import ErrorMessage from './ErrorMessage';
 
 const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -20,6 +22,16 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+
+    if (username === '' || password === '') {
+      setErrorMessage('Please fill in all fields');
+      console.log('Login error no.1')
+      return;
+    }
+    if (username.length < 3 || username.length > 10) {
+      setErrorMessage('Username must be between 3 and 10 characters');
+      return;
+    }
 
     setIsSideEffect(true);
 
@@ -53,11 +65,17 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
         }, 1500);
         navigate('/');
       } else {
+        setErrorMessage('Something went wrong in the login process.');
         console.log('Something went wrong in handleLoginSubmit');
       }
     } catch (error) {
+      if (error?.response?.status === 401) {
+        console.log('My error message', error.response.data.message)
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage('Something went wrong during the login process. Please check your connection and try again.');
+      }
       console.error('Error in handleLoginSubmit:', error);
-      // Handle the error as needed
     }
   };
 
@@ -97,8 +115,10 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             onChangeFunc={handlePasswordChange}>
             Password
           </InputField>
-          <Button id='login-submit-button'>Log in</Button>
+          <Button id='login-submit-btn'
+          disabled={username && password ? false : true} >Log in</Button>
         </form>
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
       </main>
     </>
   );

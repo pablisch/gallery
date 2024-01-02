@@ -42,14 +42,16 @@ exports.login = (req, res, next) => {
   User.findOne({ username }) 
     .then(user => { 
       if (!user) { 
-        return res.status(401).json({ error: 'User not found!' }); 
+        console.log('user not found')
+        return res.status(401).json({ error: 'That username is not in use.' }); 
       } 
+      console.log('user not found but still here')
       console.log('user found', user)
       bcrypt.compare(password, user.password) 
         .then(valid => { 
           if (!valid) {
             console.log(password, user.password)
-            return res.status(401).json({ error: 'Incorrect password!' }); 
+            return res.status(401).json({ error: 'Username and password do not match.' }); 
           } 
           const token = jwt.sign( 
             { userId: user._id }, 
