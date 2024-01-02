@@ -28,6 +28,10 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
       console.log('Login error no.1')
       return;
     }
+    if (username.length < 3 || username.length > 10) {
+      setErrorMessage('Username must be between 3 and 10 characters');
+      return;
+    }
 
     setIsSideEffect(true);
 
@@ -61,11 +65,17 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
         }, 1500);
         navigate('/');
       } else {
+        setErrorMessage('Something went wrong in the login process.');
         console.log('Something went wrong in handleLoginSubmit');
       }
     } catch (error) {
+      if (error?.response?.status === 401) {
+        console.log('My error message', error.response.data.message)
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage('Something went wrong during the login process. Please check your connection and try again.');
+      }
       console.error('Error in handleLoginSubmit:', error);
-      // Handle the error as needed
     }
   };
 
@@ -106,8 +116,8 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             Password
           </InputField>
           <Button id='login-submit-button'>Log in</Button>
-      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
         </form>
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
       </main>
     </>
   );

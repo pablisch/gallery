@@ -7,6 +7,9 @@ import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import Button from './Button';
 import resizeImage from '../utils/resizeImage';
+import { validatePassword, validateEmail, validateUsername } from '../utils/signupValidation';
+import ErrorMessage from './ErrorMessage';
+import { set } from 'mongoose';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [name, setName] = useState('');
@@ -15,6 +18,8 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [password, setPassword] = useState('');
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,6 +31,15 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
     let avatar = username[0].toUpperCase();
+
+    if (name === '' || username === '' || email === '' || password === '') {
+      setErrorMessage('Please fill in all fields');
+      return;
+    }
+    if (!validateUsername(username, setErrorMessage)) return;
+    if (!validateEmail(email, setErrorMessage)) return;
+    if (!validatePassword(password, setErrorMessage)) return;
+
     setIsSideEffect(true);
 
     try {
@@ -133,10 +147,21 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
     previewFiles(imageToUpload);
   }, [imageToUpload]);
 
+  // Below is a bit of a hack but is the only way that I could prevent autofill from showing the password and username
+  // combined with 'type={isPasswordVisible ? 'password' : 'text'}' in the password input field, it sets the type to text
+  // until a value is entered and for some reason this prevents autofill from showing the password and username.
+  useEffect(() => {
+    if (!isPasswordVisible) {
+      if (password.length > 0) {
+        setIsPasswordVisible(true);
+      }
+    }
+  }, [password]);
+
   return (
     <>
       <main id='signup-form-container' className='form-container'>
-        <form id='signup-form' className='form' onSubmit={handleSignUpSubmit}>
+        <form id='signup-form' className='form' onSubmit={handleSignUpSubmit} noValidate >
           <h1 id='signup-title' className='form-title'>
             Create a new Gallery account
           </h1>
@@ -156,13 +181,16 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             id={'signup-email-input'}
             type={'email'}
             value={email}
+            autoComplete='off'
             onChangeFunc={handleEmailChange}>
             Email
           </InputField>
           <InputField
             id={'signup-password-input'}
-            type={'password'}
+            type={isPasswordVisible ? 'password' : 'text'}
             value={password}
+            name='devicePassword'
+            autoComplete='new-password'
             onChangeFunc={handlePasswordChange}>
             Password
           </InputField>
@@ -191,6 +219,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
           )}
           <Button id='signup-submit-button' >Sign Up</Button>
         </form>
+        {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
       </main>
     </>
   );
