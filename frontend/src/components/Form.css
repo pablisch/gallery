@@ -83,5 +83,13 @@ input {
   resize: none;
 }
 
+.optional {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #1674f7;
+  margin-top: 5px;
+}
+
+
 
 

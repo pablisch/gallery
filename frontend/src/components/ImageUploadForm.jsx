@@ -9,16 +9,23 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 
 // eslint-disable-next-line no-unused-vars
-const ImageUploadForm = ({ user, userToken, setImageData, setIsSideEffect }) => {
+const ImageUploadForm = ({
+  user,
+  userToken,
+  setImageData,
+  setIsSideEffect,
+}) => {
   const [imageToUpload, setImageToUpload] = useState(null);
   const [preview, setPreview] = useState(null);
   const [fileName, setFileName] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [isFileSelected, setIsFileSelected] = useState(false);
 
   const uploadButtonRef = useRef(null);
 
   const navigate = useNavigate();
+
+  if (userToken === null) navigate('/');
 
   useEffect(() => {
     document.title = 'Gallery Sign Up';
@@ -28,7 +35,7 @@ const ImageUploadForm = ({ user, userToken, setImageData, setIsSideEffect }) => 
 
   const previewFiles = async (file) => {
     setFileName(file.name);
-    console.log('file', file)
+    console.log('file', file);
     const resizedImageBlob = await resizeImage(file, 1000, 1000);
 
     const reader = new FileReader();
@@ -93,10 +100,15 @@ const ImageUploadForm = ({ user, userToken, setImageData, setIsSideEffect }) => 
   };
 
   const handleFileChange = (event) => {
+    setIsFileSelected(true);
     const file = event.target.files[0];
     previewFiles(file);
-    uploadButtonRef.current.focus();
   };
+
+  // moves focus to the upload button when a file is selected
+  useEffect(() => {
+    uploadButtonRef.current.focus();
+  }, [isFileSelected]);
 
   return (
     <>
@@ -108,18 +120,21 @@ const ImageUploadForm = ({ user, userToken, setImageData, setIsSideEffect }) => 
           <h1 id='image-upload-title' className='form-title'>
             Upload an Image
           </h1>
-            <Button id='image-upload-select' className='btn custom-file-input'>
-              <label htmlFor='file-input'>
-                Choose file
-                <input
-                  type='file'
-                  id='file-input'
-                  onChange={handleFileChange}
-                />
-              </label>
-            </Button>
-          <Button id='image-upload-submit-btn' ref={uploadButtonRef}>
-            Upload image
+          <Button
+            id='image-upload-select'
+            className={`btn custom-file-input ${
+              isFileSelected ? 'subdued' : ''
+            }`}>
+            <label htmlFor='file-input'>
+              {isFileSelected ? 'Change file to upload' : 'Choose file'}
+              <input type='file' id='file-input' onChange={handleFileChange} />
+            </label>
+          </Button>
+          <Button
+            id='image-upload-submit-btn'
+            ref={uploadButtonRef}
+            disabled={!isFileSelected}>
+            {isFileSelected ? 'Upload selected image' : 'Upload image'}
           </Button>
           {preview && (
             <div id='image-upload-preview' className='preview'>

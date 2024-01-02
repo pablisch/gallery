@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
@@ -12,7 +12,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar, isSideEffect }) => {
   const [isLogoRotated, setIsLogoRotated] = useState(false);
   const [isScreenLessThan450px, setIsScreenLessThan450px] = useState(false);
   let avatarLetterClass = '';
-  // let prevNumber = 0;
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -128,12 +128,12 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar, isSideEffect }) => {
             </>
           ) : (
             <>
-              <NavLink id='login-navlink' route='/login'>
+              {location.pathname !== '/login' &&(<NavLink id='login-navlink' route='/login'>
                 Log in
-              </NavLink>
-              <NavLink id='signup-navlink' route='/signup'>
+              </NavLink>)}
+              {location.pathname !== '/signup' &&(<NavLink id='signup-navlink' route='/signup'>
                 Sign up
-                </NavLink>
+              </NavLink>)}
                 
               <Link
                 id='settings-navlink'

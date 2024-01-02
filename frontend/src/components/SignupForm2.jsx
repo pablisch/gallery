@@ -9,7 +9,6 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 import { validatePassword, validateEmail, validateUsername } from '../utils/signupValidation';
 import ErrorMessage from './ErrorMessage';
-import { set } from 'mongoose';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [name, setName] = useState('');
@@ -156,6 +155,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
         setIsPasswordVisible(true);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [password]);
 
   return (
@@ -195,8 +195,9 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             Password
           </InputField>
           <div className='form-field'>
-            <label htmlFor='file-input'>Avatar image</label>
-            <Button id='avatar-image-upload-select' className='btn custom-file-input'>
+            <label htmlFor='file-input'>Avatar image <span className='optional'>(optional)</span></label>
+            <Button id='avatar-image-upload-select'
+              className={`btn custom-file-input ${!name || !username || !email || !password ? 'subdued' : ''}`}>
             <label htmlFor='file-input'>
                 Choose file
                 <input
@@ -217,7 +218,8 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
               />
             </div>
           )}
-          <Button id='signup-submit-button' >Sign Up</Button>
+          <Button id='signup-submit-button'
+          disabled={name && username && email && password ? false : true} >Sign Up</Button>
         </form>
         {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
       </main>

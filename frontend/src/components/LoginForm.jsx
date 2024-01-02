@@ -115,7 +115,8 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             onChangeFunc={handlePasswordChange}>
             Password
           </InputField>
-          <Button id='login-submit-button'>Log in</Button>
+          <Button id='login-submit-btn'
+          disabled={username && password ? false : true} >Log in</Button>
         </form>
       {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
       </main>
