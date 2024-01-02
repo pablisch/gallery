@@ -2,7 +2,7 @@ const imageSeedData = [
   {
     _id: '658da443ff44f399dc310cf6',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781443/moadwvgvunbnhtappmm8.jpg',
-    altText: '',
+    altText: 'Novice monks in Ladahk, India',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -13,7 +13,7 @@ const imageSeedData = [
   {
     _id: '658da44cff44f399dc310cf9',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781451/lb2jtrormhzlrhdpdhe7.jpg',
-    altText: '',
+    altText: 'Public bin in McLeod Ganj, India',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -24,7 +24,7 @@ const imageSeedData = [
   {
     _id: '658da450ff44f399dc310cfc',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781456/tar5iyuvo8pmkyllyqn4.jpg',
-    altText: '',
+    altText: 'Pablo in Triund, India',
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar: 'M',
@@ -34,7 +34,7 @@ const imageSeedData = [
   {
     _id: '658da455ff44f399dc310cff',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781461/s7w8zritrmj5qzj6yays.jpg',
-    altText: '',
+    altText: 'Tree of life leg tattoos',
     userId: '658da359db664e4ee686cf0e',
     username: 'Aisha',
     userAvatar:
@@ -45,7 +45,7 @@ const imageSeedData = [
   {
     _id: '658da45cff44f399dc310d02',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781467/polmlpk8iugb6lrfndue.jpg',
-    altText: '',
+    altText: 'Mariana and a goat',
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
@@ -56,7 +56,7 @@ const imageSeedData = [
   {
     _id: '658da461ff44f399dc310d05',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781472/qapso98wtkd1wao7b5g5.jpg',
-    altText: '',
+    altText: 'Chai shop buried in snow',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -67,7 +67,7 @@ const imageSeedData = [
   {
     _id: '658da465ff44f399dc310d08',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781477/ki8b1s3xyqgqndldqjs5.jpg',
-    altText: '',
+    altText: 'Sliding down a snowy hill',
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar: 'M',
@@ -77,7 +77,7 @@ const imageSeedData = [
   {
     _id: '658da46eff44f399dc310d0b',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781485/ditvgtgni2vp8wn4a9rh.jpg',
-    altText: '',
+    altText: 'Triunds orginal chai shop',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -88,7 +88,7 @@ const imageSeedData = [
   {
     _id: '658da473ff44f399dc310d0e',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781491/lendog5ef4i84pukzyoh.jpg',
-    altText: '',
+    altText: 'White butterful on snow',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -99,7 +99,7 @@ const imageSeedData = [
   {
     _id: '658da47aff44f399dc310d11',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781498/itz2ulv9p8o6pt3dphgi.jpg',
-    altText: '',
+    altText: 'Dania and Dorian in the Himalayan restaurant',
     userId: '658da359db664e4ee686cf0e',
     username: 'Aisha',
     userAvatar:
@@ -110,7 +110,7 @@ const imageSeedData = [
   {
     _id: '658da47fff44f399dc310d14',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781503/rlisn7vpy7vqito4bbwe.jpg',
-    altText: '',
+    altText: 'A cow peering over a wall',
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
@@ -121,7 +121,7 @@ const imageSeedData = [
   {
     _id: '658da485ff44f399dc310d17',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781509/ndkee9616egaeeqrq8sr.jpg',
-    altText: '',
+    altText: 'A Gompa overlooking Leh, Ladakh',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -132,7 +132,7 @@ const imageSeedData = [
   {
     _id: '658da48aff44f399dc310d1a',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781514/lvlpfqrcgpwpxpnkie63.jpg',
-    altText: '',
+    altText: 'The Dalai Lame in Choglamsar, Ladakh',
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar: 'M',
@@ -142,7 +142,7 @@ const imageSeedData = [
   {
     _id: '658da490ff44f399dc310d1d',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781519/cnghg9snhipsrcxkozyx.jpg',
-    altText: '',
+    altText: 'Young Ladakhi children',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -153,7 +153,7 @@ const imageSeedData = [
   {
     _id: '658da495ff44f399dc310d20',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781525/ci0lygdk0oofoo2mhlu0.jpg',
-    altText: '',
+    altText: 'An old lady with a prayer wheel',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -164,7 +164,7 @@ const imageSeedData = [
   {
     _id: '658da49cff44f399dc310d23',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781531/dgdntc45vcoagpoojniy.jpg',
-    altText: '',
+    altText: 'A Ladakhi monk with a cowboy hat',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -175,7 +175,7 @@ const imageSeedData = [
   {
     _id: '658da4a2ff44f399dc310d26',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781537/tw1bujm09aa5nqmfcsv2.jpg',
-    altText: '',
+    altText: 'Two elederly Ladakhi women',
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
@@ -186,7 +186,7 @@ const imageSeedData = [
   {
     _id: '658da4a7ff44f399dc310d29',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781543/xswkuhlefdxyrtg0dlyl.jpg',
-    altText: '',
+    altText: 'A Tibetan Buddhist gompa',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -197,7 +197,7 @@ const imageSeedData = [
   {
     _id: '658da4aeff44f399dc310d2c',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781549/fcoha9bcoyqb3r0948j4.jpg',
-    altText: '',
+    altText: 'Gurutze in the Nubra Valley',
     userId: '658da359db664e4ee686cf0e',
     username: 'Aisha',
     userAvatar:
@@ -208,7 +208,7 @@ const imageSeedData = [
   {
     _id: '658da4b7ff44f399dc310d2f',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781558/rd7brekv5zuv6qalcrwz.jpg',
-    altText: '',
+    altText: 'Gurtze and our Enfield motorbike',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -219,7 +219,7 @@ const imageSeedData = [
   {
     _id: '658da4e3ff44f399dc310d32',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781603/kxikhokebg75kcoqzg63.jpg',
-    altText: '',
+    altText: 'A hut in the middle of nowhere',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -230,7 +230,7 @@ const imageSeedData = [
   {
     _id: '658da4e9ff44f399dc310d35',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781609/ja7ywn8u3fymyzhmzdta.jpg',
-    altText: '',
+    altText: 'A loom on an Indian balcony in Manali',
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
@@ -241,7 +241,7 @@ const imageSeedData = [
   {
     _id: '658da4efff44f399dc310d38',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781615/octm7jk8lutkexrnmm65.jpg',
-    altText: '',
+    altText: 'A Tata truck',
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar: 'M',
@@ -251,7 +251,7 @@ const imageSeedData = [
   {
     _id: '658da4f6ff44f399dc310d3b',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781622/modluwpzb2lyeongtogf.jpg',
-    altText: '',
+    altText: 'The sun reflected in Chandra Tal',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -262,7 +262,7 @@ const imageSeedData = [
   {
     _id: '658da4fbff44f399dc310d3e',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781627/xktzyvs7qwjgrqvhg9f1.jpg',
-    altText: '',
+    altText: 'The chai shop owner by Chandra Tal',
     userId: '658da359db664e4ee686cf0e',
     username: 'Aisha',
     userAvatar:
@@ -273,7 +273,7 @@ const imageSeedData = [
   {
     _id: '658da500ff44f399dc310d41',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781631/yxlnpthlbzhpuwr6f186.jpg',
-    altText: '',
+    altText: 'Gurutze, Pablo and our Enfield motorbike',
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar: 'M',
@@ -283,7 +283,7 @@ const imageSeedData = [
   {
     _id: '658da505ff44f399dc310d44',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781637/aerl0q8nretsyrxvue91.jpg',
-    altText: '',
+    altText: 'two young girls in Manali',
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
@@ -294,7 +294,7 @@ const imageSeedData = [
   {
     _id: '658da50aff44f399dc310d47',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781642/wkn8azatakpdlkrlq7th.jpg',
-    altText: '',
+    altText: 'An oak sapling',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -305,7 +305,7 @@ const imageSeedData = [
   {
     _id: '658da511ff44f399dc310d4a',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781649/laxiyn2rb55lgc9kdemr.jpg',
-    altText: '',
+    altText: 'A living willow dome',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
