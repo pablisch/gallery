@@ -10,6 +10,8 @@ import Button from './Button';
 import './ImagePanel.css';
 import getLetterAvatarColourClass from '../utils/letterAvatarColours';
 
+const imageWidthParam = '/w_400/';
+
 const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -73,18 +75,18 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
     onTouchEnd: () => handleHover(false),
   };
 
-  const getDisplaySrc = (src) => {
-    const srcParts = src.split('/upload/');
-    return `${srcParts[0]}/upload/w_400/${srcParts[1]}`;
-  };
+  const srcParts = image.src.split('upload');
+  const displaySrc = `${srcParts[0]}upload${imageWidthParam}${srcParts[1]}`;
+
+  const imageIdSuffix = displaySrc.split(imageWidthParam)[1];
 
   return (
     <div className='image-card-container'>
       <img
-        id={`image-${image.src}`}
+        id={`image${imageIdSuffix}`}
         {...handleHoverFunction}
         onClick={handleSelect}
-        src={getDisplaySrc(image.src)}
+        src={displaySrc}
         alt={image.altText}
         className={isHovered ? 'selected image-card' : 'image-card'}
       />

@@ -11,7 +11,6 @@ import Button from '../components/Button';
 import CommentBox from '../components/CommentBox';
 import AddCommentForm from '../components/AddCommentForm';
 import getImageData from '../utils/getImageData';
-import { add } from 'date-fns';
 
 const SingleImagePage = ({
   imageData,
