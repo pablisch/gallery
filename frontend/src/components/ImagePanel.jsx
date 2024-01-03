@@ -32,7 +32,6 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
     window.localStorage.setItem('image', JSON.stringify(image));
     setSelectedImage(image);
     navigate(`/${image._id}`);
-    // const singleImage = JSON.parse(window.localStorage.getItem('image'));
   };
 
   const handleDeleteWarning = () => {
@@ -74,14 +73,6 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
     onTouchEnd: () => handleHover(false),
   };
 
-  const onHoverStart = () => {
-    // setIsHovered(true);
-  };
-
-  const onHoverEnd = () => {
-    // setIsHovered(false);
-  };
-
   const getDisplaySrc = (src) => {
     const srcParts = src.split('/upload/');
     return `${srcParts[0]}/upload/w_400/${srcParts[1]}`;
@@ -97,8 +88,11 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
         alt={image.altText}
         className={isHovered ? 'selected image-card' : 'image-card'}
       />
+
+      {/* EVERYTHING below here may be rendered ONLY when HOVERED OVER */}
       {isHovered && (
         <>
+          {/* DELETE ICON when image is OWNED by user AND NOT yet selected */}
           {(userId === image.userId || username === 'pablisch') &&
             !confirmDelete && (
               <div
@@ -110,6 +104,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
                 </div>
               </div>
             )}
+          {/* CONFIRM or CANCEL DELETE buttons when user owns image and has started the DELETE process */}
           {(userId === image.userId || username === 'pablisch') &&
             confirmDelete && (
               <div
@@ -133,29 +128,35 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
                 </div>
               </div>
             )}
+          {/* HOVER INFO SECTION at bottom of image panel */}
           <div
             className={`hover-icon-container ${isHovered ? 'selected' : ''}`}
             {...handleHoverFunction}
             onClick={handleSelect}>
+            {/* LEFT SIDE - icon and username */}
             <div className='hover-left'>
               {image.userAvatar && image.userAvatar?.length > 1 ? (
+                /* USER AVATAR IMAGE */
                 <img
                   className='hover-icon icon avatar-icon'
                   src={image.userAvatar}
                   alt='avatar and settings icon'
                 />
               ) : (
+                /* USER LETTER as AVATAR */
                 <div
                   id='image-post-avatar-container'
                   className={`hover-icon icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
                   <h1>{image.userAvatar}</h1>
                 </div>
               )}
+              {/* USERNAME */}
               {displayUsername ? (
                 <p className='hover-username'>{displayUsername}</p>
               ) : (
                 <p></p>
               )}
+              {/* RIGHT SIDE - NO. of COMMENTS and LIKES */}
             </div>
             <div className='hover-right'>
               <p>{image.comments.length}</p>
