@@ -11,6 +11,7 @@ import Button from '../components/Button';
 import CommentBox from '../components/CommentBox';
 import AddCommentForm from '../components/AddCommentForm';
 import getImageData from '../utils/getImageData';
+import { add } from 'date-fns';
 
 const SingleImagePage = ({
   imageData,
@@ -36,8 +37,10 @@ const SingleImagePage = ({
   }, []);
 
   const handleAddCommentBtnClick = () => {
-    setAddComment((prev) => !prev);
-    setIsAddCommentBtnDisabled(true);
+    if (!addComment) {
+      setAddComment((prev) => !prev);
+      setIsAddCommentBtnDisabled(true);
+    }
   };
 
   const handleLike = async () => {
@@ -112,7 +115,7 @@ const SingleImagePage = ({
       {selectedImage && selectedImage?._id === id && (
         <>
           <SingleImage selectedImage={selectedImage} imageData={imageData} setSelectedImage={setSelectedImage} />
-          <SingleImageInfo selectedImage={selectedImage} />
+          <SingleImageInfo selectedImage={selectedImage} handleCommentIconClick={handleAddCommentBtnClick} handleLikeIconClick={handleLike} />
           <div id='comment-like-buttons-container'>
             {token && (
               <Button

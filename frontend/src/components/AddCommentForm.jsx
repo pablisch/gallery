@@ -90,7 +90,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
         </div>
         <div id='add-cancel-comment-btns' className='flex-container'>
           <Button
-            id='add-comment-btn'
+            id='confirm-add-comment-btn'
             ariaLabel='add-comment-button'
             onClick={handleAddComment}>
             Add Comment

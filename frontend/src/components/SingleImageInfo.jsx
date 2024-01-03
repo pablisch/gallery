@@ -3,7 +3,7 @@ import { formatDateOutput } from '../utils/formatDateOutput';
 import getLetterAvatarColourClass from '../utils/letterAvatarColours';
 import { FaRegCommentDots, FaRegHeart, FaHeart } from 'react-icons/fa';
 
-const SingleImageInfo = ({ selectedImage }) => {
+const SingleImageInfo = ({ selectedImage, handleCommentIconClick, handleLikeIconClick }) => {
   let avatarLetterClass = '';
   let avatar = null;
 
@@ -41,14 +41,14 @@ const SingleImageInfo = ({ selectedImage }) => {
       <div className='hover-right' id='selected-image-comments-likes'>
         <div className='comments-info-div flex-container'>
           <p>{selectedImage.comments.length}</p>
-          <FaRegCommentDots className='hover-icons comments-icon' />
+          <FaRegCommentDots className='hover-icons comments-icon' onClick={handleCommentIconClick} />
         </div>
         <div className='likes-info-div flex-container'>
           <p>{selectedImage.likes.length}</p>
           {selectedImage.likes.length > 0 ? (
-            <FaHeart className='hover-icons likes-heart-icon' />
+            <FaHeart className='hover-icons likes-heart-icon' onClick={handleLikeIconClick} />
           ) : (
-            <FaRegHeart className='hover-icons likes-heart-icon' />
+            <FaRegHeart className='hover-icons likes-heart-icon' onClick={handleLikeIconClick}  />
           )}
         </div>
       </div>
@@ -58,6 +58,8 @@ const SingleImageInfo = ({ selectedImage }) => {
 
 SingleImageInfo.propTypes = {
   selectedImage: PropTypes.object,
+  handleCommentIconClick: PropTypes.func,
+  handleLikeIconClick: PropTypes.func,
 };
 
 export default SingleImageInfo;
