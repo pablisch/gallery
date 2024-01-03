@@ -63,12 +63,23 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
     setConfirmDelete((prev) => !prev);
   };
 
+  const handleHover = (hoverState) => {
+    setIsHovered(hoverState);
+  };
+
+  const handleHoverFunction = {
+    onMouseEnter: () => handleHover(true),
+    onMouseLeave: () => handleHover(false),
+    onTouchStart: () => handleHover(true),
+    onTouchEnd: () => handleHover(false),
+  };
+
   const onHoverStart = () => {
-    setIsHovered(true);
+    // setIsHovered(true);
   };
 
   const onHoverEnd = () => {
-    setIsHovered(false);
+    // setIsHovered(false);
   };
 
   const getDisplaySrc = (src) => {
@@ -80,10 +91,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
     <div className='image-card-container'>
       <img
         id={`image-${image.src}`}
-        onMouseEnter={onHoverStart}
-        onMouseLeave={onHoverEnd}
-        onTouchStart={onHoverStart}
-        onTouchEnd={onHoverEnd}
+        {...handleHoverFunction}
         onClick={handleSelect}
         src={getDisplaySrc(image.src)}
         alt={image.altText}
@@ -94,10 +102,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
           {(userId === image.userId || username === 'pablisch') &&
             !confirmDelete && (
               <div
-                onMouseEnter={onHoverStart}
-                onMouseLeave={onHoverEnd}
-                onTouchStart={onHoverStart}
-                onTouchEnd={onHoverEnd}
+                {...handleHoverFunction}
                 onClick={handleDeleteWarning}
                 className='hover-close-container'>
                 <div id='close-symbol'>
@@ -108,10 +113,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
           {(userId === image.userId || username === 'pablisch') &&
             confirmDelete && (
               <div
-                onMouseEnter={onHoverStart}
-                onMouseLeave={onHoverEnd}
-                onTouchStart={onHoverStart}
-                onTouchEnd={onHoverEnd}
+                {...handleHoverFunction}
                 className='delete-btn-container'>
                 <div id='delete-button-container'>
                   <Button
@@ -133,10 +135,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
             )}
           <div
             className={`hover-icon-container ${isHovered ? 'selected' : ''}`}
-            onMouseEnter={onHoverStart}
-            onMouseLeave={onHoverEnd}
-            onTouchStart={onHoverStart}
-            onTouchEnd={onHoverEnd}
+            {...handleHoverFunction}
             onClick={handleSelect}>
             <div className='hover-left'>
               {image.userAvatar && image.userAvatar?.length > 1 ? (

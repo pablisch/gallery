@@ -41,15 +41,15 @@ const SingleImage = ({ selectedImage, imageData, setSelectedImage }) => {
     navigate(`/${nextImageId}`);
   };
 
-  const hoverHandler = (hoverState) => {
+  const handleHover = (hoverState) => {
     setIsHovered(hoverState);
   };
 
-  const hoverFunctions = {
-    onMouseEnter: () => hoverHandler(true),
-    onMouseLeave: () => hoverHandler(false),
-    onTouchStart: () => hoverHandler(true),
-    onTouchEnd: () => hoverHandler(false),
+  const handleHoverFunction = {
+    onMouseEnter: () => handleHover(true),
+    onMouseLeave: () => handleHover(false),
+    onTouchStart: () => handleHover(true),
+    onTouchEnd: () => handleHover(false),
   };
 
   return (
@@ -59,18 +59,18 @@ const SingleImage = ({ selectedImage, imageData, setSelectedImage }) => {
           className='single-image'
           src={selectedImage.src}
           alt={selectedImage.altText}
-          {...hoverFunctions}
+          {...handleHoverFunction}
         />
         {isHovered && (
           <>
             <div
               id='left-arrow'
               className='arrow'
-              {...hoverFunctions}
+              {...handleHoverFunction}
               onClick={handleLeftArrowClick}>
               <FaCaretLeft />
             </div>
-            <div id='right-arrow' className='arrow' {...hoverFunctions}
+            <div id='right-arrow' className='arrow' {...handleHoverFunction}
             onClick={handleRightArrowClick}>
               <FaCaretRight />
             </div>
