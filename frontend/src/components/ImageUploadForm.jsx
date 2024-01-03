@@ -9,7 +9,6 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 import InputField from './InputField';
 
-// eslint-disable-next-line no-unused-vars
 const ImageUploadForm = ({
   user,
   userToken,
@@ -20,11 +19,9 @@ const ImageUploadForm = ({
   const [preview, setPreview] = useState(null);
   const [fileName, setFileName] = useState('');
   const [description, setDescription] = useState('');
-  // eslint-disable-next-line no-unused-vars
   const [isFileSelected, setIsFileSelected] = useState(false);
 
   const uploadButtonRef = useRef(null);
-  // const selectFileButtonRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -90,7 +87,6 @@ const ImageUploadForm = ({
       );
 
       console.log('Response from upload operation', dbResponse);
-      // setUploadSuccess(true);
       getImageArrayData(setImageData);
       setTimeout(() => {
         setIsSideEffect(false);
@@ -112,12 +108,6 @@ const ImageUploadForm = ({
     setDescription(event.target.value);
   }
 
-  // sets focus to the choose file button when form is loaded
-  // useEffect(() => {
-  //   selectFileButtonRef.current.focus();
-  // }, []);
-
-  // moves focus to the upload button when a file is selected
   useEffect(() => {
     uploadButtonRef.current.focus();
   }, [isFileSelected]);
@@ -138,12 +128,10 @@ const ImageUploadForm = ({
             className={`btn custom-file-input ${
               isFileSelected ? 'subdued' : ''
               }`}
-            // ref={selectFileButtonRef}
-            // onKeyPress={handleFileButtonClick}
           >
             <label htmlFor='file-input'>
               {isFileSelected ? 'Change file to upload' : 'Choose file'}
-              <input type='file' id='file-input' onChange={handleFileChange} />
+              <input type='file' id='file-input' onChange={handleFileChange} accept='image/*' />
             </label>
           </Button>
           <InputField
@@ -156,7 +144,6 @@ const ImageUploadForm = ({
             id='image-upload-submit-btn'
             ref={uploadButtonRef}
             disabled={!isFileSelected}
-            // onClick={handleUploadImage}
           >
             {isFileSelected ? 'Upload selected image' : 'Upload image'}
           </Button>
