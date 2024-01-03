@@ -58,6 +58,7 @@ function App() {
               setSelectedImage={setSelectedImage}
               setAvatar={setAvatar}
               setUser={setUser}
+              imageData={imageData}
               setImageData={setImageData}
               setIsSideEffect={setIsSideEffect}
             />

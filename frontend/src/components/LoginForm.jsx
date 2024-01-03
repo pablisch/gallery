@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Form.css';
@@ -15,9 +15,14 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
 
   const navigate = useNavigate();
 
+  const usernameInputRef = useRef(null);
+
   useEffect(() => {
     document.title = 'Gallery Login';
     window.localStorage.clear();
+    if (usernameInputRef.current) {
+      usernameInputRef.current.focus();
+    }
   }, []);
 
   const handleLoginSubmit = async (event) => {
@@ -104,7 +109,8 @@ const LoginForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
             id={'login-username-input'}
             placeholder={'Username'}
             value={username}
-            onChangeFunc={handleUsernameChange}>
+            onChangeFunc={handleUsernameChange}
+            ref={usernameInputRef}>
             Username
           </InputField>
           <InputField

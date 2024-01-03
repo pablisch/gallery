@@ -6,7 +6,7 @@ const Login = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   window.localStorage.removeItem('user');
   setUserToken(null);
   setUser(null);
-  
+
   return (
     <div>
       <LoginForm setUserToken={setUserToken} setUser={setUser} setAvatar={setAvatar} setIsSideEffect={setIsSideEffect} />

@@ -2,7 +2,7 @@ const imageSeedData = [
   {
     _id: '658da443ff44f399dc310cf6',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781443/moadwvgvunbnhtappmm8.jpg',
-    altText: '',
+    altText: 'Novice monks in Ladakh, India',
     userId: '65831756f1ca823394e4ea39',
     username: 'Pablito',
     userAvatar:
@@ -30,7 +30,7 @@ const imageSeedData = [
   {
     _id: '658da44cff44f399dc310cf9',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781451/lb2jtrormhzlrhdpdhe7.jpg',
-    altText: '',
+    altText: 'Public bin in McLeod Ganj, India',
     userId: '658da359db664e4ee686cf0b',
     username: 'Sabina',
     userAvatar:
@@ -41,7 +41,7 @@ const imageSeedData = [
   {
     _id: '658da455ff44f399dc310cff',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781461/s7w8zritrmj5qzj6yays.jpg',
-    altText: '',
+    altText: 'Tree of life leg tattoos',
     userId: '658da359db664e4ee686cf0e',
     username: 'Aisha',
     userAvatar:
@@ -52,7 +52,7 @@ const imageSeedData = [
   {
     _id: '658da45cff44f399dc310d02',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781467/polmlpk8iugb6lrfndue.jpg',
-    altText: '',
+    altText: 'Mariana and a goat',
     userId: '658da359db664e4ee686cf0d',
     username: 'Billy',
     userAvatar:
@@ -63,7 +63,7 @@ const imageSeedData = [
   {
     _id: '658da4efff44f399dc310d38',
     src: 'https://res.cloudinary.com/ddinmpzrr/image/upload/v1703781615/octm7jk8lutkexrnmm65.jpg',
-    altText: '',
+    altText: 'A Tata truck',
     userId: '658da359db664e4ee686cf0c',
     username: 'Martha',
     userAvatar: 'M',

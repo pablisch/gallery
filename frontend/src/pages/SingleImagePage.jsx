@@ -13,6 +13,7 @@ import AddCommentForm from '../components/AddCommentForm';
 import getImageData from '../utils/getImageData';
 
 const SingleImagePage = ({
+  imageData,
   selectedImage,
   setSelectedImage,
   setAvatar,
@@ -27,6 +28,12 @@ const SingleImagePage = ({
   const token = window.localStorage.getItem('token');
   const username = window.localStorage.getItem('user');
   let likedByUser = selectedImage?.likes?.includes(username);
+  const ImageDescription = selectedImage?.altText || "Unspecified image";
+
+  useEffect(() => {
+    document.title = `Gallery - ${ImageDescription}`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAddCommentBtnClick = () => {
     setAddComment((prev) => !prev);
@@ -101,10 +108,10 @@ const SingleImagePage = ({
   }, [id, selectedImage, setSelectedImage]);
 
   return (
-    <div id='single-image-container'>
+    <div id='single-image-page-container'>
       {selectedImage && selectedImage?._id === id && (
         <>
-          <SingleImage selectedImage={selectedImage} />
+          <SingleImage selectedImage={selectedImage} imageData={imageData} setSelectedImage={setSelectedImage} />
           <SingleImageInfo selectedImage={selectedImage} />
           <div id='comment-like-buttons-container'>
             {token && (
@@ -164,6 +171,7 @@ SingleImagePage.propTypes = {
   setAvatar: PropTypes.func.isRequired,
   setImageData: PropTypes.func.isRequired,
   setIsSideEffect: PropTypes.func.isRequired,
+  imageData: PropTypes.array.isRequired,
 };
 
 export default SingleImagePage;
