@@ -10,6 +10,10 @@ const FeedPage = ({ imageData, isServerUp, setIsServerUp, setSelectedImage, setI
   const [counter, setCounter] = useState(expectedServerSpinupTime);
 
   useEffect(() => {
+    document.title = 'Gallery';
+  }, []);
+
+  useEffect(() => {
     const checkServerStatus = async () => {
       try {
         const response = await fetch(`${baseUrl}/api/v1.0/health/server`);

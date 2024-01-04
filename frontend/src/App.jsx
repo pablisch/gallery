@@ -23,7 +23,6 @@ function App() {
   const [isSideEffect, setIsSideEffect] = useState(false);
 
   useEffect(() => {
-    document.title = 'Gallery';
     getImageArrayData(setImageData);
   }, []);
 
