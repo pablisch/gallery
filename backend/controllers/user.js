@@ -45,7 +45,6 @@ exports.login = (req, res, next) => {
         console.log('user not found')
         return res.status(401).json({ error: 'That username is not in use' }); 
       } 
-      console.log('user not found but still here')
       console.log('user found', user)
       bcrypt.compare(password, user.password) 
         .then(valid => { 

@@ -7,7 +7,7 @@ import './Form.css';
 import baseUrl from '../utils/baseUrl';
 import Button from './Button';
 import resizeImage from '../utils/resizeImage';
-import { validatePassword, validateEmail, validateUsername } from '../utils/signupValidation';
+import { validatePassword, validateEmail, validateUsername, validateName } from '../utils/signupValidation';
 import ErrorMessage from './ErrorMessage';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
@@ -40,6 +40,7 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
       setErrorMessage('Please fill in all fields');
       return;
     }
+    if (!validateName(name, setErrorMessage)) return;
     if (!validateUsername(username, setErrorMessage)) return;
     if (!validateEmail(email, setErrorMessage)) return;
     if (!validatePassword(password, setErrorMessage)) return;

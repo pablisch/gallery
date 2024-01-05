@@ -93,7 +93,7 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar, isSideEffect }) => {
             <>
               <NavLink
                 id='logout-navlink'
-                route='/images'
+                route='/'
                 onClickFunc={handleLogOut}>
                 Log out
               </NavLink>

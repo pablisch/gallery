@@ -3,6 +3,6 @@ const router = express.Router();
 
 const testDataCtrl = require('../controllers/testData');
 
-router.post('/reset', testDataCtrl.resetTestData);
+router.get('/reset', testDataCtrl.resetTestData);
 
 module.exports = router;

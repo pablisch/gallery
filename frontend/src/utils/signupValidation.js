@@ -3,6 +3,15 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!?\S]{8,}$/; // R
 const symbolRegex = /^.*[^a-zA-Z0-9?!].*$/; // Regex for symbols excluding ! and ? characters
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+$/; // Regex for email
 
+export const validateName = (name, setErrorMessage) => {
+  if (name.length < 1 || name.length > 25) {
+    setErrorMessage('Name can be a maximum of 25 characters');
+    return false;
+  }
+  setErrorMessage('');
+  return true;
+}
+
 export const validateUsername = (username, setErrorMessage) => {
   if (username.length < 3 || username.length > 12) {
     setErrorMessage('Username must be between 3 and 12 characters');

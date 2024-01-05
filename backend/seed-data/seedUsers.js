@@ -39,7 +39,7 @@ const clearUsers = async () => {
 };
 
 const insertUsers = async () => {
-  const hashedUsers = await hashPasswords(userSeedData); // Await the result of hashPasswords
+  const hashedUsers = await hashPasswords(userSeedData);
   await User.insertMany(hashedUsers);
 };
 
