@@ -7,7 +7,7 @@ const ErrorMessage = ({errorMessage = 'Something went wrong.' , className = ''})
 
   return (
     <div id="error-message-container">
-      <p className={`error-message ${className}`} >{ errorMessage }</p>
+      <p id="error-message" className={`error-message ${className}`} >{ errorMessage }</p>
     </div>
   )
 }
