@@ -43,7 +43,7 @@ exports.login = (req, res, next) => {
     .then(user => { 
       if (!user) { 
         console.log('user not found')
-        return res.status(401).json({ error: 'That username is not in use.' }); 
+        return res.status(401).json({ error: 'That username is not in use' }); 
       } 
       console.log('user not found but still here')
       console.log('user found', user)
@@ -51,7 +51,7 @@ exports.login = (req, res, next) => {
         .then(valid => { 
           if (!valid) {
             console.log(password, user.password)
-            return res.status(401).json({ error: 'Username and password do not match.' }); 
+            return res.status(401).json({ error: 'Username and password do not match' }); 
           } 
           const token = jwt.sign( 
             { userId: user._id }, 
