@@ -9,6 +9,7 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 import { validatePassword, validateEmail, validateUsername, validateName } from '../utils/signupValidation';
 import ErrorMessage from './ErrorMessage';
+import { set } from 'mongoose';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [name, setName] = useState('');
@@ -101,6 +102,8 @@ const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
       }
     } catch (error) {
       console.error('Error in handleSignUpSubmit:', error);
+      console.log('error.response:', error.response.data.error);
+      setErrorMessage(error.response.data.error);
     }
   };
 
