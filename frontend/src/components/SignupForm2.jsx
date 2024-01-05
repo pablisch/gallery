@@ -9,7 +9,6 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 import { validatePassword, validateEmail, validateUsername, validateName } from '../utils/signupValidation';
 import ErrorMessage from './ErrorMessage';
-import { set } from 'mongoose';
 
 const SignupForm = ({ setUserToken, setUser, setAvatar, setIsSideEffect }) => {
   const [name, setName] = useState('');
