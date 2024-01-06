@@ -33,7 +33,7 @@ const SingleImagePage = ({
   useEffect(() => {
     document.title = `Gallery - ${ImageDescription}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedImage]);
 
   const handleAddCommentBtnClick = () => {
     if (!addCommentFormIsOpen && token) {
