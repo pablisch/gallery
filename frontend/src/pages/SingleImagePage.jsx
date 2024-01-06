@@ -21,14 +21,14 @@ const SingleImagePage = ({
   setImageData,
   setIsSideEffect,
 }) => {
-  const [addComment, setAddComment] = useState(false);
+  const [addCommentFormIsOpen, setAddCommentFormIsOpen] = useState(false);
   const [isAddCommentBtnDisabled, setIsAddCommentBtnDisabled] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const token = window.localStorage.getItem('token');
   const username = window.localStorage.getItem('user');
   let likedByUser = selectedImage?.likes?.includes(username);
-  const ImageDescription = selectedImage?.altText || "Unspecified image";
+  const ImageDescription = selectedImage?.altText || 'Unspecified image';
 
   useEffect(() => {
     document.title = `Gallery - ${ImageDescription}`;
@@ -36,14 +36,15 @@ const SingleImagePage = ({
   }, []);
 
   const handleAddCommentBtnClick = () => {
-    if (!addComment) {
-      setAddComment((prev) => !prev);
+    if (!addCommentFormIsOpen && token) {
+      setAddCommentFormIsOpen((prev) => !prev);
       setIsAddCommentBtnDisabled(true);
     }
   };
 
   const handleLike = async () => {
-    // setIsSideEffect(true);
+    if (!token) return;
+
     const currentImage = selectedImage;
     likedByUser = !likedByUser;
     if (likedByUser) {
@@ -113,44 +114,56 @@ const SingleImagePage = ({
     <div id='single-image-page-container'>
       {selectedImage && selectedImage?._id === id && (
         <>
-          <SingleImage selectedImage={selectedImage} imageData={imageData} setSelectedImage={setSelectedImage} />
-          <SingleImageInfo selectedImage={selectedImage} handleCommentIconClick={handleAddCommentBtnClick} handleLikeIconClick={handleLike} />
+          <SingleImage
+            selectedImage={selectedImage}
+            imageData={imageData}
+            setSelectedImage={setSelectedImage}
+          />
+          <SingleImageInfo
+            selectedImage={selectedImage}
+            handleCommentIconClick={handleAddCommentBtnClick}
+            handleLikeIconClick={handleLike}
+            token={token}
+            addCommentFormIsOpen={addCommentFormIsOpen}
+          />
           <div id='comment-like-buttons-container'>
             {token && (
-              <Button
-                id='add-comment-btn'
-                aria-label='Add comment'
-                onClick={handleAddCommentBtnClick}
-                className={`btn add-btn ${addComment ? 'inactive-btn' : ''}`}
-                disabled={isAddCommentBtnDisabled}
-              >
-                Add a comment
-              </Button>
+              <>
+                <Button
+                  id='add-comment-btn'
+                  aria-label='Add comment'
+                  onClick={handleAddCommentBtnClick}
+                  className={`btn add-btn ${addCommentFormIsOpen ? 'inactive-btn' : ''}`}
+                  disabled={isAddCommentBtnDisabled}>
+                  Add a comment
+                </Button>
+
+                <Button
+                  id='like-btn'
+                  aria-label='like or unlike'
+                  onClick={handleLike}
+                  className={`btn like-btn ${likedByUser ? 'unlike-btn' : ''}`}>
+                  <div id='like-btn-contents'>
+                    {likedByUser ? (
+                      <>
+                        <FaHeart className='hover-icons likes-heart-icon'></FaHeart>
+                        <p className='like-btn-text'>Unlike</p>
+                      </>
+                    ) : (
+                      <>
+                        <FaRegHeart className='hover-icons likes-heart-icon'></FaRegHeart>
+                        <p className='like-btn-text'>Like</p>
+                      </>
+                    )}
+                  </div>
+                </Button>
+              </>
             )}
-            <Button
-              id='like-btn'
-              aria-label='like or unlike'
-              onClick={handleLike}
-              className={`btn like-btn ${likedByUser ? 'unlike-btn' : ''}`}>
-              <div id='like-btn-contents'>
-                {likedByUser ? (
-                  <>
-                    <FaHeart className='hover-icons likes-heart-icon'></FaHeart>
-                    <p className='like-btn-text'>Unlike</p>
-                  </>
-                ) : (
-                  <>
-                    <FaRegHeart className='hover-icons likes-heart-icon'></FaRegHeart>
-                    <p className='like-btn-text'>Like</p>
-                  </>
-                )}
-              </div>
-            </Button>
           </div>
-          {addComment && (
+          {addCommentFormIsOpen && (
             <AddCommentForm
               comments={selectedImage.comments}
-              setAddComment={setAddComment}
+              setAddCommentFormIsOpen={setAddCommentFormIsOpen}
               setSelectedImage={setSelectedImage}
               setImageData={setImageData}
               setIsAddCommentBtnDisabled={setIsAddCommentBtnDisabled}

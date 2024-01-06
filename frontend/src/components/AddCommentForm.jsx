@@ -8,7 +8,7 @@ import generateId from '../utils/generateId';
 import getSingleImageData from '../utils/getSingleImageData';
 import getImageData from '../utils/getImageData';
 
-const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAddCommentBtnDisabled, setIsSideEffect }) => {
+const AddCommentForm = ({ setAddCommentFormIsOpen, setSelectedImage, setImageData, setIsAddCommentBtnDisabled, setIsSideEffect }) => {
   const [comment, setComment] = useState('');
   const textareaRef = useRef(null);
 
@@ -30,7 +30,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
     event.preventDefault();
     
     if (!comment) {
-      setAddComment((prev) => !prev)
+      setAddCommentFormIsOpen((prev) => !prev)
       return;
     }
 
@@ -58,7 +58,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
       console.log(response);
       await getImageData(setImageData);
       await getSingleImageData(image._id, setSelectedImage);
-      setAddComment((prev) => !prev);
+      setAddCommentFormIsOpen((prev) => !prev);
       setIsAddCommentBtnDisabled(false);
       setTimeout(() => {
         setIsSideEffect(false);
@@ -69,7 +69,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
   };
 
   const handleCancelAddComment = () => {
-    setAddComment((prev) => !prev);
+    setAddCommentFormIsOpen((prev) => !prev);
     setIsAddCommentBtnDisabled(false);
   }
 
@@ -110,7 +110,7 @@ const AddCommentForm = ({ setAddComment, setSelectedImage, setImageData, setIsAd
 
 AddCommentForm.propTypes = {
   user: PropTypes.string,
-  setAddComment: PropTypes.func.isRequired,
+  setAddCommentFormIsOpen: PropTypes.func.isRequired,
   setSelectedImage: PropTypes.func.isRequired,
   setImageData: PropTypes.func.isRequired,
   setIsAddCommentBtnDisabled: PropTypes.func.isRequired,
