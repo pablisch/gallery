@@ -70,9 +70,9 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
 
   const handleHoverFunction = {
     onMouseEnter: () => handleHover(true),
-    // onMouseLeave: () => handleHover(false),
+    onMouseLeave: () => handleHover(false),
     onTouchStart: () => handleHover(true),
-    // onTouchEnd: () => handleHover(false),
+    onTouchEnd: () => handleHover(false),
   };
 
   const srcParts = image.src.split('upload');
@@ -101,32 +101,30 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
             !confirmDelete && (
               <div
                 {...handleHoverFunction}
-              onClick={handleDeleteWarning}
-              id='delete-icon-container'
+                onClick={handleDeleteWarning}
+                id='delete-icon-container'
                 className='hover-delete-container'>
-                  <IoCloseSharp id='delete-icon' />
+                <IoCloseSharp id='delete-icon' />
               </div>
             )}
           {/* CONFIRM or CANCEL DELETE buttons when user owns image and has started the DELETE process */}
           {(userId === image.userId || username === 'pablisch') &&
             confirmDelete && (
-              <div {...handleHoverFunction} className='delete-btn-container'>
-                <div id='delete-button-container'>
+              <div {...handleHoverFunction} id='delete-btn-container' className='delete-btn-container'>
                   <Button
-                    id='delete-image-button'
+                    id='cancel-delete-image-btn'
                     onClick={handleCancelDelete}
-                    arialabel='confirm-delete'
+                    arialabel='cancel-delete'
                     className='btn'>
                     Keep image
                   </Button>
                   <Button
-                    id='delete-image-button'
+                    id='confirm-delete-image-btn'
                     onClick={handleConfirmDelete}
                     arialabel='confirm-delete'
                     className='btn warning-btn margin-top'>
                     Confirm delete
                   </Button>
-                </div>
               </div>
             )}
           {/* HOVER INFO SECTION at bottom of image panel */}
@@ -140,7 +138,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
               {image.userAvatar && image.userAvatar?.length > 1 ? (
                 /* USER AVATAR IMAGE */
                 <img
-                  id='hover-info-avatar'
+                  id='hover-info-avatar-image'
                   className='hover-icon icon avatar-icon'
                   src={image.userAvatar}
                   alt='avatar and settings icon'
@@ -150,7 +148,7 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
                 <div
                   id='hover-info-avatar-letter-container'
                   className={`hover-icon icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
-                  <h1 id='hover-info-letter-avatar'>{image.userAvatar}</h1>
+                  <h1 id='hover-info-avatar-letter'>{image.userAvatar}</h1>
                 </div>
               )}
               {/* USERNAME */}
