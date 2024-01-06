@@ -9,6 +9,9 @@ const SingleImage = ({ selectedImage, imageData, setSelectedImage }) => {
 
   const navigate = useNavigate();
 
+  // const srcParts = selectedImage.src.split('upload');
+  const imageIdSuffix = selectedImage.src.split('upload')[1];
+
   const getCurrentImageIndex = () => {
     // console.log('Image data', imageData);
     // console.log('Selected image', selectedImage)
@@ -56,6 +59,7 @@ const SingleImage = ({ selectedImage, imageData, setSelectedImage }) => {
     <>
       <div id='single-image-container'>
         <img
+          id={`single-image${imageIdSuffix}`}
           className='single-image'
           src={selectedImage.src}
           alt={selectedImage.altText}

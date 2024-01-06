@@ -106,10 +106,11 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar, isSideEffect }) => {
               </NavLink>
               {avatar?.length > 1 ? (
                 <Link
-                  id='user-settings-navlink'
+                  id='user-settings-avatar-image-container'
                   className={`icon settings-avatar-margin ${isSideEffect ? 'rotateCcw' : ''} ${isLogoRotated ? 'rotateUserIconOnce' : ''}`}
                 >
                   <img
+                    id='user-settings-avatar-image'
                     className='icon avatar-icon'
                     src={avatar}
                     alt='avatar and settings icon'
@@ -118,10 +119,10 @@ const Navbar = ({ userToken, setUserToken, setUser, avatar, isSideEffect }) => {
               ) : (
                 <>
                   <Link
-                      id='user-settings-navlink'
+                      id='user-settings-avatar-letter-container'
                       className={`icon avatar-letter-container settings-link settings-avatar-margin ${avatarLetterClass} ${isSideEffect ? 'rotateCcw' : ''} ${isLogoRotated ? 'rotateUserIconOnce' : ''}`}
                     >
-                      <h1 className={`icon-letter ${avatarLetterClass}`}>{avatar}</h1>
+                      <h1 id='user-settings-avatar-letter' className={`icon-letter ${avatarLetterClass}`}>{avatar}</h1>
                   </Link>
                 </>
               )}

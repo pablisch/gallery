@@ -16,7 +16,8 @@ const SingleImageInfo = ({ selectedImage, handleCommentIconClick, handleLikeIcon
   avatar =
     selectedImage.userAvatar?.length > 1 ? (
       // User avatar image
-      <img
+    <img
+        id='image-owner-avatar-image'
         className='icon avatar-icon'
         src={selectedImage.userAvatar}
         alt='avatar and settings icon'
@@ -24,9 +25,9 @@ const SingleImageInfo = ({ selectedImage, handleCommentIconClick, handleLikeIcon
   ) : (
       // User avatar letter
       <div
-        id='image-post-avatar-container'
+        id='image-owner-avatar-letter-container'
         className={`icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
-        <h1 className={`icon-letter ${avatarLetterClass}`}>
+        <h1 id='image-owner-avatar-letter' className={`icon-letter ${avatarLetterClass}`}>
           {selectedImage.userAvatar}
         </h1>
       </div>
@@ -42,16 +43,16 @@ const SingleImageInfo = ({ selectedImage, handleCommentIconClick, handleLikeIcon
       </div>
       {/* BELOW - COMMENT and LIKES count */}
       <div className='hover-right' id='selected-image-comments-likes'>
-        <div className='comments-info-div flex-container'>
-          <p>{selectedImage.comments.length}</p>
-          <FaRegCommentDots className={`hover-icons comments-icon ${token && !addCommentFormIsOpen ? 'clickable' : ''}`} onClick={handleCommentIconClick} />
+        <div id='selected-image-comments' className='comments-info-div flex-container'>
+          <p id='selected-image-comments-num'>{selectedImage.comments.length}</p>
+          <FaRegCommentDots id='selected-image-comments-icon' className={`hover-icons comments-icon ${token && !addCommentFormIsOpen ? 'clickable' : ''}`} onClick={handleCommentIconClick} />
         </div>
-        <div className='likes-info-div flex-container'>
-          <p>{selectedImage.likes.length}</p>
+        <div id='selected-image-likes' className='likes-info-div flex-container'>
+          <p id='selected-image-likes-num'>{selectedImage.likes.length}</p>
           {selectedImage.likes.length > 0 ? (
-            <FaHeart className={`hover-icons likes-heart-icon ${token ? 'clickable' : ''}`} onClick={handleLikeIconClick} />
+            <FaHeart id='selected-image-likes-icon' className={`hover-icons likes-heart-icon ${token ? 'clickable' : ''}`} onClick={handleLikeIconClick} />
           ) : (
-            <FaRegHeart className={`hover-icons likes-heart-icon ${token ? 'clickable' : ''}`} onClick={handleLikeIconClick}  />
+            <FaRegHeart id='selected-image-likes-outline-icon' className={`hover-icons likes-heart-icon ${token ? 'clickable' : ''}`} onClick={handleLikeIconClick}  />
           )}
         </div>
       </div>
