@@ -16,13 +16,13 @@
   justify-content: center;
   margin-top: 10px;
   width: 100%;
-} 
+}
 
 #selected-image-user-and-time-info {
   display: flex;
   align-items: center;
   justify-content: center;
-} 
+}
 
 #selected-image-comments-likes {
   display: flex;
@@ -39,7 +39,7 @@
   margin-left: 10px;
 }
 
-#comment-like-buttons-container {
+#comment-like-btn-container {
   margin-top: 20px;
   max-width: 100%;
   display: flex;
@@ -89,5 +89,3 @@
   right: 40px;
   transform: translateX(50%) translateY(-50%);
 }
-
-

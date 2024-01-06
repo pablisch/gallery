@@ -77,7 +77,7 @@ const AddCommentForm = ({ setAddCommentFormIsOpen, setSelectedImage, setImageDat
     <div className='in-page-form-container'>
       <form id='add-comment-form' className='form add-comment-form'>
         <div id='add-comment-textarea-container' className='add-comment-field'>
-          <label id='add-comment-textarea-labelg' htmlFor='comment'>What would you like to say?</label>
+          <label id='add-comment-textarea-label' htmlFor='comment'>What would you like to say?</label>
           <textarea
             ref={textareaRef}
             id='add-comment-textarea'

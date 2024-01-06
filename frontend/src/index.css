@@ -125,7 +125,7 @@ body {
   }
   .form-container {
     /* height calc is vh - (navbar height + dividing line height) */
-    height: calc(100vh - 51px); 
+    height: calc(100vh - 51px);
   }
   .icon {
     height: 30px;
@@ -180,7 +180,8 @@ body {
   #add-comment-textarea {
     width: 80%;
   }
-  #cancel-add-comment-btn, #add-comment-btn {
+  #cancel-add-comment-btn,
+  #add-comment-btn {
     width: 35%;
     font-size: 0.8rem;
   }
@@ -195,7 +196,8 @@ body {
   #cancel-add-comment-btn {
     margin: 13px 0 0 0;
   }
-  #cancel-add-comment-btn, #add-comment-btn {
+  #cancel-add-comment-btn,
+  #add-comment-btn {
     width: 100%;
     font-size: 0.9rem;
   }
@@ -217,7 +219,7 @@ body {
   #logout-navlink {
     margin-left: 0;
   }
-  #comment-like-buttons-container {
+  #comment-like-btn-container {
     flex-direction: column;
   }
   #add-comment-btn {

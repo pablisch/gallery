@@ -126,7 +126,7 @@ const SingleImagePage = ({
             token={token}
             addCommentFormIsOpen={addCommentFormIsOpen}
           />
-          <div id='comment-like-buttons-container'>
+          <div id='comment-like-btn-container'>
             {token && (
               <>
                 <Button
