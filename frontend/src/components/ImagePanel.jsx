@@ -70,9 +70,9 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
 
   const handleHoverFunction = {
     onMouseEnter: () => handleHover(true),
-    onMouseLeave: () => handleHover(false),
+    // onMouseLeave: () => handleHover(false),
     onTouchStart: () => handleHover(true),
-    onTouchEnd: () => handleHover(false),
+    // onTouchEnd: () => handleHover(false),
   };
 
   const srcParts = image.src.split('upload');
@@ -81,7 +81,9 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   const imageIdSuffix = displaySrc.split(imageWidthParam)[1];
 
   return (
-    <div className='image-card-container'>
+    <div
+      id={`image-container${imageIdSuffix}`}
+      className='image-card-container'>
       <img
         id={`image${imageIdSuffix}`}
         {...handleHoverFunction}
@@ -99,19 +101,16 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
             !confirmDelete && (
               <div
                 {...handleHoverFunction}
-                onClick={handleDeleteWarning}
-                className='hover-close-container'>
-                <div id='close-symbol'>
-                  <IoCloseSharp />
-                </div>
+              onClick={handleDeleteWarning}
+              id='delete-icon-container'
+                className='hover-delete-container'>
+                  <IoCloseSharp id='delete-icon' />
               </div>
             )}
           {/* CONFIRM or CANCEL DELETE buttons when user owns image and has started the DELETE process */}
           {(userId === image.userId || username === 'pablisch') &&
             confirmDelete && (
-              <div
-                {...handleHoverFunction}
-                className='delete-btn-container'>
+              <div {...handleHoverFunction} className='delete-btn-container'>
                 <div id='delete-button-container'>
                   <Button
                     id='delete-image-button'
@@ -132,14 +131,16 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
             )}
           {/* HOVER INFO SECTION at bottom of image panel */}
           <div
-            className={`hover-icon-container ${isHovered ? 'selected' : ''}`}
+            id='hover-info-container'
+            className={`hover-info-container ${isHovered ? 'selected' : ''}`}
             {...handleHoverFunction}
             onClick={handleSelect}>
             {/* LEFT SIDE - icon and username */}
-            <div className='hover-left'>
+            <div id='hover-info-left-side' className='hover-left'>
               {image.userAvatar && image.userAvatar?.length > 1 ? (
                 /* USER AVATAR IMAGE */
                 <img
+                  id='hover-info-avatar'
                   className='hover-icon icon avatar-icon'
                   src={image.userAvatar}
                   alt='avatar and settings icon'
@@ -147,24 +148,39 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
               ) : (
                 /* USER LETTER as AVATAR */
                 <div
-                  id='image-post-avatar-container'
+                  id='hover-info-avatar-letter-container'
                   className={`hover-icon icon avatar-letter-outer-container avatar-letter-container ${avatarLetterClass}`}>
-                  <h1>{image.userAvatar}</h1>
+                  <h1 id='hover-info-letter-avatar'>{image.userAvatar}</h1>
                 </div>
               )}
               {/* USERNAME */}
               {displayUsername ? (
-                <p className='hover-username'>{displayUsername}</p>
+                <p id='hover-info-username' className='hover-username'>
+                  {displayUsername}
+                </p>
               ) : (
                 <p></p>
               )}
               {/* RIGHT SIDE - NO. of COMMENTS and LIKES */}
             </div>
-            <div className='hover-right'>
-              <p>{image.comments.length}</p>
-              <FaRegCommentDots className='hover-icons comments-icon' />
-              <p>{image.likes.length}</p>
-              {image.likes.length > 0 ? <FaHeart className='hover-icons likes-heart-icon' /> : <FaRegHeart className='hover-icons likes-heart-icon' />}
+            <div id='hover-info-right-side' className='hover-right'>
+              <p id='hover-info-comments-num'>{image.comments.length}</p>
+              <FaRegCommentDots
+                id='hover-info-comments-icon'
+                className='hover-icons comments-icon'
+              />
+              <p id='hover-info-likes-num'>{image.likes.length}</p>
+              {image.likes.length > 0 ? (
+                <FaHeart
+                  id='hover-info-likes-icon'
+                  className='hover-icons likes-heart-icon'
+                />
+              ) : (
+                <FaRegHeart
+                  id='hover-info-likes-outline-icon'
+                  className='hover-icons likes-heart-icon'
+                />
+              )}
             </div>
           </div>
         </>

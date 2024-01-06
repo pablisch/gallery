@@ -16,7 +16,7 @@
   display: inline-block;
 }
 
-.hover-icon-container {
+.hover-info-container {
   position: absolute;
   bottom: 10px;
   width: 100%;
@@ -28,7 +28,7 @@
   box-shadow: 0 0 5px 4px rgba(255, 255, 255, 0.6);
 }
 
-.hover-close-container {
+.hover-delete-container {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -38,7 +38,7 @@
   border-radius: 50%;
   /* background-color: rgba(255, 255, 255, 0.6); */
   /* background-color: rgba(0,0,0, 0.4); */
-  background-color: rgba(200,200,200, 0.7);
+  background-color: rgba(200, 200, 200, 0.7);
   /* box-shadow: 0 0 5px 4px rgba(180,180,180, 0.7); */
   /* box-shadow: 0 0 5px 4px rgba(0,0,0, 0.4); */
   /* box-shadow: 0 0 5px 4px rgba(255, 255, 255, 0.5); */
@@ -55,7 +55,7 @@
   align-items: center;
 }
 
-#close-symbol {
+#delete-icon {
   display: flex;
   align-items: center;
   font-size: 1.8rem;
