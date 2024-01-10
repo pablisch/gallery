@@ -28,7 +28,7 @@ const ImageUploadForm = ({
   if (userToken === null) navigate('/');
 
   useEffect(() => {
-    document.title = 'Gallery Sign Up';
+    document.title = 'Gallery Image Upload';
     if (user === null) navigate('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -88,9 +88,11 @@ const ImageUploadForm = ({
 
       console.log('Response from upload operation', dbResponse);
       getImageArrayData(setImageData);
+      setDescription('')
       setTimeout(() => {
         setIsSideEffect(false);
       }, 1500);
+      console.log("Going to feed")
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -124,7 +126,7 @@ const ImageUploadForm = ({
             Upload an Image
           </h1>
           <Button
-            id='image-upload-select'
+            id='image-upload-select-btn'
             className={`btn custom-file-input ${
               isFileSelected ? 'subdued' : ''
               }`}
@@ -153,7 +155,7 @@ const ImageUploadForm = ({
               <img id='preview-image' src={preview} alt='Preview image' />
             </div>
           )}
-          <p className='information small-info'><span className='asterisk'>*</span> A simple description is important to allow screen readers to provide information about images making the web more widely accessible.</p>
+          <p id='why-description-note' className='information small-info'><span className='asterisk'>*</span> A simple description is important to allow screen readers to provide information about images making the web more widely accessible.</p>
         </form>
       </main>
     </>
