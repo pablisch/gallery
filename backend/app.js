@@ -28,8 +28,8 @@ const corsOptions = {
   origin: corsOrigin,
 };
 
-app.use(cors(corsOptions));
-// app.use(cors());
+// app.use(cors(corsOptions));
+app.use(cors());
 
 mongoose
   .connect(mongoDbUrl)
