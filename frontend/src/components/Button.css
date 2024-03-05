@@ -69,6 +69,7 @@
 
 .warning-btn {
   background-color: #e67452 !important;
+  border: 1px solid #8e3e3e;
 }
 
 .warning-btn:hover {
