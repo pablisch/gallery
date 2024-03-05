@@ -6,6 +6,7 @@
   "homepage": "https://gallery-58b4.onrender.com",
   "scripts": {
     "prod": "NODE_ENV='deploy' vite",
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",

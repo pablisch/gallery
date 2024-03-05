@@ -13,6 +13,7 @@
     "seed:images:dev": "MONGODB_DB='gallery_DEV' node ./seed-data/seedImages.js",
     "seed:users:dev": "MONGODB_DB='gallery_DEV' node ./seed-data/seedUsers.js",
     "seed:test": "MONGODB_DB='gallery_TEST' node ./seed-data/seedTestdata.js",
+    "seed:images:test": "MONGODB_DB='gallery_TEST' node ./seed-data/seedImages.js",
     "seed:users:test": "MONGODB_DB='gallery_TEST' node ./seed-data/seedUsers.js",
     "seed:images:prod": "MONGODB_DB='gallery' node ./seed-data/seedImages.js",
     "seed:users:prod": "MONGODB_DB='gallery' node ./seed-data/seedUsers.js"

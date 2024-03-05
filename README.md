@@ -18,6 +18,11 @@ Gallery is a simple image sharing app that displays uploaded images using a maso
 - Delete account with option of whether to leave or delete images and comments
 - like and unlike other people's comments
 - Comment on comments
+  
+## Usage
+
+This gallery app can easily be cloned and with very limited adaption can serve as an image share for an event, holiday, wedding, etc. It seems very feasible to adapt the app so that it can have a feature to easily achive such a functionality within the main app.
+**Example:** Bob and Aisha are getting married and send out a link to a `Bob and Aisha's Wedding` specific clone of this app so that all of their guests can upload images they take of the special day as the day goes on.
 
 ## Setting up the app
 
@@ -35,6 +40,13 @@ cd into the backend, install the dependencies.
 ```
 cd ../backend
 npm install
+```
+
+You may also need to run the following depending on your environment.
+
+```
+npm install dotenv --save
+npm install -g nodemon
 ```
 
 Set up the environment variables in the backend.
@@ -64,38 +76,40 @@ npm start
 
 This will start the backend server on `http://localhost:8080` and the frontend server on `http://localhost:5173` concurrently.
 
-## Usage
-
-This gallery app can easily be cloned and with very limited adaption can serve as an image share for an event, holiday, wedding, etc. It seems very feasible to adapt the app so that it can have a feature to easily achive such a functionality within the main app.
-**Example:** Bob and Aisha are getting married and send out a link to a `Bob and Aisha's Wedding` specific clone of this app so that all of their guests can upload images they take of the special day as the day goes on.
-
-## Dependencies
-
-Install the backend dependencies.
+Alternatively, you can run the backend and frontend separately. Open two terminal windows and run the following in each.
 
 ```
 cd backend
-npm install
+npm start
 ```
-
-You may also need to run the following depending on your environment.
-
-```
-npm install dotenv --save
-npm install -g nodemon
-```
-
-Install the frontend dependencies.
-
 ```
 cd frontend
-npm install
+npm start
+```
+
+## Seeding the database
+
+There a scripts to seed the database with sample data. This is intended mainly for testing purposes but can also be used to provide sample data for viewing the functionality of the app.
+
+To seed the database, navigate to the backend directory and run the following.
+```
+npm run seed:test // seeds the test databse with image and user data
+npm run seed:images:test // seeds the test database with image data only
+npm run seed:users:test // seeds the test database with user data only
+```
+``` 
+npm run seed:images:dev // seeds the development database with image data only
+npm run seed:users:dev // seeds the development database with user data only
+```
+```
+npm run seed:images:prod // seeds the production database with image data only
+npm run seed:users:prod // seeds the production database with user data only
 ```
 
 ## End to end testing
 
 There is a Java Selenium end to end test suite available for this project which used a Page Object Model and highly modular functions for maintainability.
-Download the test suite [here](https://github.com/pablisch/gallery-app-automation-test-suite).
+Clone the test suite [here](https://github.com/pablisch/gallery-app-automation-test-suite).
 Running inidividual tests and gaining visibility is easy when opened in Jet Brains' IntelliJ but other IDEs are available.
 To run all tests in terminal, navigate to the test suite project directory and enter `gradle test`.
 

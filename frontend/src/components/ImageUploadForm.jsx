@@ -9,6 +9,9 @@ import Button from './Button';
 import resizeImage from '../utils/resizeImage';
 import InputField from './InputField';
 
+const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
 const ImageUploadForm = ({
   user,
   userToken,
@@ -55,10 +58,10 @@ const ImageUploadForm = ({
 
       const formData = new FormData();
       formData.append('file', imageToUpload);
-      formData.append('upload_preset', 'xwkdy0vz');
+      formData.append('upload_preset', uploadPreset);
 
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/ddinmpzrr/image/upload',
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         formData
       );
 
