@@ -35,6 +35,21 @@ cd frontend
 npm install
 ```
 
+Set up the environment variables in the frontend.
+  
+```
+touch .env
+```
+
+Add the following to the .env file.
+
+```
+VITE_CLOUDINARY_UPLOAD_PRESET=<your-cloudinary-upload-preset>
+VITE_CLOUDINARY_CLOUD_NAME=<your-cloudinary-cloud-name>
+```
+
+**NOTE:** Without these environment variables, any image upload will fail.
+
 cd into the backend, install the dependencies.
 
 ```
