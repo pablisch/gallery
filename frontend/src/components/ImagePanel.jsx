@@ -65,6 +65,10 @@ const ImagePanel = ({ image, setSelectedImage, setImageData }) => {
   };
 
   const handleHover = (hoverState) => {
+    if (!hoverState) {
+      // console.log(hoverState);
+      // setConfirmDelete(false);
+    }
     setIsHovered(hoverState);
   };
 
