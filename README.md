@@ -5,14 +5,14 @@ Gallery is a simple image sharing app that displays uploaded images using a maso
 - Uses can sign up, log in and log out.
 - Un-logged in users have the same visibility as logged in users but no editing rights
 
-#### Logged in user functionality:
+**Logged in user functionality:**
 
 - Upload images
 - Like and unlike images (once per image)
 - Make comments
 - Delete own images
 
-#### Planned future functionality:
+**Planned future functionality:**
 
 - Only like other people's images
 - Delete account with option of whether to leave or delete images and comments
