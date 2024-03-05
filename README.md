@@ -18,7 +18,52 @@ Gallery is a simple image sharing app that displays uploaded images using a maso
 - Delete account with option of whether to leave or delete images and comments
 - like and unlike other people's comments
 - Comment on comments
-  
+
+## Setting up the app
+
+Clone the repo and navigate to the root directory.
+
+cd into the frontend, install the dependencies.
+
+```
+cd frontend
+npm install
+```
+
+cd into the backend, install the dependencies.
+
+```
+cd ../backend
+npm install
+```
+
+Set up the environment variables in the backend.
+
+```
+touch .env
+```
+
+Add the following to the .env file.
+
+```
+MONGODB_PW=<your_password>
+MONGODB_USER=<your_username>
+JWT_SECRET=<your_secret>
+CORS_ORIGIN=http://localhost:5173
+```
+
+**NOTE:** Without these environment variables, the app will not work.
+
+## Running the app
+
+To run the app, navigate to the backend directory and run the following.
+
+```
+npm start
+```
+
+This will start the backend server on `http://localhost:8080` and the frontend server on `http://localhost:5173` concurrently.
+
 ## Usage
 
 This gallery app can easily be cloned and with very limited adaption can serve as an image share for an event, holiday, wedding, etc. It seems very feasible to adapt the app so that it can have a feature to easily achive such a functionality within the main app.
