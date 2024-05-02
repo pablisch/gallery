@@ -2,53 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); 
 const User = require('../models/user'); 
 
-// exports.signup = (req, res, next) => { 
-//   const { name, username, email, password, avatar } = req.body;
-//   User.findOne({ username })
-//     .then(user => {
-//       if (user) {
-//         console.log('user already in use')
-//         return res.status(401).json({ error: 'That username is already taken' });
-//       }
-//     });
-//   User.findOne({ email })
-//     .then(user => {
-//       if (user) {
-//         console.log('email already in use')
-//         return res.status(401).json({ error: 'Sorry. That email cannot be used' });
-//       }
-//     });
-//   bcrypt.hash(password, 10)
-//     .then(hash => {
-//       const user = new User({
-//         name,
-//         username,
-//         email,
-//         password: hash,
-//         avatar
-//       });
-
-//       user.save()
-//         .then(() => {
-//           const token = jwt.sign(
-//             { userId: user._id },
-//             process.env.JWT_SECRET,
-//             { expiresIn: '24h' }
-//           );
-//           // Include the token in the response
-//           res.status(201).json({
-//             message: 'User added successfully!',
-//             userId: user._id,
-//             username,
-//             token,
-//             avatar
-//           });
-//         })
-//         .catch(error => res.status(500).json({ error: error }));
-//     })
-//     .catch(error => res.status(500).json({ error: error }));
-// }; 
-
 exports.signup = async (req, res, next) => {
   try {
     const { name, username, email, password, avatar } = req.body;
